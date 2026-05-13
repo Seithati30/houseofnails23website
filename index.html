@@ -402,7 +402,7 @@
 
     .modal-content {
       background: #fffaf5;
-      max-width: 550px;
+      max-width: 700px;
       width: 90%;
       border-radius: 32px;
       padding: 28px;
@@ -803,7 +803,7 @@
 <div id="adminModal" class="modal">
   <div class="modal-content">
     <h3><i class="fas fa-crown"></i> Admin Panel</h3>
-    <p style="font-size: 0.85rem;">Manage closed days & special offers.</p>
+    <p style="font-size: 0.85rem;">Manage closed days, special offers, and bookings.</p>
     
     <h4><i class="fas fa-calendar-times"></i> Closed Days Management</h4>
     <div class="form-group">
@@ -829,6 +829,11 @@
       <input type="text" id="newSpecialPrice" placeholder="R180 instead of R220">
     </div>
     <button id="saveNewSpecialBtn" class="btn-modal">+ Add Special Offer</button>
+    
+    <hr>
+    <h4><i class="fas fa-calendar-alt"></i> Manage Bookings</h4>
+    <div id="adminBookingsList"></div>
+    
     <div style="margin-top: 20px; text-align: right;">
       <button id="closeModalBtn" class="btn-modal" style="background:#C29D93;">Close</button>
     </div>
@@ -838,7 +843,7 @@
 <div id="toastMsg" class="toast-notify"></div>
 
 <script>
-  // Storage keys
+  // ======================= STORAGE KEYS =======================
   const BOOKINGS_KEY = "hn23_bookings";
   const CLOSED_DAYS_KEY = "hn23_closed_days";
   const SPECIALS_KEY = "houseofnails_specials";
@@ -850,32 +855,24 @@
   const ADMIN_WHATSAPP = "27635967477";
   let isProcessing = false;
 
+  // ======================= HELPERS =======================
   function saveBookings() { localStorage.setItem(BOOKINGS_KEY, JSON.stringify(bookings)); }
   function saveClosedDays() { localStorage.setItem(CLOSED_DAYS_KEY, JSON.stringify(closedDays)); }
   function saveSpecials() { localStorage.setItem(SPECIALS_KEY, JSON.stringify(specialsArray)); renderSpecialsOnPage(); }
 
   function isSlotBooked(date, time) { return bookings.some(b => b.date === date && b.time === time); }
   function isDateClosed(date) { return closedDays.includes(date); }
-
   function getMinDate() { return new Date(2026, 4, 18); }
 
-  // Get add-on details
+  // Add-on logic
   function getAddonDetails() {
     const addonSelect = document.getElementById('addonSelect');
     const selectedValue = addonSelect.value;
     const [pricePerUnit, addonName] = selectedValue.split('|');
     const price = parseInt(pricePerUnit);
     const quantity = parseInt(document.getElementById('addonQuantity').value) || 0;
-    
-    if (addonName === 'None' || price === 0) {
-      return { name: 'None', price: 0, quantity: 0, total: 0 };
-    }
-    
-    // Chrome is flat R50 for full set
-    if (addonName === 'Chrome') {
-      return { name: addonName, price: 50, quantity: 1, total: 50 };
-    }
-    
+    if (addonName === 'None' || price === 0) return { name: 'None', total: 0 };
+    if (addonName === 'Chrome') return { name: addonName, price: 50, total: 50 };
     const total = price * quantity;
     return { name: addonName, price: price, quantity: quantity, total: total };
   }
@@ -887,70 +884,46 @@
     return parseInt(selectedOption.getAttribute('data-price')) || 0;
   }
 
-  function getTotalPrice() {
-    return getServicePrice() + getAddonDetails().total;
-  }
-
-  function getDepositAmount() {
-    return Math.ceil(getTotalPrice() * 0.5);
-  }
+  function getTotalPrice() { return getServicePrice() + getAddonDetails().total; }
+  function getDepositAmount() { return Math.ceil(getTotalPrice() * 0.5); }
 
   function updateAddonInfo() {
     const addon = getAddonDetails();
     const infoDiv = document.getElementById('addonPriceInfo');
     if (addon.name !== 'None' && addon.total > 0) {
-      if (addon.name === 'Chrome') {
-        infoDiv.innerHTML = `<i class="fas fa-chrome"></i> ✨ ${addon.name}: R${addon.price} added to your total`;
-      } else {
-        infoDiv.innerHTML = `<i class="fas fa-spray-can"></i> ✨ ${addon.name}: R${addon.price} x ${addon.quantity} ${addon.quantity === 1 ? 'nail' : 'nails'} = R${addon.total}`;
-      }
-    } else {
-      infoDiv.innerHTML = '';
-    }
+      if (addon.name === 'Chrome') infoDiv.innerHTML = `<i class="fas fa-chrome"></i> ✨ ${addon.name}: R${addon.price} added`;
+      else infoDiv.innerHTML = `<i class="fas fa-spray-can"></i> ✨ ${addon.name}: R${addon.price} x ${addon.quantity} = R${addon.total}`;
+    } else infoDiv.innerHTML = '';
     updateDepositDisplay();
   }
 
   function updateDepositDisplay() {
     const servicePrice = getServicePrice();
     const addon = getAddonDetails();
-    const totalPrice = getTotalPrice();
+    const total = getTotalPrice();
     const deposit = getDepositAmount();
-    const depositBox = document.getElementById('depositBox');
-    const depositAmountSpan = document.getElementById('depositAmount');
-    const priceBreakdownSpan = document.getElementById('priceBreakdown');
-    
+    const box = document.getElementById('depositBox');
+    const depositSpan = document.getElementById('depositAmount');
+    const breakdown = document.getElementById('priceBreakdown');
     if (servicePrice > 0) {
-      if (addon.name !== 'None' && addon.total > 0) {
-        priceBreakdownSpan.innerHTML = `Service: R${servicePrice} + ${addon.name}: R${addon.total} = Total: R${totalPrice} | 50% deposit: R${deposit} | Remaining: R${totalPrice - deposit} paid in studio`;
-      } else {
-        priceBreakdownSpan.innerHTML = `Service total: R${servicePrice} | 50% deposit: R${deposit} | Remaining: R${servicePrice - deposit} paid in studio`;
-      }
-      depositAmountSpan.innerHTML = `R${deposit}`;
-      depositBox.classList.add('show');
-    } else {
-      depositBox.classList.remove('show');
-    }
+      if (addon.total > 0) breakdown.innerText = `Service R${servicePrice} + ${addon.name} R${addon.total} = Total R${total} | 50% deposit R${deposit}`;
+      else breakdown.innerText = `Service R${servicePrice} | 50% deposit R${deposit}`;
+      depositSpan.innerText = `R${deposit}`;
+      box.classList.add('show');
+    } else box.classList.remove('show');
   }
 
+  // Date picker and slot locking
   function initDatePicker() {
     const dateInput = document.getElementById('appointmentDate');
     if (!dateInput) return;
     const minDate = getMinDate();
-    const minDateStr = minDate.toISOString().split('T')[0];
-    dateInput.setAttribute('min', minDateStr);
-    
+    dateInput.setAttribute('min', minDate.toISOString().split('T')[0]);
     dateInput.addEventListener('change', function(e) {
       const selected = new Date(this.value);
-      if (selected.getDay() === 0) {
-        alert('🌸 We are closed on Sundays. Please choose Monday through Saturday.');
-        this.value = '';
-      } else if (selected < minDate) {
-        alert('🌸 Bookings are only available from Monday 18th May 2026 onwards.');
-        this.value = '';
-      } else if (isDateClosed(this.value)) {
-        alert('🌸 The studio is closed on this date. Please choose another day.');
-        this.value = '';
-      }
+      if (selected.getDay() === 0) { alert('🌸 Closed Sundays.'); this.value = ''; }
+      else if (selected < minDate) { alert('🌸 Bookings from 18 May 2026.'); this.value = ''; }
+      else if (isDateClosed(this.value)) { alert('🌸 Studio closed on this date.'); this.value = ''; }
       if (this.value) updateAvailableSlots(this.value);
     });
   }
@@ -971,200 +944,92 @@
     setTimeout(() => toast.classList.remove('show'), 4000);
   }
 
+  // WhatsApp alerts (pending)
   function sendWhatsAppAlerts(clientPhone, clientName, email, service, addonDetails, date, time, totalPrice, depositAmount) {
     const formattedDate = new Date(date).toLocaleDateString('en-ZA');
-    const addonText = addonDetails.name !== 'None' 
-      ? `\n✨ Add-on: ${addonDetails.name} - R${addonDetails.total}` 
-      : '';
-    
-    const clientMsg = `🏠 HOUSE OF NAILS 23 🏠
-
-⏳ BOOKING REQUEST RECEIVED - PENDING CONFIRMATION ⏳
-
-Hello ${clientName}, we have received your booking request!
-
-✨ Service: ${service}${addonText}
-💰 Total Price: R${totalPrice}
-📅 Date: ${formattedDate}
-⏰ Time: ${time}
-🌸 50% Deposit Required: R${depositAmount}
-
-🏦 EFT Details:
-Bank: Capitec Bank
-Account: House of Nails 23
-Account Number: 2440381884
-Branch Code: 470010
-Reference: YOUR NAME
-
-⚠️ IMPORTANT: Your booking is NOT confirmed yet!
-✅ To CONFIRM your slot:
-1. Pay R${depositAmount} via EFT using your name as reference
-2. Send PROOF OF PAYMENT to this WhatsApp number
-3. We will confirm your booking once payment is verified
-
-📍 28 Mowati Street, Phiri, Soweto
-
-💬 Send your inspiration pictures after payment confirmation!
-📸 View our work on Instagram: @houseofnailz23
-
-We look forward to pampering you! 🌸`;
-    
-    const adminMsg = `🔔 NEW BOOKING REQUEST - AWAITING PAYMENT 🔔
-
-👤 Client: ${clientName}
-📞 WhatsApp: ${clientPhone}
-📧 Email: ${email}
-💅 Service: ${service}${addonText}
-💰 Total Price: R${totalPrice}
-💰 Deposit Required: R${depositAmount}
-📅 Date: ${formattedDate}
-⏰ Time: ${time}
-
-⏳ STATUS: PENDING PAYMENT
-📌 Do NOT confirm until payment proof is received and verified.
-
-Once payment is verified, send confirmation message to client.`;
-    
-    if (clientPhone && clientPhone.trim()) {
-      let cleanPhone = clientPhone.replace(/\D/g, '');
-      if (!cleanPhone.startsWith('27')) cleanPhone = '27' + cleanPhone;
-      setTimeout(() => window.open(`https://wa.me/${cleanPhone}?text=${encodeURIComponent(clientMsg)}`, '_blank'), 300);
+    const addonLine = addonDetails.name !== 'None' ? `\n✨ Add-on: ${addonDetails.name} - R${addonDetails.total}` : '';
+    const clientMsg = `🏠 HOUSE OF NAILS 23 🏠\n\n⏳ BOOKING REQUEST - PENDING ⏳\n\nHello ${clientName},\n✨ Service: ${service}${addonLine}\n💰 Total: R${totalPrice}\n📅 ${formattedDate} ${time}\n🌸 Deposit: R${depositAmount}\n\n🏦 EFT: Capitec 2440381884 (Ref: YOUR NAME)\n📍 28 Mowati Street, Phiri, Soweto\n\n⚠️ NOT confirmed until we receive proof of payment.\n📱 Send EFT proof to +27 63 596 7477.\n\n💬 Inspiration pics welcome after confirmation!\n📸 Instagram: @houseofnailz23`;
+    const adminMsg = `🔔 NEW BOOKING - AWAITING PAYMENT 🔔\n\nClient: ${clientName}\n📞 ${clientPhone}\n📧 ${email}\n💅 ${service}${addonLine}\n💰 Total R${totalPrice} | Deposit R${depositAmount}\n📅 ${formattedDate} ${time}\n\n⏳ PENDING – wait for proof.`;
+    if (clientPhone) {
+      let clean = clientPhone.replace(/\D/g, '');
+      if (!clean.startsWith('27')) clean = '27' + clean;
+      setTimeout(() => window.open(`https://wa.me/${clean}?text=${encodeURIComponent(clientMsg)}`, '_blank'), 300);
     }
-    
     setTimeout(() => window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(adminMsg)}`, '_blank'), 800);
   }
 
+  // Booking form submit
   document.getElementById('bookingForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (isProcessing) { showToast("Please wait, processing..."); return; }
-    
+    if (isProcessing) { showToast("Please wait..."); return; }
     const clientName = document.getElementById('fullName').value.trim();
     const email = document.getElementById('emailAddr').value.trim();
     const clientPhone = document.getElementById('phoneNum').value.trim();
     const serviceSelect = document.getElementById('serviceSelect');
     const service = serviceSelect.options[serviceSelect.selectedIndex]?.text || '';
-    const addonDetails = getAddonDetails();
+    const addon = getAddonDetails();
     const date = document.getElementById('appointmentDate').value;
     const time = document.getElementById('timeSelect').value;
-    const totalPrice = getTotalPrice();
-    const depositAmount = getDepositAmount();
-    
-    if (!clientName || !email || !clientPhone) {
-      alert("🌸 Please fill in your full name, email and WhatsApp number.");
-      return;
-    }
-    if (!serviceSelect.value) {
-      alert("🌸 Please select a service.");
-      return;
-    }
-    if (!date) { alert("🌸 Please select a preferred date."); return; }
-    
+    const total = getTotalPrice();
+    const deposit = getDepositAmount();
+    if (!clientName || !email || !clientPhone) return alert("Please fill all fields.");
+    if (!serviceSelect.value) return alert("Select a service.");
+    if (!date) return alert("Select a date.");
     const minDate = getMinDate();
-    if (new Date(date) < minDate) { alert("🌸 Bookings only from Monday 18th May 2026."); return; }
-    if (isDateClosed(date)) { alert("🌸 Studio closed on this date."); return; }
-    if (isSlotBooked(date, time)) { alert("🌸 This time slot is already booked. Please select another time."); updateAvailableSlots(date); return; }
-    
+    if (new Date(date) < minDate) return alert("Bookings from 18 May 2026.");
+    if (isDateClosed(date)) return alert("Studio closed this date.");
+    if (isSlotBooked(date, time)) { alert("Slot already taken."); updateAvailableSlots(date); return; }
     isProcessing = true;
-    const bookBtn = document.getElementById('bookBtn');
-    const originalText = bookBtn.innerHTML;
-    bookBtn.innerHTML = '<span class="loading-spinner"></span> Processing...';
-    bookBtn.disabled = true;
-    
+    const btn = document.getElementById('bookBtn');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<span class="loading-spinner"></span> Processing...';
+    btn.disabled = true;
     try {
       const newBooking = {
         id: Date.now(),
         clientName, email, clientPhone, service,
-        addon: addonDetails.name !== 'None' ? `${addonDetails.name} (R${addonDetails.total})` : 'None',
-        totalPrice: totalPrice,
-        paymentMethod: 'EFT (Pending Verification)',
-        date, time,
-        depositAmount: depositAmount,
-        status: 'pending_payment',
+        addon: addon.name !== 'None' ? `${addon.name} (R${addon.total})` : 'None',
+        totalPrice: total, depositAmount: deposit,
+        paymentMethod: 'EFT (Pending)',
+        date, time, status: 'pending_payment',
         createdAt: new Date().toISOString()
       };
-      
       bookings.push(newBooking);
       saveBookings();
-      
-      sendWhatsAppAlerts(clientPhone, clientName, email, service, addonDetails, date, time, totalPrice, depositAmount);
-      
-      showToast(`📋 Booking request sent! Deposit R${depositAmount} via EFT. ⚠️ Booking is NOT confirmed until we receive your payment.`);
-      
+      sendWhatsAppAlerts(clientPhone, clientName, email, service, addon, date, time, total, deposit);
+      showToast(`📋 Booking request sent! Deposit R${deposit} via EFT. ⚠️ NOT confirmed until payment received.`);
       document.getElementById('bookingForm').reset();
-      const serviceSel = document.getElementById('serviceSelect');
-      serviceSel.selectedIndex = 0;
+      document.getElementById('serviceSelect').selectedIndex = 0;
       document.getElementById('addonSelect').selectedIndex = 0;
       document.getElementById('addonQuantity').value = 1;
       document.getElementById('depositBox').classList.remove('show');
       document.getElementById('addonPriceInfo').innerHTML = '';
       initDatePicker();
-      
-    } catch (err) {
-      showToast(`❌ Error: ${err.message}`);
-    } finally {
-      isProcessing = false;
-      bookBtn.innerHTML = originalText;
-      bookBtn.disabled = false;
-    }
+    } catch (err) { showToast(`❌ ${err.message}`); }
+    finally { isProcessing = false; btn.innerHTML = orig; btn.disabled = false; }
   });
 
-  function renderSpecialsOnPage() {
-    const container = document.getElementById("specialsDynamicContainer");
-    if (!container) return;
-    if (specialsArray.length === 0) {
-      container.innerHTML = `<div class="empty-specials">
-        <i class="fas fa-heart" style="font-size: 2rem; opacity: 0.6; color: #C29D93;"></i>
-        <p style="margin-top: 12px; font-weight: 500;">No active specials at the moment</p>
-        <p style="font-size: 0.95rem; margin-top: 8px;">🌸 Keep your eye out on our website and WhatsApp channel for future offers! 🌸</p>
-        <p style="font-size: 0.85rem; margin-top: 12px;">📸 View our work on Instagram @houseofnailz23 or request our WhatsApp catalogue!</p>
-      </div>`;
-      return;
-    }
-    let html = '';
-    specialsArray.forEach(special => {
-      html += `<div class="special-card">
-        <div class="special-title">${escapeHtml(special.title)}</div>
-        <div class="special-desc" style="margin:8px 0;">${escapeHtml(special.desc)}</div>
-        <div class="special-price">${escapeHtml(special.priceTag || 'Limited time')}</div>
-      </div>`;
-    });
-    container.innerHTML = html;
-  }
-
-  function escapeHtml(str) { if (!str) return ""; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
-
-  const sections = {
-    services: document.getElementById("services-section"),
-    specials: document.getElementById("specials-section"),
-    book: document.getElementById("book-section"),
-    contact: document.getElementById("contact-section")
-  };
-  
-  function activateSection(sectionId) {
-    Object.keys(sections).forEach(key => { if(sections[key]) sections[key].classList.remove("active-section"); });
-    if (sections[sectionId]) sections[sectionId].classList.add("active-section");
-    document.querySelectorAll(".nav-link").forEach(btn => { btn.classList.remove("active-nav"); if (btn.getAttribute("data-section") === sectionId) btn.classList.add("active-nav"); });
-  }
-  
-  document.querySelectorAll(".nav-link").forEach(btn => { const sn = btn.getAttribute("data-section"); if (sn && sections[sn]) btn.addEventListener("click", () => activateSection(sn)); });
-
-  const adminModal = document.getElementById("adminModal");
-  document.getElementById("adminNavBtn").addEventListener("click", () => {
-    const pwd = prompt("🔐 Admin access required. Enter code:");
-    if (pwd === "studio23" || pwd === "admin123") { adminModal.style.display = "flex"; renderClosedDaysList(); renderAdminSpecialsList(); }
-    else if (pwd !== null) alert("Invalid passcode.");
-  });
-  document.getElementById("closeModalBtn").addEventListener("click", () => adminModal.style.display = "none");
-  window.addEventListener("click", (e) => { if (e.target === adminModal) adminModal.style.display = "none"; });
-
+  // ======================= ADMIN PANEL =======================
   function renderClosedDaysList() {
     const container = document.getElementById("closedDaysList");
     if (!container) return;
     if (closedDays.length === 0) { container.innerHTML = "<p>No closed days set.</p>"; return; }
     let html = '';
-    closedDays.forEach((day, idx) => { html += `<div style="display:flex; justify-content:space-between; padding:8px; background:#FFDBEE; margin:4px 0; border-radius:12px;"><span>📅 ${new Date(day).toLocaleDateString('en-ZA')}</span><button class="remove-closed-day" data-index="${idx}" style="background:#C29D93; border:none; padding:4px 12px; border-radius:20px; cursor:pointer; color:white;">Remove</button></div>`; });
+    closedDays.forEach((day, idx) => {
+      html += `<div style="display:flex; justify-content:space-between; padding:8px; background:#FFDBEE; margin:4px 0; border-radius:12px;">
+        <span>📅 ${new Date(day).toLocaleDateString('en-ZA')}</span>
+        <button class="remove-closed-day" data-index="${idx}" style="background:#C29D93; border:none; padding:4px 12px; border-radius:20px; cursor:pointer; color:white;">Remove</button>
+      </div>`;
+    });
     container.innerHTML = html;
-    document.querySelectorAll(".remove-closed-day").forEach(btn => { btn.addEventListener("click", (e) => { const idx = parseInt(btn.getAttribute("data-index")); closedDays.splice(idx, 1); saveClosedDays(); renderClosedDaysList(); }); });
+    document.querySelectorAll(".remove-closed-day").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const idx = parseInt(btn.getAttribute("data-index"));
+        closedDays.splice(idx, 1);
+        saveClosedDays();
+        renderClosedDaysList();
+      });
+    });
   }
 
   function renderAdminSpecialsList() {
@@ -1172,15 +1037,96 @@ Once payment is verified, send confirmation message to client.`;
     if (!container) return;
     if (specialsArray.length === 0) { container.innerHTML = "<p>No specials active.</p>"; return; }
     let html = '';
-    specialsArray.forEach((s, idx) => { html += `<div class="admin-special-item"><div><strong>${escapeHtml(s.title)}</strong><br><small>${escapeHtml(s.desc)} — ${escapeHtml(s.priceTag)}</small></div><button class="delete-special" data-index="${idx}">Remove</button></div>`; });
+    specialsArray.forEach((s, idx) => {
+      html += `<div class="admin-special-item">
+        <div><strong>${escapeHtml(s.title)}</strong><br><small>${escapeHtml(s.desc)} — ${escapeHtml(s.priceTag)}</small></div>
+        <button class="delete-special" data-index="${idx}">Remove</button>
+      </div>`;
+    });
     container.innerHTML = html;
-    document.querySelectorAll(".delete-special").forEach(btn => { btn.addEventListener("click", (e) => { const idx = parseInt(btn.getAttribute("data-index")); specialsArray.splice(idx, 1); saveSpecials(); renderAdminSpecialsList(); }); });
+    document.querySelectorAll(".delete-special").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const idx = parseInt(btn.getAttribute("data-index"));
+        specialsArray.splice(idx, 1);
+        saveSpecials();
+        renderAdminSpecialsList();
+      });
+    });
   }
+
+  function renderAdminBookingsList() {
+    const container = document.getElementById("adminBookingsList");
+    if (!container) return;
+    const allBookings = JSON.parse(localStorage.getItem(BOOKINGS_KEY)) || [];
+    if (allBookings.length === 0) {
+      container.innerHTML = "<p>No bookings found.</p>";
+      return;
+    }
+    let html = `<div style="max-height:250px; overflow-y:auto;">`;
+    allBookings.forEach((b, idx) => {
+      const formattedDate = new Date(b.date).toLocaleDateString('en-ZA');
+      html += `
+        <div style="background:#FFDBEE; margin:8px 0; padding:10px; border-radius:16px;">
+          <strong>${escapeHtml(b.clientName)}</strong><br>
+          ${escapeHtml(b.service)} ${b.addon !== 'None' ? `+ ${b.addon}` : ''}<br>
+          ${formattedDate} at ${b.time}<br>
+          Deposit: R${b.depositAmount}<br>
+          <button class="delete-booking-btn" data-index="${idx}" style="background:#C29D93; border:none; padding:4px 12px; border-radius:20px; cursor:pointer; margin-top:5px;">🗑 Delete Booking</button>
+        </div>
+      `;
+    });
+    html += `</div>`;
+    container.innerHTML = html;
+    document.querySelectorAll(".delete-booking-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const idx = parseInt(btn.getAttribute("data-index"));
+        let updated = JSON.parse(localStorage.getItem(BOOKINGS_KEY)) || [];
+        updated.splice(idx, 1);
+        localStorage.setItem(BOOKINGS_KEY, JSON.stringify(updated));
+        bookings = updated;  // sync global variable
+        renderAdminBookingsList();
+        // refresh slot display on booking page if date is selected
+        const currentDate = document.getElementById('appointmentDate')?.value;
+        if (currentDate) updateAvailableSlots(currentDate);
+        alert("Booking deleted. Time slot is now free.");
+      });
+    });
+  }
+
+  function escapeHtml(str) { if (!str) return ""; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
+
+  // ======================= NAVIGATION =======================
+  const sections = {
+    services: document.getElementById("services-section"),
+    specials: document.getElementById("specials-section"),
+    book: document.getElementById("book-section"),
+    contact: document.getElementById("contact-section")
+  };
+  function activateSection(sectionId) {
+    Object.keys(sections).forEach(key => { if(sections[key]) sections[key].classList.remove("active-section"); });
+    if (sections[sectionId]) sections[sectionId].classList.add("active-section");
+    document.querySelectorAll(".nav-link").forEach(btn => { btn.classList.remove("active-nav"); if (btn.getAttribute("data-section") === sectionId) btn.classList.add("active-nav"); });
+  }
+  document.querySelectorAll(".nav-link").forEach(btn => { const sn = btn.getAttribute("data-section"); if (sn && sections[sn]) btn.addEventListener("click", () => activateSection(sn)); });
+
+  // ======================= ADMIN MODAL =======================
+  const adminModal = document.getElementById("adminModal");
+  document.getElementById("adminNavBtn").addEventListener("click", () => {
+    const pwd = prompt("🔐 Admin access. Enter code:");
+    if (pwd === "studio23" || pwd === "admin123") {
+      adminModal.style.display = "flex";
+      renderClosedDaysList();
+      renderAdminSpecialsList();
+      renderAdminBookingsList();
+    } else if (pwd !== null) alert("Invalid passcode.");
+  });
+  document.getElementById("closeModalBtn").addEventListener("click", () => adminModal.style.display = "none");
+  window.addEventListener("click", (e) => { if (e.target === adminModal) adminModal.style.display = "none"; });
 
   document.getElementById("addClosedDayBtn").addEventListener("click", () => {
     const date = document.getElementById("closedDateInput").value;
     if (!date) { alert("Select a date"); return; }
-    if (!closedDays.includes(date)) { closedDays.push(date); saveClosedDays(); renderClosedDaysList(); document.getElementById("closedDateInput").value = ""; alert(`✅ ${new Date(date).toLocaleDateString('en-ZA')} marked as closed.`); }
+    if (!closedDays.includes(date)) { closedDays.push(date); saveClosedDays(); renderClosedDaysList(); document.getElementById("closedDateInput").value = ""; alert(`✅ ${new Date(date).toLocaleDateString('en-ZA')} closed.`); }
     else alert("Already closed.");
   });
 
@@ -1192,12 +1138,31 @@ Once payment is verified, send confirmation message to client.`;
     else alert("Enter a title");
   });
 
-  // Event listeners for real-time calculation
+  // ======================= SPECIALS PAGE =======================
+  function renderSpecialsOnPage() {
+    const container = document.getElementById("specialsDynamicContainer");
+    if (!container) return;
+    if (specialsArray.length === 0) {
+      container.innerHTML = `<div class="empty-specials">
+        <i class="fas fa-heart" style="font-size: 2rem; color:#C29D93;"></i>
+        <p>No active specials at the moment</p>
+        <p>🌸 Keep an eye on our website and WhatsApp channel!</p>
+      </div>`;
+      return;
+    }
+    let html = '';
+    specialsArray.forEach(special => {
+      html += `<div class="special-card"><div class="special-title">${escapeHtml(special.title)}</div><div class="special-desc">${escapeHtml(special.desc)}</div><div class="special-price">${escapeHtml(special.priceTag)}</div></div>`;
+    });
+    container.innerHTML = html;
+  }
+
+  // Event listeners for deposit calculation
   document.getElementById('serviceSelect').addEventListener('change', updateDepositDisplay);
   document.getElementById('addonSelect').addEventListener('change', updateAddonInfo);
   document.getElementById('addonQuantity').addEventListener('input', updateAddonInfo);
 
-  // Initialize
+  // ======================= INIT =======================
   renderSpecialsOnPage();
   activateSection("services");
   initDatePicker();
