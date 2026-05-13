@@ -32,9 +32,6 @@
       background: #C29D93;
       padding: 18px 0 12px 0;
       border-bottom: 3px solid #FFDBEE;
-      position: sticky;
-      top: 0;
-      z-index: 100;
     }
 
     .logo-area {
@@ -121,6 +118,9 @@
       font-weight: 600;
       margin: 24px 0 12px 0;
       color: #C29D93;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .service-grid, .policy-card {
@@ -145,14 +145,118 @@
     .price-list li {
       display: flex;
       justify-content: space-between;
-      padding: 10px 0;
+      padding: 12px 0;
       border-bottom: 1px dashed #FFDBEE;
       font-weight: 500;
+    }
+
+    .price-list li:last-child {
+      border-bottom: none;
     }
 
     .price-list li span:last-child {
       font-weight: 700;
       color: #C29D93;
+    }
+
+    /* Professional Add-Ons Table */
+    .addons-container {
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 24px;
+      padding: 20px 24px;
+      margin-bottom: 28px;
+      border: 1px solid #FFDBEE;
+      box-shadow: 0 8px 20px rgba(194, 157, 147, 0.1);
+    }
+
+    .addons-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .addons-table th {
+      text-align: left;
+      padding: 14px 8px;
+      background: #C29D93;
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .addons-table th:first-child {
+      border-radius: 16px 0 0 0;
+    }
+
+    .addons-table th:last-child {
+      border-radius: 0 16px 0 0;
+      text-align: right;
+    }
+
+    .addons-table td {
+      padding: 12px 8px;
+      border-bottom: 1px solid #FFDBEE;
+      color: #4a2a1f;
+    }
+
+    .addons-table td:last-child {
+      text-align: right;
+      font-weight: 600;
+      color: #C29D93;
+    }
+
+    .addons-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .addon-icon {
+      width: 30px;
+      color: #C29D93;
+    }
+
+    .addon-note {
+      margin-top: 16px;
+      padding: 12px;
+      background: #FFDBEE;
+      border-radius: 16px;
+      font-size: 0.75rem;
+      color: #6b4a3a;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* Add-on selection in booking form */
+    .addon-selection {
+      background: #FFDBEE;
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    .addon-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .addon-row select {
+      flex: 2;
+    }
+
+    .addon-row input {
+      flex: 1;
+      width: auto;
+      min-width: 80px;
+    }
+
+    .addon-price-info {
+      font-size: 0.75rem;
+      color: #C29D93;
+      margin-top: 8px;
+      font-weight: 500;
     }
 
     .policy-list {
@@ -460,6 +564,16 @@
         text-align: center;
         width: 90%;
       }
+      .addons-table th, .addons-table td {
+        padding: 10px 6px;
+        font-size: 0.85rem;
+      }
+      .addon-row {
+        flex-direction: column;
+      }
+      .addon-row input {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -488,36 +602,63 @@
     <div class="info-banner">
       <i class="fas fa-info-circle"></i>
       <p><strong>📋 This website is for BOOKING PURPOSES only.</strong></p>
-      <p>Browse our services below, then book your slot. Final pricing including add-ons (gems, chrome, airbrush, etc.) will be confirmed in-studio.</p>
-      <p>📱 <strong>To see our work or send inspiration pictures:</strong> Click the Instagram icon below or WhatsApp us directly!</p>
+      <p>Browse our services below, then book your slot. Add-ons pricing is listed below.</p>
+      <p>📸 <strong>To see our work:</strong> View our <strong>Instagram portfolio</strong> or request our <strong>WhatsApp catalogue</strong>!</p>
+      <p>💬 <strong>Send inspiration pictures via WhatsApp AFTER booking</strong> - we'll discuss your desired look!</p>
     </div>
 
     <div class="grid-2col">
       <div class="service-grid">
-        <h3>💅 Acrylic</h3>
+        <h3><i class="fas fa-hand-sparkles"></i> Acrylic Collection</h3>
         <ul class="price-list">
           <li><span>Plain Acrylic</span><span>R200</span></li>
           <li><span>Plain Ombre</span><span>R220</span></li>
           <li><span>Plain French</span><span>R280</span></li>
-          <li><span>Overlay</span><span>R180</span></li>
-          <li><span>Refill</span><span>R150</span></li>
+          <li><span>Acrylic Overlay</span><span>R180</span></li>
+          <li><span>Refill Set</span><span>R150</span></li>
         </ul>
       </div>
       <div class="service-grid">
-        <h3>💎 Gel & Toes</h3>
+        <h3><i class="fas fa-gem"></i> Gel & Toes</h3>
         <ul class="price-list">
           <li><span>Plain Gel Set</span><span>R220</span></li>
           <li><span>Gel Overlay</span><span>R180</span></li>
           <li><span>Plain Toes</span><span>R100</span></li>
           <li><span>Buff & Shine</span><span>R100</span></li>
+          <li><span>French Toes</span><span>R170</span></li>
         </ul>
       </div>
     </div>
 
+    <!-- PROFESSIONAL ADD-ONS TABLE -->
+    <div class="addons-container">
+      <h3><i class="fas fa-palette"></i> Premium Add-Ons</h3>
+      <table class="addons-table">
+        <thead>
+          <tr>
+            <th>Add-On</th>
+            <th>Description</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><i class="fas fa-spray-can addon-icon"></i> Aura Airbrush</td><td>Airbrushed gradient effect per nail</td><td>R10/nail</td></tr>
+          <tr><td><i class="fas fa-gem addon-icon"></i> Gems / Pearls</td><td>Crystal gems or pearl accents per nail</td><td>R15/nail</td></tr>
+          <tr><td><i class="fas fa-star addon-icon"></i> Charms</td><td>3D decorative charms per nail</td><td>R20/nail</td></tr>
+          <tr><td><i class="fas fa-feather-alt addon-icon"></i> 3D Flower</td><td>Hand-sculpted 3D floral design per nail</td><td>R30/nail</td></tr>
+          <tr><td><i class="fas fa-chrome addon-icon"></i> Chrome Finish</td><td>Mirror chrome effect (full set)</td><td>R50</td></tr>
+          <tr><td><i class="fas fa-tint addon-icon"></i> Soak Off</td><td>Professional gel/acrylic removal</td><td>R80</td></tr>
+        </tbody>
+      </table>
+      <div class="addon-note">
+        <i class="fas fa-calculator"></i> Select your add-ons in the booking form below. Total price including add-ons will be calculated automatically!
+      </div>
+    </div>
+
     <div class="policy-card">
-      <h3>📋 Studio Policies</h3>
+      <h3><i class="fas fa-clipboard-list"></i> Studio Policies</h3>
       <ul class="policy-list">
-        <li><i class="fas fa-heart"></i> 50% non-refundable deposit required to secure your slot.</li>
+        <li><i class="fas fa-heart"></i> 50% deposit required to secure your slot (includes add-ons).</li>
         <li><i class="fas fa-coins"></i> <strong>Final payment made IN STUDIO after your service.</strong></li>
         <li><i class="fas fa-clock"></i> R50 extra for after-hours squeeze-in.</li>
         <li><i class="fas fa-hourglass-half"></i> 15min late = 20% charge.</li>
@@ -539,37 +680,56 @@
     <div class="booking-form">
       <form id="bookingForm">
         <div class="form-group">
-          <label>🌸 Full name *</label>
+          <label><i class="fas fa-user"></i> Full name *</label>
           <input type="text" id="fullName" required placeholder="e.g., Thandi M.">
         </div>
         <div class="form-group">
-          <label>📧 Email *</label>
+          <label><i class="fas fa-envelope"></i> Email *</label>
           <input type="email" id="emailAddr" required placeholder="hello@example.com">
         </div>
         <div class="form-group">
-          <label>📱 WhatsApp number *</label>
+          <label><i class="fab fa-whatsapp"></i> WhatsApp number *</label>
           <input type="tel" id="phoneNum" required placeholder="+27 81 073 6338">
         </div>
         <div class="form-group">
-          <label>Choose service</label>
+          <label><i class="fas fa-hand-sparkles"></i> Choose service</label>
           <select id="serviceSelect">
             <option value="" disabled selected>-- Select a service --</option>
             <option value="Plain Acrylic" data-price="200">Plain Acrylic · R200</option>
             <option value="Plain Ombre" data-price="220">Plain Ombre · R220</option>
             <option value="Plain French" data-price="280">Plain French · R280</option>
-            <option value="Overlay" data-price="180">Overlay · R180</option>
-            <option value="Refill" data-price="150">Refill · R150</option>
+            <option value="Acrylic Overlay" data-price="180">Acrylic Overlay · R180</option>
+            <option value="Refill Set" data-price="150">Refill Set · R150</option>
             <option value="Plain Gel Set" data-price="220">Plain Gel Set · R220</option>
             <option value="Gel Overlay" data-price="180">Gel Overlay · R180</option>
             <option value="Plain Toes" data-price="100">Plain Toes · R100</option>
+            <option value="French Toes" data-price="170">French Toes · R170</option>
           </select>
         </div>
+
+        <!-- ADD-ON SELECTION WITH QUANTITY -->
+        <div class="addon-selection">
+          <label><i class="fas fa-palette"></i> Add-ons (optional)</label>
+          <div class="addon-row">
+            <select id="addonSelect">
+              <option value="0|None">None</option>
+              <option value="10|Aura Airbrush">Aura Airbrush - R10 per nail</option>
+              <option value="15|Gems/Pearls">Gems/Pearls - R15 per nail</option>
+              <option value="20|Charms">Charms - R20 per nail</option>
+              <option value="30|3D Flower">3D Flower - R30 per nail</option>
+              <option value="50|Chrome">Chrome - R50 (full set)</option>
+            </select>
+            <input type="number" id="addonQuantity" min="1" max="10" value="1" placeholder="# of nails">
+          </div>
+          <div class="addon-price-info" id="addonPriceInfo"></div>
+        </div>
+
         <div class="form-group">
-          <label>📅 Preferred date (from Monday 18th May 2026) *</label>
+          <label><i class="fas fa-calendar"></i> Preferred date (from Monday 18th May 2026) *</label>
           <input type="date" id="appointmentDate" required>
         </div>
         <div class="form-group">
-          <label>⏰ Preferred time (slots: 11:00 AM - 4:00 PM) *</label>
+          <label><i class="fas fa-clock"></i> Preferred time (slots: 11:00 AM - 4:00 PM) *</label>
           <select id="timeSelect" required>
             <option value="11:00 AM">11:00 AM</option>
             <option value="12:00 PM">12:00 PM</option>
@@ -581,24 +741,24 @@
         </div>
 
         <div id="depositBox" class="deposit-box">
-          <p style="margin-bottom: 8px;">🌸 50% Deposit Required to Secure Your Slot</p>
+          <p style="margin-bottom: 8px;"><i class="fas fa-percent"></i> 50% Deposit Required to Secure Your Slot</p>
           <div class="deposit-amount" id="depositAmount">R0</div>
           <p class="price-breakdown" id="priceBreakdown"></p>
-          <p style="font-size: 0.7rem; margin-top: 8px;">Remaining balance paid IN STUDIO after service</p>
+          <p style="font-size: 0.7rem; margin-top: 8px;"><i class="fas fa-coins"></i> Remaining balance paid IN STUDIO after service</p>
         </div>
 
         <div class="bank-details" style="margin: 20px 0; background: #FFDBEE; color: #4a2a1f;">
-          <p><strong>🏦 EFT Payment Details (50% Deposit)</strong></p>
+          <p><strong><i class="fas fa-university"></i> EFT Payment Details (50% Deposit)</strong></p>
           <p>Bank: Capitec Bank</p>
           <p>Account Name: House of Nails 23</p>
           <p>Account Number: <strong>2440381884</strong></p>
           <p>Branch Code: 470010</p>
           <p>Reference: <span style="color:#C29D93; font-weight:600;">YOUR NAME</span></p>
-          <p style="font-size: 0.75rem; margin-top: 8px;">🌸 After EFT, please WhatsApp proof to +27 63 596 7477</p>
+          <p style="font-size: 0.75rem; margin-top: 8px;"><i class="fab fa-whatsapp"></i> After EFT, please WhatsApp proof to +27 63 596 7477</p>
         </div>
 
         <button type="submit" class="btn-secure" id="bookBtn"><i class="fas fa-calendar-check"></i> Request Booking (50% Deposit via EFT)</button>
-        <p style="font-size: 0.75rem; margin-top: 16px; text-align: center;">🌸 Bookings open from Monday 18th May 2026. 50% non-refundable deposit required. Mon-Sat (Closed Sun). Send proof of payment via WhatsApp to confirm your slot. Final payment made in studio.</p>
+        <p style="font-size: 0.75rem; margin-top: 16px; text-align: center;"><i class="fas fa-exclamation-triangle"></i> <strong>⚠️ Your booking is only CONFIRMED after we receive your EFT payment and proof via WhatsApp.</strong> Final payment made in studio. Send inspiration pictures via WhatsApp after booking!</p>
       </form>
     </div>
   </div>
@@ -607,36 +767,37 @@
     <h2>📞 Visit Our Studio</h2>
     <div class="contact-info">
       <p><i class="fas fa-map-marker-alt"></i> 28 Mowati Street, Phiri, Soweto, 1818</p>
-      <p><i class="fas fa-phone-alt"></i> 📞 Studio line: <strong>081 073 6338</strong></p>
-      <p><i class="fab fa-whatsapp"></i> 📱 WhatsApp (Bookings & Inspo): <strong>+27 63 596 7477</strong></p>
+      <p><i class="fas fa-phone-alt"></i> Studio line: <strong>081 073 6338</strong></p>
+      <p><i class="fab fa-whatsapp"></i> WhatsApp (Bookings, Catalogue, Inspo & Payment Proof): <strong>+27 63 596 7477</strong></p>
       <p><i class="fas fa-envelope"></i> houseofnailz23@gmail.com</p>
       
       <div class="bank-details">
-        <p><strong>🏦 EFT Payment Details (50% Deposit)</strong></p>
+        <p><strong><i class="fas fa-university"></i> EFT Payment Details (50% Deposit)</strong></p>
         <p>Bank: Capitec Bank | Account: House of Nails 23</p>
         <p>Account Number: <strong>2440381884</strong> | Branch: 470010</p>
         <p>Reference: <strong>YOUR NAME</strong></p>
+        <p style="font-size: 0.75rem; margin-top: 8px;"><i class="fab fa-whatsapp"></i> ⚠️ Send proof of payment via WhatsApp to CONFIRM your booking</p>
       </div>
       
       <div class="social-icons">
         <a href="https://wa.me/27635967477" target="_blank">
           <i class="fab fa-whatsapp"></i>
-          <span>Send Inspo</span>
+          <span>WhatsApp Catalogue & Inspo</span>
         </a>
         <a href="https://instagram.com/houseofnailz23" target="_blank">
           <i class="fab fa-instagram"></i>
-          <span>See Our Work</span>
+          <span>Instagram Portfolio</span>
         </a>
       </div>
       <hr style="margin: 18px 0; background: rgba(255, 219, 238, 0.3);">
       <p><i class="fas fa-clock"></i> Mon–Sat: 10am – 6pm | Booking slots: 11am - 4pm | Closed Sundays</p>
-      <p class="badge" style="background:#FFDBEE20; display:inline-block; padding:5px 10px; border-radius:50px;">💳 EFT deposits only | Final payment in studio | Send inspo via WhatsApp or Instagram</p>
+      <p class="badge" style="background:#FFDBEE20; display:inline-block; padding:5px 10px; border-radius:50px;"><i class="fas fa-camera"></i> View our work on Instagram or request our WhatsApp catalogue | Send inspo pics & payment proof on WhatsApp</p>
     </div>
   </div>
 </main>
 
 <footer>
-  <div class="container">🌸 House of Nails 23 — This website is for BOOKING PURPOSES only. Final payments made in studio. Follow us on Instagram to see our work! 🌸</div>
+  <div class="container"><i class="fas fa-heart"></i> House of Nails 23 — This website is for BOOKING PURPOSES only. Final payments made in studio. View our work on Instagram or request our WhatsApp catalogue. ⚠️ Bookings are only confirmed after EFT payment and proof is received. <i class="fas fa-heart"></i></div>
 </footer>
 
 <div id="adminModal" class="modal">
@@ -644,7 +805,7 @@
     <h3><i class="fas fa-crown"></i> Admin Panel</h3>
     <p style="font-size: 0.85rem;">Manage closed days & special offers.</p>
     
-    <h4>📅 Closed Days Management</h4>
+    <h4><i class="fas fa-calendar-times"></i> Closed Days Management</h4>
     <div class="form-group">
       <label>Select date to mark as closed</label>
       <input type="date" id="closedDateInput">
@@ -653,7 +814,7 @@
     <div id="closedDaysList" style="margin: 12px 0; max-height: 150px; overflow-y: auto;"></div>
     
     <hr>
-    <h4>🔥 Special Offers</h4>
+    <h4><i class="fas fa-fire"></i> Special Offers</h4>
     <div id="adminSpecialsList"></div>
     <div class="form-group">
       <label>Offer title</label>
@@ -698,25 +859,72 @@
 
   function getMinDate() { return new Date(2026, 4, 18); }
 
-  function getDepositAmount() {
+  // Get add-on details
+  function getAddonDetails() {
+    const addonSelect = document.getElementById('addonSelect');
+    const selectedValue = addonSelect.value;
+    const [pricePerUnit, addonName] = selectedValue.split('|');
+    const price = parseInt(pricePerUnit);
+    const quantity = parseInt(document.getElementById('addonQuantity').value) || 0;
+    
+    if (addonName === 'None' || price === 0) {
+      return { name: 'None', price: 0, quantity: 0, total: 0 };
+    }
+    
+    // Chrome is flat R50 for full set
+    if (addonName === 'Chrome') {
+      return { name: addonName, price: 50, quantity: 1, total: 50 };
+    }
+    
+    const total = price * quantity;
+    return { name: addonName, price: price, quantity: quantity, total: total };
+  }
+
+  function getServicePrice() {
     const select = document.getElementById('serviceSelect');
     const selectedOption = select.options[select.selectedIndex];
     if (!selectedOption || !selectedOption.getAttribute('data-price')) return 0;
-    const price = parseInt(selectedOption.getAttribute('data-price')) || 0;
-    return Math.ceil(price * 0.5);
+    return parseInt(selectedOption.getAttribute('data-price')) || 0;
+  }
+
+  function getTotalPrice() {
+    return getServicePrice() + getAddonDetails().total;
+  }
+
+  function getDepositAmount() {
+    return Math.ceil(getTotalPrice() * 0.5);
+  }
+
+  function updateAddonInfo() {
+    const addon = getAddonDetails();
+    const infoDiv = document.getElementById('addonPriceInfo');
+    if (addon.name !== 'None' && addon.total > 0) {
+      if (addon.name === 'Chrome') {
+        infoDiv.innerHTML = `<i class="fas fa-chrome"></i> ✨ ${addon.name}: R${addon.price} added to your total`;
+      } else {
+        infoDiv.innerHTML = `<i class="fas fa-spray-can"></i> ✨ ${addon.name}: R${addon.price} x ${addon.quantity} ${addon.quantity === 1 ? 'nail' : 'nails'} = R${addon.total}`;
+      }
+    } else {
+      infoDiv.innerHTML = '';
+    }
+    updateDepositDisplay();
   }
 
   function updateDepositDisplay() {
+    const servicePrice = getServicePrice();
+    const addon = getAddonDetails();
+    const totalPrice = getTotalPrice();
     const deposit = getDepositAmount();
-    const serviceSelect = document.getElementById('serviceSelect');
-    const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
     const depositBox = document.getElementById('depositBox');
     const depositAmountSpan = document.getElementById('depositAmount');
     const priceBreakdownSpan = document.getElementById('priceBreakdown');
     
-    if (selectedOption && selectedOption.getAttribute('data-price') && deposit > 0) {
-      const servicePrice = parseInt(selectedOption.getAttribute('data-price'));
-      priceBreakdownSpan.innerHTML = `Service total: R${servicePrice} | 50% deposit: R${deposit} | Remaining: R${servicePrice - deposit} paid in studio`;
+    if (servicePrice > 0) {
+      if (addon.name !== 'None' && addon.total > 0) {
+        priceBreakdownSpan.innerHTML = `Service: R${servicePrice} + ${addon.name}: R${addon.total} = Total: R${totalPrice} | 50% deposit: R${deposit} | Remaining: R${totalPrice - deposit} paid in studio`;
+      } else {
+        priceBreakdownSpan.innerHTML = `Service total: R${servicePrice} | 50% deposit: R${deposit} | Remaining: R${servicePrice - deposit} paid in studio`;
+      }
       depositAmountSpan.innerHTML = `R${deposit}`;
       depositBox.classList.add('show');
     } else {
@@ -763,12 +971,59 @@
     setTimeout(() => toast.classList.remove('show'), 4000);
   }
 
-  function sendWhatsAppAlerts(clientPhone, clientName, email, service, date, time, depositAmount) {
+  function sendWhatsAppAlerts(clientPhone, clientName, email, service, addonDetails, date, time, totalPrice, depositAmount) {
     const formattedDate = new Date(date).toLocaleDateString('en-ZA');
+    const addonText = addonDetails.name !== 'None' 
+      ? `\n✨ Add-on: ${addonDetails.name} - R${addonDetails.total}` 
+      : '';
     
-    const clientMsg = `🏠 HOUSE OF NAILS 23 🏠\n\nHello ${clientName}, your booking REQUEST has been received!\n\n✨ Service: ${service}\n📅 Date: ${formattedDate}\n⏰ Time: ${time}\n💰 50% Deposit Required: R${depositAmount}\n🏦 EFT Details: Capitec 2440381884 (Ref: YOUR NAME)\n📍 28 Mowati Street, Phiri, Soweto\n\n⚠️ Your slot is NOT confirmed until we receive proof of payment.\n📱 Send EFT proof to +27 63 596 7477 to secure your booking.\n\n💅 Final payment made in studio.\n📸 See our work on Instagram: @houseofnailz23\n\nWe look forward to pampering you! 🌸`;
+    const clientMsg = `🏠 HOUSE OF NAILS 23 🏠
+
+⏳ BOOKING REQUEST RECEIVED - PENDING CONFIRMATION ⏳
+
+Hello ${clientName}, we have received your booking request!
+
+✨ Service: ${service}${addonText}
+💰 Total Price: R${totalPrice}
+📅 Date: ${formattedDate}
+⏰ Time: ${time}
+🌸 50% Deposit Required: R${depositAmount}
+
+🏦 EFT Details:
+Bank: Capitec Bank
+Account: House of Nails 23
+Account Number: 2440381884
+Branch Code: 470010
+Reference: YOUR NAME
+
+⚠️ IMPORTANT: Your booking is NOT confirmed yet!
+✅ To CONFIRM your slot:
+1. Pay R${depositAmount} via EFT using your name as reference
+2. Send PROOF OF PAYMENT to this WhatsApp number
+3. We will confirm your booking once payment is verified
+
+📍 28 Mowati Street, Phiri, Soweto
+
+💬 Send your inspiration pictures after payment confirmation!
+📸 View our work on Instagram: @houseofnailz23
+
+We look forward to pampering you! 🌸`;
     
-    const adminMsg = `🔔 NEW BOOKING REQUEST 🔔\n\n👤 Client: ${clientName}\n📞 WhatsApp: ${clientPhone}\n📧 Email: ${email}\n💅 Service: ${service}\n📅 Date: ${formattedDate}\n⏰ Time: ${time}\n💰 Deposit Required: R${depositAmount}\n\n⏳ Awaiting proof of payment.\n📌 Do NOT mark as confirmed until payment proof received.`;
+    const adminMsg = `🔔 NEW BOOKING REQUEST - AWAITING PAYMENT 🔔
+
+👤 Client: ${clientName}
+📞 WhatsApp: ${clientPhone}
+📧 Email: ${email}
+💅 Service: ${service}${addonText}
+💰 Total Price: R${totalPrice}
+💰 Deposit Required: R${depositAmount}
+📅 Date: ${formattedDate}
+⏰ Time: ${time}
+
+⏳ STATUS: PENDING PAYMENT
+📌 Do NOT confirm until payment proof is received and verified.
+
+Once payment is verified, send confirmation message to client.`;
     
     if (clientPhone && clientPhone.trim()) {
       let cleanPhone = clientPhone.replace(/\D/g, '');
@@ -788,8 +1043,10 @@
     const clientPhone = document.getElementById('phoneNum').value.trim();
     const serviceSelect = document.getElementById('serviceSelect');
     const service = serviceSelect.options[serviceSelect.selectedIndex]?.text || '';
+    const addonDetails = getAddonDetails();
     const date = document.getElementById('appointmentDate').value;
     const time = document.getElementById('timeSelect').value;
+    const totalPrice = getTotalPrice();
     const depositAmount = getDepositAmount();
     
     if (!clientName || !email || !clientPhone) {
@@ -817,7 +1074,9 @@
       const newBooking = {
         id: Date.now(),
         clientName, email, clientPhone, service,
-        paymentMethod: 'EFT (Pending)',
+        addon: addonDetails.name !== 'None' ? `${addonDetails.name} (R${addonDetails.total})` : 'None',
+        totalPrice: totalPrice,
+        paymentMethod: 'EFT (Pending Verification)',
         date, time,
         depositAmount: depositAmount,
         status: 'pending_payment',
@@ -827,14 +1086,17 @@
       bookings.push(newBooking);
       saveBookings();
       
-      sendWhatsAppAlerts(clientPhone, clientName, email, service, date, time, depositAmount);
+      sendWhatsAppAlerts(clientPhone, clientName, email, service, addonDetails, date, time, totalPrice, depositAmount);
       
-      showToast(`📋 Booking request sent! Deposit R${depositAmount} via EFT. Check WhatsApp for details.`);
+      showToast(`📋 Booking request sent! Deposit R${depositAmount} via EFT. ⚠️ Booking is NOT confirmed until we receive your payment.`);
       
       document.getElementById('bookingForm').reset();
       const serviceSel = document.getElementById('serviceSelect');
       serviceSel.selectedIndex = 0;
+      document.getElementById('addonSelect').selectedIndex = 0;
+      document.getElementById('addonQuantity').value = 1;
       document.getElementById('depositBox').classList.remove('show');
+      document.getElementById('addonPriceInfo').innerHTML = '';
       initDatePicker();
       
     } catch (err) {
@@ -854,7 +1116,7 @@
         <i class="fas fa-heart" style="font-size: 2rem; opacity: 0.6; color: #C29D93;"></i>
         <p style="margin-top: 12px; font-weight: 500;">No active specials at the moment</p>
         <p style="font-size: 0.95rem; margin-top: 8px;">🌸 Keep your eye out on our website and WhatsApp channel for future offers! 🌸</p>
-        <p style="font-size: 0.85rem; margin-top: 12px;">📱 Follow us on Instagram @houseofnailz23 to see our work</p>
+        <p style="font-size: 0.85rem; margin-top: 12px;">📸 View our work on Instagram @houseofnailz23 or request our WhatsApp catalogue!</p>
       </div>`;
       return;
     }
@@ -871,7 +1133,6 @@
 
   function escapeHtml(str) { if (!str) return ""; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
 
-  // Navigation
   const sections = {
     services: document.getElementById("services-section"),
     specials: document.getElementById("specials-section"),
@@ -887,7 +1148,6 @@
   
   document.querySelectorAll(".nav-link").forEach(btn => { const sn = btn.getAttribute("data-section"); if (sn && sections[sn]) btn.addEventListener("click", () => activateSection(sn)); });
 
-  // Admin modal
   const adminModal = document.getElementById("adminModal");
   document.getElementById("adminNavBtn").addEventListener("click", () => {
     const pwd = prompt("🔐 Admin access required. Enter code:");
@@ -932,7 +1192,10 @@
     else alert("Enter a title");
   });
 
+  // Event listeners for real-time calculation
   document.getElementById('serviceSelect').addEventListener('change', updateDepositDisplay);
+  document.getElementById('addonSelect').addEventListener('change', updateAddonInfo);
+  document.getElementById('addonQuantity').addEventListener('input', updateAddonInfo);
 
   // Initialize
   renderSpecialsOnPage();
