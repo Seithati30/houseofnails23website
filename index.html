@@ -32,6 +32,9 @@
       background: #C29D93;
       padding: 18px 0 12px 0;
       border-bottom: 3px solid #FFDBEE;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .logo-area {
@@ -120,9 +123,8 @@
       color: #C29D93;
     }
 
-    .service-grid, .addon-grid, .policy-card {
+    .service-grid, .policy-card {
       background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(2px);
       border-radius: 24px;
       padding: 20px 24px;
       margin-bottom: 28px;
@@ -145,10 +147,6 @@
       justify-content: space-between;
       padding: 10px 0;
       border-bottom: 1px dashed #FFDBEE;
-      font-weight: 500;
-    }
-
-    .price-list li span:first-child {
       font-weight: 500;
     }
 
@@ -176,23 +174,6 @@
       color: #C29D93;
     }
 
-    .specials-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .empty-specials {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 40px 24px;
-      text-align: center;
-      border-radius: 32px;
-      font-size: 1.1rem;
-      color: #C29D93;
-      font-weight: 500;
-      border: 1px dashed #FFDBEE;
-    }
-
     .booking-form {
       background: rgba(255, 255, 255, 0.96);
       border-radius: 28px;
@@ -212,7 +193,7 @@
       color: #C29D93;
     }
 
-    input, select, textarea {
+    input, select {
       width: 100%;
       padding: 12px 16px;
       border-radius: 48px;
@@ -249,7 +230,6 @@
     .btn-secure:disabled {
       background: #ccc;
       cursor: not-allowed;
-      transform: none;
     }
 
     .contact-info {
@@ -277,17 +257,24 @@
       display: flex;
       gap: 28px;
       margin-top: 18px;
+      justify-content: center;
     }
 
     .social-icons a {
       color: #fff5f0;
       font-size: 1.8rem;
       transition: 0.2s;
+      text-align: center;
     }
 
     .social-icons a:hover {
       color: #FFDBEE;
       transform: scale(1.05);
+    }
+
+    .social-icons span {
+      font-size: 0.7rem;
+      display: block;
     }
 
     footer {
@@ -319,11 +306,6 @@
       overflow-y: auto;
     }
 
-    .modal-content h3 {
-      margin-top: 0;
-      color: #4a2a1f;
-    }
-
     .admin-special-item {
       background: #FFDBEE;
       margin: 12px 0;
@@ -334,24 +316,12 @@
       align-items: center;
     }
 
-    .admin-special-info strong {
-      display: block;
-      color: #C29D93;
-    }
-
     .delete-special {
       background: #f5c0ce;
       border: none;
-      font-size: 1rem;
       padding: 6px 12px;
       border-radius: 30px;
       cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .delete-special:hover {
-      background: #d48090;
-      color: white;
     }
 
     .btn-modal {
@@ -363,29 +333,6 @@
       font-weight: 600;
       margin-top: 12px;
       cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .btn-modal:hover {
-      background: #a88379;
-      color: white;
-    }
-
-    .badge {
-      background: rgba(255, 219, 238, 0.3);
-      padding: 5px 10px;
-      border-radius: 50px;
-      font-size: 0.75rem;
-    }
-
-    hr {
-      margin: 20px 0;
-      border-color: #FFDBEE;
-    }
-
-    .highlight {
-      color: #FFDBEE;
-      font-weight: 600;
     }
 
     .toast-notify {
@@ -398,7 +345,6 @@
       padding: 12px 24px;
       border-radius: 48px;
       font-size: 0.85rem;
-      font-weight: 500;
       z-index: 1000;
       opacity: 0;
       transition: opacity 0.25s;
@@ -447,11 +393,59 @@
     .info-banner i {
       color: #C29D93;
       margin-right: 8px;
-      font-size: 1.2rem;
     }
 
-    .info-banner p {
-      margin: 5px 0;
+    .specials-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .empty-specials {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px 24px;
+      text-align: center;
+      border-radius: 32px;
+      color: #C29D93;
+      border: 1px dashed #FFDBEE;
+    }
+
+    .special-card {
+      background: #fff;
+      border-left: 6px solid #C29D93;
+      padding: 20px;
+      border-radius: 20px;
+      margin-bottom: 15px;
+    }
+
+    .special-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #C29D93;
+    }
+
+    .special-price {
+      background: #FFDBEE;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      margin-top: 8px;
+    }
+
+    .loading-spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #fff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      margin-right: 8px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
     @media (max-width: 700px) {
@@ -518,18 +512,6 @@
           <li><span>Buff & Shine</span><span>R100</span></li>
         </ul>
       </div>
-    </div>
-
-    <div class="addon-grid">
-      <h3>🎨 Add‑ons (Pricing confirmed in-studio)</h3>
-      <ul class="price-list" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:6px;">
-        <li><span>Aura Airbrush</span><span>In-studio</span></li>
-        <li><span>Gems/Pearls</span><span>In-studio</span></li>
-        <li><span>Charms</span><span>In-studio</span></li>
-        <li><span>3D Flower</span><span>In-studio</span></li>
-        <li><span>Chrome</span><span>In-studio</span></li>
-        <li><span>Soak Off</span><span>R80</span></li>
-      </ul>
     </div>
 
     <div class="policy-card">
@@ -611,7 +593,7 @@
           <p>Account Name: House of Nails 23</p>
           <p>Account Number: <strong>2440381884</strong></p>
           <p>Branch Code: 470010</p>
-          <p>Reference: <span class="highlight" style="color:#C29D93;">YOUR NAME</span></p>
+          <p>Reference: <span style="color:#C29D93; font-weight:600;">YOUR NAME</span></p>
           <p style="font-size: 0.75rem; margin-top: 8px;">🌸 After EFT, please WhatsApp proof to +27 63 596 7477</p>
         </div>
 
@@ -637,12 +619,18 @@
       </div>
       
       <div class="social-icons">
-        <a href="https://wa.me/27635967477" target="_blank" aria-label="WhatsApp - Send Inspo or Questions"><i class="fab fa-whatsapp"></i><span style="font-size: 0.7rem; display: block;">Send Inspo</span></a>
-        <a href="https://instagram.com/houseofnailz23" target="_blank" aria-label="Instagram - See Our Work"><i class="fab fa-instagram"></i><span style="font-size: 0.7rem; display: block;">See Our Work</span></a>
+        <a href="https://wa.me/27635967477" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+          <span>Send Inspo</span>
+        </a>
+        <a href="https://instagram.com/houseofnailz23" target="_blank">
+          <i class="fab fa-instagram"></i>
+          <span>See Our Work</span>
+        </a>
       </div>
       <hr style="margin: 18px 0; background: rgba(255, 219, 238, 0.3);">
       <p><i class="fas fa-clock"></i> Mon–Sat: 10am – 6pm | Booking slots: 11am - 4pm | Closed Sundays</p>
-      <p class="badge" style="background:#FFDBEE20;">💳 EFT deposits only | Final payment in studio | Send inspo via WhatsApp or Instagram</p>
+      <p class="badge" style="background:#FFDBEE20; display:inline-block; padding:5px 10px; border-radius:50px;">💳 EFT deposits only | Final payment in studio | Send inspo via WhatsApp or Instagram</p>
     </div>
   </div>
 </main>
@@ -689,6 +677,7 @@
 <div id="toastMsg" class="toast-notify"></div>
 
 <script>
+  // Storage keys
   const BOOKINGS_KEY = "hn23_bookings";
   const CLOSED_DAYS_KEY = "hn23_closed_days";
   const SPECIALS_KEY = "houseofnails_specials";
@@ -869,20 +858,20 @@
       </div>`;
       return;
     }
-    let html = `<div class="specials-container">`;
+    let html = '';
     specialsArray.forEach(special => {
-      html += `<div class="special-card" style="background:#fff; border-left:6px solid #C29D93; padding:20px; border-radius:20px; margin-bottom:15px;">
-        <div class="special-title" style="font-size:1.2rem; font-weight:700; color:#C29D93;">${escapeHtml(special.title)}</div>
+      html += `<div class="special-card">
+        <div class="special-title">${escapeHtml(special.title)}</div>
         <div class="special-desc" style="margin:8px 0;">${escapeHtml(special.desc)}</div>
-        <div class="special-price" style="background:#FFDBEE; display:inline-block; padding:4px 12px; border-radius:40px;">${escapeHtml(special.priceTag || 'Limited time')}</div>
+        <div class="special-price">${escapeHtml(special.priceTag || 'Limited time')}</div>
       </div>`;
     });
-    html += `</div>`;
     container.innerHTML = html;
   }
 
   function escapeHtml(str) { if (!str) return ""; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
 
+  // Navigation
   const sections = {
     services: document.getElementById("services-section"),
     specials: document.getElementById("specials-section"),
@@ -898,6 +887,7 @@
   
   document.querySelectorAll(".nav-link").forEach(btn => { const sn = btn.getAttribute("data-section"); if (sn && sections[sn]) btn.addEventListener("click", () => activateSection(sn)); });
 
+  // Admin modal
   const adminModal = document.getElementById("adminModal");
   document.getElementById("adminNavBtn").addEventListener("click", () => {
     const pwd = prompt("🔐 Admin access required. Enter code:");
@@ -944,6 +934,7 @@
 
   document.getElementById('serviceSelect').addEventListener('change', updateDepositDisplay);
 
+  // Initialize
   renderSpecialsOnPage();
   activateSection("services");
   initDatePicker();
