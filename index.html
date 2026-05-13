@@ -16,24 +16,22 @@
     }
 
     body {
-      background: #fef9f0;
+      background: linear-gradient(135deg, #FFDBEE 0%, #FFDBEE 100%);
       font-family: 'Inter', sans-serif;
-      color: #2c2418;
+      color: #4a2a1f;
       line-height: 1.4;
     }
 
-    /* smooth container */
     .container {
       max-width: 1300px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* header / nav */
     header {
-      background: #1e1a14;
+      background: #C29D93;
       padding: 18px 0 12px 0;
-      border-bottom: 3px solid #c9a87b;
+      border-bottom: 3px solid #FFDBEE;
     }
 
     .logo-area {
@@ -46,18 +44,17 @@
       font-size: 2.1rem;
       letter-spacing: 2px;
       font-weight: 700;
-      color: #f3e1be;
+      color: #fff5f0;
     }
 
     .tagline {
       font-size: 0.85rem;
       letter-spacing: 1px;
-      color: #d9c3a0;
+      color: #fff0e8;
       margin-top: 6px;
       font-weight: 400;
     }
 
-    /* Navigation */
     nav {
       display: flex;
       flex-wrap: wrap;
@@ -72,7 +69,7 @@
       border: none;
       font-size: 1rem;
       font-weight: 600;
-      color: #f3e1be;
+      color: #fff5f0;
       cursor: pointer;
       padding: 6px 0;
       transition: 0.2s;
@@ -81,17 +78,16 @@
     }
 
     .nav-link:hover {
-      color: #e9bc7d;
-      border-bottom: 2px solid #e9bc7d;
+      color: #FFDBEE;
+      border-bottom: 2px solid #FFDBEE;
       transform: translateY(-1px);
     }
 
     .active-nav {
-      color: #e9bc7d;
-      border-bottom: 2px solid #e9bc7d;
+      color: #FFDBEE;
+      border-bottom: 2px solid #FFDBEE;
     }
 
-    /* main content */
     .section {
       display: none;
       padding: 48px 0 56px;
@@ -111,27 +107,27 @@
       font-size: 2rem;
       font-weight: 600;
       font-family: 'Playfair Display', serif;
-      border-left: 5px solid #c9a87b;
+      border-left: 5px solid #C29D93;
       padding-left: 20px;
       margin-bottom: 32px;
-      color: #2c2418;
+      color: #4a2a1f;
     }
 
     h3 {
       font-size: 1.4rem;
       font-weight: 600;
       margin: 24px 0 12px 0;
-      color: #3f2e1e;
+      color: #C29D93;
     }
 
-    /* cards & grids */
     .service-grid, .addon-grid, .policy-card {
-      background: white;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(2px);
       border-radius: 24px;
       padding: 20px 24px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
       margin-bottom: 28px;
-      border: 1px solid #f0e2d0;
+      border: 1px solid #FFDBEE;
+      box-shadow: 0 8px 20px rgba(194, 157, 147, 0.1);
     }
 
     .grid-2col {
@@ -148,7 +144,7 @@
       display: flex;
       justify-content: space-between;
       padding: 10px 0;
-      border-bottom: 1px dashed #f0dec6;
+      border-bottom: 1px dashed #FFDBEE;
       font-weight: 500;
     }
 
@@ -158,63 +154,51 @@
 
     .price-list li span:last-child {
       font-weight: 700;
-      color: #b47c48;
+      color: #C29D93;
     }
 
-    /* specials container */
+    .policy-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .policy-list li {
+      padding: 10px 0;
+      border-bottom: 1px dashed #FFDBEE;
+      font-weight: 500;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .policy-list li i {
+      margin-top: 3px;
+      color: #C29D93;
+    }
+
     .specials-container {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
-    .special-card {
-      background: #fffaf3;
-      border-left: 6px solid #dbb067;
-      padding: 20px 24px;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      transition: 0.2s;
-    }
-
-    .special-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #a55d2a;
-    }
-
-    .special-desc {
-      margin: 8px 0;
-      color: #3a2c1c;
-    }
-
-    .special-price {
-      font-weight: 700;
-      color: #1e1a14;
-      background: #f7e9db;
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 40px;
-      font-size: 0.85rem;
-    }
-
     .empty-specials {
-      background: #f8f2e9;
+      background: rgba(255, 255, 255, 0.9);
       padding: 40px 24px;
       text-align: center;
       border-radius: 32px;
       font-size: 1.1rem;
-      color: #7f613f;
+      color: #C29D93;
       font-weight: 500;
-      border: 1px dashed #dac09e;
+      border: 1px dashed #FFDBEE;
     }
 
-    /* booking form */
     .booking-form {
-      background: white;
+      background: rgba(255, 255, 255, 0.96);
       border-radius: 28px;
       padding: 32px;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+      box-shadow: 0 12px 28px rgba(194, 157, 147, 0.15);
+      border: 1px solid #FFDBEE;
     }
 
     .form-group {
@@ -225,24 +209,27 @@
       font-weight: 600;
       display: block;
       margin-bottom: 8px;
+      color: #C29D93;
     }
 
     input, select, textarea {
       width: 100%;
       padding: 12px 16px;
       border-radius: 48px;
-      border: 1px solid #e2cfb6;
+      border: 1px solid #FFDBEE;
       font-family: 'Inter', sans-serif;
-      background: #fffcf8;
+      background: #fffefc;
     }
 
-    input[type="date"] {
-      border-radius: 48px;
+    input:focus, select:focus {
+      outline: none;
+      border-color: #C29D93;
+      box-shadow: 0 0 0 3px rgba(194, 157, 147, 0.2);
     }
 
     .btn-secure {
-      background: #1e1a14;
-      color: white;
+      background: #C29D93;
+      color: #fff5f0;
       border: none;
       padding: 12px 28px;
       border-radius: 40px;
@@ -254,17 +241,30 @@
     }
 
     .btn-secure:hover {
-      background: #c9a87b;
-      color: #1e1a14;
+      background: #a88379;
+      color: white;
+      transform: translateY(-1px);
     }
 
-    /* contact & footer */
     .contact-info {
-      background: #1e1a14;
-      color: #f3e1be;
+      background: linear-gradient(135deg, #C29D93 0%, #b08a7e 100%);
+      color: #fff5f0;
       border-radius: 28px;
       padding: 28px 32px;
       margin-top: 20px;
+    }
+
+    .bank-details {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 18px;
+      margin: 15px 0;
+      border: 1px solid rgba(255, 219, 238, 0.5);
+    }
+
+    .bank-details p {
+      margin: 6px 0;
+      font-size: 0.9rem;
     }
 
     .social-icons {
@@ -274,25 +274,24 @@
     }
 
     .social-icons a {
-      color: #f3e1be;
+      color: #fff5f0;
       font-size: 1.8rem;
       transition: 0.2s;
     }
 
     .social-icons a:hover {
-      color: #e9bc7d;
+      color: #FFDBEE;
       transform: scale(1.05);
     }
 
     footer {
       text-align: center;
       padding: 32px 0 28px;
-      border-top: 1px solid #f0dfcc;
-      color: #7e6952;
+      border-top: 1px solid #FFDBEE;
+      color: #C29D93;
       font-size: 0.85rem;
     }
 
-    /* admin modal */
     .modal {
       display: none;
       position: fixed;
@@ -305,7 +304,7 @@
     }
 
     .modal-content {
-      background: #fffaf2;
+      background: #fffaf5;
       max-width: 550px;
       width: 90%;
       border-radius: 32px;
@@ -316,10 +315,11 @@
 
     .modal-content h3 {
       margin-top: 0;
+      color: #4a2a1f;
     }
 
     .admin-special-item {
-      background: #fbf3ea;
+      background: #FFDBEE;
       margin: 12px 0;
       padding: 12px 16px;
       border-radius: 20px;
@@ -330,24 +330,26 @@
 
     .admin-special-info strong {
       display: block;
+      color: #C29D93;
     }
 
     .delete-special {
-      background: #c9a87b30;
+      background: #f5c0ce;
       border: none;
       font-size: 1rem;
       padding: 6px 12px;
       border-radius: 30px;
       cursor: pointer;
+      transition: 0.2s;
     }
 
     .delete-special:hover {
-      background: #cf9470;
+      background: #d48090;
       color: white;
     }
 
     .btn-modal {
-      background: #1e1a14;
+      background: #C29D93;
       color: white;
       border: none;
       padding: 10px 18px;
@@ -355,10 +357,16 @@
       font-weight: 600;
       margin-top: 12px;
       cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-modal:hover {
+      background: #a88379;
+      color: white;
     }
 
     .badge {
-      background: #e9bc7d20;
+      background: rgba(255, 219, 238, 0.3);
       padding: 5px 10px;
       border-radius: 50px;
       font-size: 0.75rem;
@@ -366,7 +374,12 @@
 
     hr {
       margin: 20px 0;
-      border-color: #eddabc;
+      border-color: #FFDBEE;
+    }
+
+    .highlight {
+      color: #FFDBEE;
+      font-weight: 600;
     }
 
     @media (max-width: 700px) {
@@ -385,7 +398,7 @@
   <div class="container">
     <div class="logo-area">
       <div class="logo">HOUSE of NAILS23</div>
-      <div class="tagline">Timeless Nails, Soweto Glamour</div>
+      <div class="tagline">Glamour • Soweto's Finest</div>
     </div>
     <nav>
       <button class="nav-link" data-section="services">Services</button>
@@ -398,9 +411,8 @@
 </header>
 
 <main class="container">
-  <!-- SERVICES SECTION -->
   <div id="services-section" class="section active-section">
-    <h2>✨ Our Services</h2>
+    <h2>✨ Premium Menu</h2>
     <div class="grid-2col">
       <div class="service-grid">
         <h3>💅 Acrylic</h3>
@@ -436,42 +448,39 @@
     </div>
 
     <div class="policy-card">
-      <h3>📋 Policies</h3>
-      <ul class="price-list" style="list-style: disc; padding-left: 20px;">
-        <li>50% non-refundable deposit required.</li>
-        <li>R50 extra for after-hours squeeze-in.</li>
-        <li>15min late = 20% charge.</li>
-        <li>No show after 30min = deposit forfeit.</li>
-        <li>Card or EFT accepted.</li>
-        <li><strong>Closed on Sundays</strong></li>
+      <h3>📋 Studio Policies</h3>
+      <ul class="policy-list">
+        <li><i class="fas fa-heart"></i> 50% non-refundable deposit required.</li>
+        <li><i class="fas fa-clock"></i> R50 extra for after-hours squeeze-in.</li>
+        <li><i class="fas fa-hourglass-half"></i> 15min late = 20% charge.</li>
+        <li><i class="fas fa-ban"></i> No show after 30min = deposit forfeit.</li>
+        <li><i class="fas fa-credit-card"></i> Card or EFT accepted.</li>
+        <li><i class="fas fa-calendar-times"></i> <strong>Closed on Sundays</strong></li>
+        <li><i class="fas fa-shield-alt"></i> <strong>Right to refuse service:</strong> We reserve the right to refuse service if there are signs of infection, open wounds, or if the client's natural nails are beyond workable conditions.</li>
       </ul>
     </div>
   </div>
 
-  <!-- SPECIALS SECTION (dynamic, editable via admin) -->
   <div id="specials-section" class="section">
     <h2>🔥 Special Offers</h2>
-    <div id="specialsDynamicContainer" class="specials-container">
-      <!-- dynamic content from localStorage / default message -->
-    </div>
+    <div id="specialsDynamicContainer" class="specials-container"></div>
   </div>
 
-  <!-- BOOK SECTION interactive form: date starts next week Monday, last appointment 4pm -->
   <div id="book-section" class="section">
-    <h2>📅 Book Your Appointment</h2>
+    <h2>📅 Reserve Your Slot</h2>
     <div class="booking-form">
       <form id="bookingForm">
         <div class="form-group">
-          <label>Your full name *</label>
+          <label>🌸 Full name *</label>
           <input type="text" id="fullName" required placeholder="e.g., Thandi M.">
         </div>
         <div class="form-group">
-          <label>Email *</label>
+          <label>📧 Email *</label>
           <input type="email" id="emailAddr" required placeholder="hello@example.com">
         </div>
         <div class="form-group">
-          <label>Phone number *</label>
-          <input type="tel" id="phoneNum" required placeholder="081 073 6338">
+          <label>📱 WhatsApp number *</label>
+          <input type="tel" id="phoneNum" required placeholder="+27 81 073 6338">
         </div>
         <div class="form-group">
           <label>Choose service</label>
@@ -498,14 +507,12 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Preferred date (starting from next week Monday) *</label>
+          <label>📅 Preferred date (from Monday 18th May 2026) *</label>
           <input type="date" id="appointmentDate" required>
         </div>
         <div class="form-group">
-          <label>Preferred time (last appointment at 4:00 PM) *</label>
+          <label>⏰ Preferred time (slots: 11:00 AM - 4:00 PM) *</label>
           <select id="timeSelect" required>
-            <option value="9:00 AM">9:00 AM</option>
-            <option value="10:00 AM">10:00 AM</option>
             <option value="11:00 AM">11:00 AM</option>
             <option value="12:00 PM">12:00 PM</option>
             <option value="1:00 PM">1:00 PM</option>
@@ -515,144 +522,246 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Payment method</label>
+          <label>💳 Payment method</label>
           <select id="paymentMethod">
             <option value="Pay with Card">Pay with Card</option>
-            <option value="EFT Details">EFT Details</option>
+            <option value="EFT Transfer">EFT Transfer</option>
           </select>
         </div>
         <button type="submit" class="btn-secure"><i class="fas fa-calendar-check"></i> Secure Your Slot (50% deposit)</button>
-        <p style="font-size: 0.75rem; margin-top: 16px; text-align: center;">*50% non-refundable deposit required. Appointments Mon-Sat (Closed Sun). Earliest date: next week Monday. Last booking time: 4:00 PM.</p>
+        <p style="font-size: 0.75rem; margin-top: 16px; text-align: center;">🌸 Bookings open from Monday 18th May 2026. 50% non-refundable deposit required. Mon-Sat (Closed Sun). Working hours: 10am-6pm | Booking slots: 11am-4pm (no rushing through sets).</p>
       </form>
     </div>
   </div>
 
-  <!-- CONTACT + WHATSAPP/INSTAGRAM ICONS -->
   <div id="contact-section" class="section">
-    <h2>📞 Visit Us</h2>
+    <h2>📞 Visit Our Studio</h2>
     <div class="contact-info">
       <p><i class="fas fa-map-marker-alt"></i> 28 Mowati Street, Phiri, Soweto, 1818</p>
-      <p><i class="fas fa-phone-alt"></i> 📞 081 073 6338</p>
+      <p><i class="fas fa-phone-alt"></i> 📞 Studio line: <strong>081 073 6338</strong></p>
+      <p><i class="fab fa-whatsapp"></i> 📱 WhatsApp (Bookings): <strong>+27 63 596 7477</strong></p>
       <p><i class="fas fa-envelope"></i> houseofnailz23@gmail.com</p>
       <p><i class="fab fa-instagram"></i> @houseofnailz23</p>
+      
+      <div class="bank-details">
+        <p><strong>🏦 EFT Payment Details (50% Deposit)</strong></p>
+        <p>Bank: Capitec Bank</p>
+        <p>Account Name: House of Nails 23</p>
+        <p>Account Number: <strong>2440381884</strong></p>
+        <p>Branch Code: 470010</p>
+        <p>Reference: <span class="highlight">YOUR NAME</span></p>
+        <p style="font-size: 0.75rem; margin-top: 8px;">🌸 After EFT, please WhatsApp proof to +27 63 596 7477</p>
+      </div>
+      
       <div class="social-icons">
-        <a href="https://wa.me/27730736338" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://wa.me/27635967477" target="_blank" aria-label="WhatsApp Bookings"><i class="fab fa-whatsapp"></i></a>
         <a href="https://instagram.com/houseofnailz23" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
-      <hr style="margin: 18px 0; background: #c9a87b40;">
-      <p><i class="fas fa-clock"></i> Mon–Sat: 9am – 6pm | Closed Sundays | Last appointment 4:00 PM</p>
-      <p class="badge" style="background:#f3e1be20;">Card or EFT accepted | 50% deposit policy</p>
+      <hr style="margin: 18px 0; background: rgba(255, 219, 238, 0.3);">
+      <p><i class="fas fa-clock"></i> Mon–Sat: 10am – 6pm | Booking slots: 11am - 4pm | Closed Sundays</p>
+      <p class="badge" style="background:#FFDBEE20;">💳 Card or EFT accepted | 50% deposit policy</p>
     </div>
   </div>
 </main>
 
 <footer>
-  <div class="container">© Houseofnails23 — Premium Nail Studio. Closed Sundays. Glamour in every stroke.</div>
+  <div class="container">🌸 House of Nails 23 — Closed Sundays. Quality over quantity, no rushing. Bookings open from 18th May 2026. 🌸</div>
 </footer>
 
-<!-- ADMIN MODAL (update specials) -->
 <div id="adminModal" class="modal">
   <div class="modal-content">
-    <h3><i class="fas fa-crown"></i> Admin Panel — Manage Specials</h3>
-    <p style="font-size: 0.85rem;">Add, delete or update special offers. Changes appear instantly in "Specials" tab.</p>
-    <div id="adminSpecialsList"></div>
+    <h3><i class="fas fa-crown"></i> Admin Panel</h3>
+    <p style="font-size: 0.85rem;">Manage closed days & special offers.</p>
+    
+    <h4>📅 Closed Days Management</h4>
+    <div class="form-group">
+      <label>Select date to mark as closed</label>
+      <input type="date" id="closedDateInput">
+      <button id="addClosedDayBtn" class="btn-modal" style="margin-top: 8px; width: 100%;">+ Mark as Closed</button>
+    </div>
+    <div id="closedDaysList" style="margin: 12px 0; max-height: 150px; overflow-y: auto;"></div>
+    
     <hr>
-    <h4>➕ Add New Special</h4>
+    <h4>🔥 Special Offers</h4>
+    <div id="adminSpecialsList"></div>
     <div class="form-group">
       <label>Offer title</label>
-      <input type="text" id="newSpecialTitle" placeholder="e.g., Winter Ombre Deal">
+      <input type="text" id="newSpecialTitle" placeholder="e.g., Ombre Special">
     </div>
     <div class="form-group">
       <label>Description</label>
       <input type="text" id="newSpecialDesc" placeholder="Buy any acrylic set get 20% off">
     </div>
     <div class="form-group">
-      <label>Price / Tagline (optional)</label>
+      <label>Price / Tagline</label>
       <input type="text" id="newSpecialPrice" placeholder="R180 instead of R220">
     </div>
     <button id="saveNewSpecialBtn" class="btn-modal">+ Add Special Offer</button>
     <div style="margin-top: 20px; text-align: right;">
-      <button id="closeModalBtn" class="btn-modal" style="background:#7f613f;">Close</button>
+      <button id="closeModalBtn" class="btn-modal" style="background:#C29D93;">Close</button>
     </div>
   </div>
 </div>
 
 <script>
-  // Helper: Get next week Monday (YYYY-MM-DD)
-  function getNextWeekMonday() {
-    const today = new Date();
-    const dayOfWeek = today.getDay(); // 0 = Sunday, 1 = Monday ...
-    let daysUntilNextMonday;
-    if (dayOfWeek === 1) {
-      daysUntilNextMonday = 7; // next Monday, not today
-    } else if (dayOfWeek === 0) {
-      daysUntilNextMonday = 1; // tomorrow is Monday
-    } else {
-      daysUntilNextMonday = (8 - dayOfWeek);
-    }
-    const nextMonday = new Date(today);
-    nextMonday.setDate(today.getDate() + daysUntilNextMonday);
-    nextMonday.setHours(0, 0, 0, 0);
-    return nextMonday;
+  // BOOKING SYSTEM WITH DOUBLE-BOOKING PREVENTION & WHATSAPP ALERTS
+  
+  // Booking slots (11am to 4pm)
+  const bookingSlots = ["11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"];
+  
+  // Storage keys
+  const BOOKINGS_KEY = "hn23_bookings";
+  const CLOSED_DAYS_KEY = "hn23_closed_days";
+  const SPECIALS_KEY = "houseofnails_specials";
+  
+  // Load data
+  let bookings = JSON.parse(localStorage.getItem(BOOKINGS_KEY)) || [];
+  let closedDays = JSON.parse(localStorage.getItem(CLOSED_DAYS_KEY)) || [];
+  let specialsArray = JSON.parse(localStorage.getItem(SPECIALS_KEY)) || [];
+  
+  // Admin WhatsApp number
+  const ADMIN_WHATSAPP = "27635967477";
+  
+  function saveBookings() {
+    localStorage.setItem(BOOKINGS_KEY, JSON.stringify(bookings));
   }
-
-  // Set min date on date picker to next week Monday and also disable Sundays
+  
+  function saveClosedDays() {
+    localStorage.setItem(CLOSED_DAYS_KEY, JSON.stringify(closedDays));
+  }
+  
+  function saveSpecials() {
+    localStorage.setItem(SPECIALS_KEY, JSON.stringify(specialsArray));
+    renderSpecialsOnPage();
+  }
+  
+  // Check if a date+time slot is already booked
+  function isSlotBooked(date, time) {
+    return bookings.some(b => b.date === date && b.time === time);
+  }
+  
+  // Check if a date is marked as closed
+  function isDateClosed(date) {
+    return closedDays.includes(date);
+  }
+  
+  // Get minimum date (May 18th 2026)
+  function getMinDate() {
+    return new Date(2026, 4, 18); // May 18th 2026 (month is 0-indexed)
+  }
+  
   function initDatePicker() {
     const dateInput = document.getElementById('appointmentDate');
     if (!dateInput) return;
     
-    const minDate = getNextWeekMonday();
+    const minDate = getMinDate();
     const year = minDate.getFullYear();
     const month = String(minDate.getMonth() + 1).padStart(2, '0');
     const day = String(minDate.getDate()).padStart(2, '0');
     const minDateStr = `${year}-${month}-${day}`;
     dateInput.setAttribute('min', minDateStr);
     
-    // Block Sundays manually via validation
     dateInput.addEventListener('change', function(e) {
       const selected = new Date(this.value);
       if (selected.getDay() === 0) {
-        alert('❌ We are closed on Sundays. Please choose Monday through Saturday.\nEarliest available date is next week Monday.');
+        alert('🌸 We are closed on Sundays. Please choose Monday through Saturday.');
         this.value = '';
+      } else if (selected < minDate) {
+        alert('🌸 Bookings are only available from Monday 18th May 2026 onwards.');
+        this.value = '';
+      } else if (isDateClosed(this.value)) {
+        alert('🌸 The studio is closed on this date. Please choose another day.');
+        this.value = '';
+      }
+      if (this.value) {
+        updateAvailableSlots(this.value);
       }
     });
   }
-
-  // ---------- LOCALSTORAGE SPECIALS MANAGER ----------
-  let specialsArray = [];
-
-  function loadSpecialsFromStorage() {
-    const stored = localStorage.getItem("houseofnails_specials");
-    if (stored) {
-      specialsArray = JSON.parse(stored);
-    } else {
-      specialsArray = [];
-      localStorage.setItem("houseofnails_specials", JSON.stringify(specialsArray));
+  
+  function updateAvailableSlots(date) {
+    const timeSelect = document.getElementById('timeSelect');
+    for (let i = 0; i < timeSelect.options.length; i++) {
+      const option = timeSelect.options[i];
+      const slotTime = option.value;
+      if (isSlotBooked(date, slotTime)) {
+        option.disabled = true;
+        option.style.color = '#999';
+        option.style.backgroundColor = '#f0f0f0';
+      } else {
+        option.disabled = false;
+        option.style.color = '';
+        option.style.backgroundColor = '';
+      }
     }
-    renderSpecialsOnPage();
-  }
-
-  function saveSpecialsToStorage() {
-    localStorage.setItem("houseofnails_specials", JSON.stringify(specialsArray));
-    renderSpecialsOnPage();
-    if (document.getElementById("adminModal").style.display === "flex") {
-      renderAdminSpecialsList();
+    
+    // Select first available slot if current is disabled
+    if (timeSelect.options[0] && timeSelect.options[0].disabled) {
+      for (let i = 0; i < timeSelect.options.length; i++) {
+        if (!timeSelect.options[i].disabled) {
+          timeSelect.value = timeSelect.options[i].value;
+          break;
+        }
+      }
     }
   }
-
+  
+  // WhatsApp notifications - BOTH client AND admin receive
+  function sendWhatsAppConfirmation(clientPhone, clientName, service, addon, date, time, depositAmount, paymentMethod) {
+    const formattedDate = new Date(date).toLocaleDateString('en-ZA');
+    const clientMsg = `🏠 HOUSE OF NAILS 23 🏠\n\nHello ${clientName}, your appointment is CONFIRMED!\n\n✨ Service: ${service}\n✨ Add-on: ${addon}\n📅 Date: ${formattedDate}\n⏰ Time: ${time}\n💸 50% Deposit: R${depositAmount} (${paymentMethod})\n📍 28 Mowati Street, Phiri, Soweto\n\nRemaining balance payable in-studio.\n\nWe look forward to pampering you! 🌸`;
+    
+    const adminMsg = `🔔 NEW BOOKING ALERT 🔔\n\n👤 Client: ${clientName}\n📞 WhatsApp: ${clientPhone}\n📧 Email: ${document.getElementById('emailAddr').value}\n💅 Service: ${service}\n✨ Add-on: ${addon}\n📅 Date: ${formattedDate}\n⏰ Time: ${time}\n💰 Deposit: R${depositAmount} via ${paymentMethod}\n\n✅ Ready to prepare materials.`;
+    
+    // Open client WhatsApp
+    if (clientPhone && clientPhone.trim() !== "") {
+      let cleanPhone = clientPhone.replace(/\D/g, '');
+      if (!cleanPhone.startsWith('27')) cleanPhone = '27' + cleanPhone;
+      const clientWaLink = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(clientMsg)}`;
+      setTimeout(() => {
+        window.open(clientWaLink, '_blank');
+      }, 300);
+    }
+    
+    // Open admin WhatsApp
+    setTimeout(() => {
+      const adminWaLink = `https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(adminMsg)}`;
+      window.open(adminWaLink, '_blank');
+    }, 800);
+    
+    return true;
+  }
+  
+  function getDepositAmount(serviceValue) {
+    const prices = {
+      'Plain Acrylic · R200': 200,
+      'Plain Ombre · R220': 220,
+      'Plain French · R280': 280,
+      'Overlay · R180': 180,
+      'Refill · R150': 150,
+      'Plain Gel Set · R220': 220,
+      'Gel Overlay · R180': 180,
+      'Plain Toes · R100': 100
+    };
+    const price = prices[serviceValue] || 200;
+    return Math.ceil(price * 0.5);
+  }
+  
+  // Render specials (empty initially with message)
   function renderSpecialsOnPage() {
     const container = document.getElementById("specialsDynamicContainer");
     if (!container) return;
     if (specialsArray.length === 0) {
       container.innerHTML = `<div class="empty-specials">
-        <i class="fas fa-info-circle" style="font-size: 2rem; opacity: 0.6;"></i>
-        <p style="margin-top: 12px; font-weight: 500;">There are no current specials at the moment, but please check back for updates.</p>
-        <p style="font-size: 0.9rem;">✨ New glam offers dropping soon ✨</p>
+        <i class="fas fa-heart" style="font-size: 2rem; opacity: 0.6; color: #C29D93;"></i>
+        <p style="margin-top: 12px; font-weight: 500;">No active specials at the moment</p>
+        <p style="font-size: 0.95rem; margin-top: 8px;">🌸 Keep your eye out on our website and WhatsApp channel for future offers! 🌸</p>
+        <p style="font-size: 0.85rem; margin-top: 12px;">📱 Follow us on Instagram @houseofnailz23</p>
       </div>`;
       return;
     }
     let html = `<div class="specials-container">`;
-    specialsArray.forEach((special, idx) => {
+    specialsArray.forEach(special => {
       html += `
         <div class="special-card">
           <div class="special-title">${escapeHtml(special.title)}</div>
@@ -664,15 +773,15 @@
     html += `</div>`;
     container.innerHTML = html;
   }
-
+  
   function renderAdminSpecialsList() {
     const adminListDiv = document.getElementById("adminSpecialsList");
     if (!adminListDiv) return;
     if (specialsArray.length === 0) {
-      adminListDiv.innerHTML = `<p style="color:#a55d2a;">✨ No specials active. Use the form to add exclusive offers.</p>`;
+      adminListDiv.innerHTML = `<p style="color:#C29D93;">✨ No specials active. Add some offers below.</p>`;
       return;
     }
-    let itemsHtml = `<div style="max-height: 260px; overflow-y: auto;">`;
+    let itemsHtml = `<div style="max-height: 200px; overflow-y: auto;">`;
     specialsArray.forEach((special, index) => {
       itemsHtml += `
         <div class="admin-special-item">
@@ -691,13 +800,44 @@
         const idx = parseInt(btn.getAttribute("data-index"));
         if (!isNaN(idx)) {
           specialsArray.splice(idx, 1);
-          saveSpecialsToStorage();
+          saveSpecials();
           renderAdminSpecialsList();
         }
       });
     });
   }
-
+  
+  function renderClosedDaysList() {
+    const container = document.getElementById("closedDaysList");
+    if (!container) return;
+    if (closedDays.length === 0) {
+      container.innerHTML = `<p>No closed days set.</p>`;
+      return;
+    }
+    let html = `<div style="max-height: 150px; overflow-y: auto;">`;
+    closedDays.forEach((day, index) => {
+      const formatted = new Date(day).toLocaleDateString('en-ZA');
+      html += `
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px; background: #FFDBEE; margin: 4px 0; border-radius: 12px;">
+          <span>📅 ${formatted}</span>
+          <button class="remove-closed-day" data-index="${index}" style="background: #C29D93; border: none; padding: 4px 12px; border-radius: 20px; cursor: pointer; color: white;">Remove</button>
+        </div>
+      `;
+    });
+    html += `</div>`;
+    container.innerHTML = html;
+    document.querySelectorAll(".remove-closed-day").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const idx = parseInt(btn.getAttribute("data-index"));
+        if (!isNaN(idx)) {
+          closedDays.splice(idx, 1);
+          saveClosedDays();
+          renderClosedDaysList();
+        }
+      });
+    });
+  }
+  
   function escapeHtml(str) {
     if (!str) return "";
     return str.replace(/[&<>]/g, function(m) {
@@ -707,29 +847,15 @@
       return m;
     });
   }
-
-  function addSpecialFromAdmin(title, desc, priceTag) {
-    if (!title.trim()) {
-      alert("Please enter an offer title");
-      return false;
-    }
-    specialsArray.push({
-      title: title.trim(),
-      desc: desc.trim() || "Limited time offer",
-      priceTag: priceTag.trim() || "Check price in store"
-    });
-    saveSpecialsToStorage();
-    return true;
-  }
-
-  // ---------- NAVIGATION / TABS ----------
+  
+  // Navigation
   const sections = {
     services: document.getElementById("services-section"),
     specials: document.getElementById("specials-section"),
     book: document.getElementById("book-section"),
     contact: document.getElementById("contact-section")
   };
-
+  
   function activateSection(sectionId) {
     Object.keys(sections).forEach(key => {
       sections[key].classList.remove("active-section");
@@ -742,7 +868,7 @@
       }
     });
   }
-
+  
   document.querySelectorAll(".nav-link").forEach(btn => {
     const sectionName = btn.getAttribute("data-section");
     if (sectionName && sections[sectionName]) {
@@ -751,74 +877,154 @@
       });
     }
   });
-
-  // admin modal logic
+  
+  // Admin Modal
   const adminModal = document.getElementById("adminModal");
   const adminNavBtn = document.getElementById("adminNavBtn");
   const closeModalBtn = document.getElementById("closeModalBtn");
   const saveNewBtn = document.getElementById("saveNewSpecialBtn");
-
+  const addClosedDayBtn = document.getElementById("addClosedDayBtn");
+  const closedDateInput = document.getElementById("closedDateInput");
+  
   adminNavBtn.addEventListener("click", () => {
-    const pwd = prompt("🔐 Admin access required. Enter code to manage specials:");
+    const pwd = prompt("🔐 Admin access required. Enter code:");
     if (pwd === "studio23" || pwd === "admin123") {
       renderAdminSpecialsList();
+      renderClosedDaysList();
       adminModal.style.display = "flex";
     } else if (pwd !== null) {
-      alert("Invalid passcode. Only studio manager can edit specials.");
+      alert("Invalid passcode.");
     }
   });
-
+  
   closeModalBtn.addEventListener("click", () => {
     adminModal.style.display = "none";
   });
   window.addEventListener("click", (e) => {
     if (e.target === adminModal) adminModal.style.display = "none";
   });
-
+  
   saveNewBtn.addEventListener("click", () => {
     const title = document.getElementById("newSpecialTitle").value;
     const desc = document.getElementById("newSpecialDesc").value;
     const price = document.getElementById("newSpecialPrice").value;
-    if (addSpecialFromAdmin(title, desc, price)) {
+    if (title.trim()) {
+      specialsArray.push({
+        title: title.trim(),
+        desc: desc.trim() || "Limited offer",
+        priceTag: price.trim() || "Ask in-store"
+      });
+      saveSpecials();
       document.getElementById("newSpecialTitle").value = "";
       document.getElementById("newSpecialDesc").value = "";
       document.getElementById("newSpecialPrice").value = "";
       renderAdminSpecialsList();
+    } else {
+      alert("Please enter an offer title");
     }
   });
-
-  // BOOKING FORM SUBMIT
+  
+  addClosedDayBtn.addEventListener("click", () => {
+    const date = closedDateInput.value;
+    if (!date) {
+      alert("Please select a date");
+      return;
+    }
+    const minDate = getMinDate();
+    const selectedDate = new Date(date);
+    if (selectedDate < minDate) {
+      alert("Cannot close dates before May 18th 2026.");
+      return;
+    }
+    if (!closedDays.includes(date)) {
+      closedDays.push(date);
+      saveClosedDays();
+      renderClosedDaysList();
+      closedDateInput.value = "";
+      alert(`✅ ${new Date(date).toLocaleDateString('en-ZA')} marked as closed.`);
+    } else {
+      alert("This date is already marked as closed.");
+    }
+  });
+  
+  // Booking Form Submit
   const bookingForm = document.getElementById("bookingForm");
   if (bookingForm) {
     bookingForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const name = document.getElementById("fullName").value.trim();
+      
+      const clientName = document.getElementById("fullName").value.trim();
       const email = document.getElementById("emailAddr").value.trim();
-      const phone = document.getElementById("phoneNum").value.trim();
+      const clientPhone = document.getElementById("phoneNum").value.trim();
       const service = document.getElementById("serviceSelect").value;
       const addon = document.getElementById("addonsSelect").value;
-      const payment = document.getElementById("paymentMethod").value;
+      const paymentMethod = document.getElementById("paymentMethod").value;
       const date = document.getElementById("appointmentDate").value;
       const time = document.getElementById("timeSelect").value;
       
-      if (!name || !email || !phone) {
-        alert("Please fill in your full name, email and phone number.");
+      if (!clientName || !email || !clientPhone) {
+        alert("🌸 Please fill in your full name, email and WhatsApp number.");
         return;
       }
       if (!date) {
-        alert("Please select a preferred date (starting from next week Monday).");
+        alert("🌸 Please select a preferred date.");
         return;
       }
       
-      alert(`✨ Thank you ${name}, your booking request has been received!\n\n📅 Date: ${date}\n⏰ Time: ${time}\n💅 Service: ${service}\n✨ Add-on: ${addon}\n💳 Payment: ${payment}\n\n📌 We'll contact you within 24h to confirm your slot. A 50% deposit is required to secure your appointment.`);
+      const minDate = getMinDate();
+      const selectedDateObj = new Date(date);
+      if (selectedDateObj < minDate) {
+        alert("🌸 Bookings are only available from Monday 18th May 2026 onwards.");
+        return;
+      }
+      if (isDateClosed(date)) {
+        alert("🌸 The studio is closed on this date. Please choose another day.");
+        return;
+      }
+      if (isSlotBooked(date, time)) {
+        alert("🌸 This time slot is already booked. Please select another time.");
+        updateAvailableSlots(date);
+        return;
+      }
+      
+      const depositAmount = getDepositAmount(service);
+      
+      // Create booking
+      const newBooking = {
+        id: Date.now(),
+        clientName,
+        email,
+        clientPhone,
+        service,
+        addon,
+        paymentMethod,
+        date,
+        time,
+        depositAmount,
+        createdAt: new Date().toISOString()
+      };
+      
+      bookings.push(newBooking);
+      saveBookings();
+      
+      // Send WhatsApp notifications to BOTH client and admin
+      sendWhatsAppConfirmation(clientPhone, clientName, service, addon, date, time, depositAmount, paymentMethod);
+      
+      alert(`✨ Confirmation, ${clientName}!\n\n📅 Date: ${new Date(date).toLocaleDateString('en-ZA')}\n⏰ Time: ${time}\n💅 Service: ${service}\n✨ Add-on: ${addon}\n💰 50% Deposit: R${depositAmount}\n💳 Payment: ${paymentMethod}\n\n📌 WhatsApp confirmation sent to you and the studio.\n\n🏦 EFT Details: Capitec 2440381884 | Ref: YOUR NAME`);
+      
       bookingForm.reset();
-      // reset datepicker min after reset (optional but fine)
       initDatePicker();
+      
+      // Reset time select to first available
+      const timeSelect = document.getElementById('timeSelect');
+      if (timeSelect.options[0]) {
+        timeSelect.value = timeSelect.options[0].value;
+      }
     });
   }
-
-  // initial load & date picker setup
-  loadSpecialsFromStorage();
+  
+  // Initial load
+  renderSpecialsOnPage();
   activateSection("services");
   initDatePicker();
   document.querySelector('.nav-link[data-section="services"]').classList.add("active-nav");
