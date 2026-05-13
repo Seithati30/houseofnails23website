@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>House of Nails 23 | Premium Nail Studio</title>
-  <!-- Font Awesome 6 (free icons) -->
+  <title>House of Nails 23 | Book Your Appointment</title>
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Fonts for clean typography -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     * {
@@ -246,6 +246,12 @@
       transform: translateY(-1px);
     }
 
+    .btn-secure:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     .contact-info {
       background: linear-gradient(135deg, #C29D93 0%, #b08a7e 100%);
       color: #fff5f0;
@@ -382,12 +388,83 @@
       font-weight: 600;
     }
 
+    .toast-notify {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #4a2a1f;
+      color: #FFDBEE;
+      padding: 12px 24px;
+      border-radius: 48px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.25s;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .toast-notify.show {
+      opacity: 1;
+    }
+
+    .deposit-box {
+      background: #FFDBEE;
+      border-radius: 48px;
+      padding: 16px 20px;
+      text-align: center;
+      margin: 20px 0;
+      display: none;
+    }
+
+    .deposit-box.show {
+      display: block;
+    }
+
+    .deposit-amount {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #C29D93;
+    }
+
+    .price-breakdown {
+      font-size: 0.75rem;
+      margin-top: 8px;
+      color: #6b4a3a;
+    }
+
+    .info-banner {
+      background: #FFDBEE;
+      border-radius: 20px;
+      padding: 15px 20px;
+      margin-bottom: 25px;
+      text-align: center;
+      border: 1px solid #C29D93;
+    }
+
+    .info-banner i {
+      color: #C29D93;
+      margin-right: 8px;
+      font-size: 1.2rem;
+    }
+
+    .info-banner p {
+      margin: 5px 0;
+    }
+
     @media (max-width: 700px) {
       .container {
         padding: 0 18px;
       }
       h2 {
         font-size: 1.7rem;
+      }
+      .toast-notify {
+        white-space: normal;
+        text-align: center;
+        width: 90%;
       }
     }
   </style>
@@ -398,7 +475,7 @@
   <div class="container">
     <div class="logo-area">
       <div class="logo">HOUSE of NAILS23</div>
-      <div class="tagline">Glamour • Soweto's Finest</div>
+      <div class="tagline">Book Your Appointment • Soweto's Finest</div>
     </div>
     <nav>
       <button class="nav-link" data-section="services">Services</button>
@@ -412,7 +489,15 @@
 
 <main class="container">
   <div id="services-section" class="section active-section">
-    <h2>✨ Premium Menu</h2>
+    <h2>✨ Our Services</h2>
+    
+    <div class="info-banner">
+      <i class="fas fa-info-circle"></i>
+      <p><strong>📋 This website is for BOOKING PURPOSES only.</strong></p>
+      <p>Browse our services below, then book your slot. Final pricing including add-ons (gems, chrome, airbrush, etc.) will be confirmed in-studio.</p>
+      <p>📱 <strong>To see our work or send inspiration pictures:</strong> Click the Instagram icon below or WhatsApp us directly!</p>
+    </div>
+
     <div class="grid-2col">
       <div class="service-grid">
         <h3>💅 Acrylic</h3>
@@ -436,13 +521,13 @@
     </div>
 
     <div class="addon-grid">
-      <h3>🎨 Add‑ons</h3>
+      <h3>🎨 Add‑ons (Pricing confirmed in-studio)</h3>
       <ul class="price-list" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:6px;">
-        <li><span>Aura Airbrush</span><span>R10/nail</span></li>
-        <li><span>Gems/Pearls</span><span>R15/nail</span></li>
-        <li><span>Charms</span><span>R20/nail</span></li>
-        <li><span>3D Flower</span><span>R30/nail</span></li>
-        <li><span>Chrome</span><span>R50</span></li>
+        <li><span>Aura Airbrush</span><span>In-studio</span></li>
+        <li><span>Gems/Pearls</span><span>In-studio</span></li>
+        <li><span>Charms</span><span>In-studio</span></li>
+        <li><span>3D Flower</span><span>In-studio</span></li>
+        <li><span>Chrome</span><span>In-studio</span></li>
         <li><span>Soak Off</span><span>R80</span></li>
       </ul>
     </div>
@@ -450,11 +535,12 @@
     <div class="policy-card">
       <h3>📋 Studio Policies</h3>
       <ul class="policy-list">
-        <li><i class="fas fa-heart"></i> 50% non-refundable deposit required.</li>
+        <li><i class="fas fa-heart"></i> 50% non-refundable deposit required to secure your slot.</li>
+        <li><i class="fas fa-coins"></i> <strong>Final payment made IN STUDIO after your service.</strong></li>
         <li><i class="fas fa-clock"></i> R50 extra for after-hours squeeze-in.</li>
         <li><i class="fas fa-hourglass-half"></i> 15min late = 20% charge.</li>
         <li><i class="fas fa-ban"></i> No show after 30min = deposit forfeit.</li>
-        <li><i class="fas fa-credit-card"></i> Card or EFT accepted.</li>
+        <li><i class="fas fa-credit-card"></i> EFT payments only for deposit.</li>
         <li><i class="fas fa-calendar-times"></i> <strong>Closed on Sundays</strong></li>
         <li><i class="fas fa-shield-alt"></i> <strong>Right to refuse service:</strong> We reserve the right to refuse service if there are signs of infection, open wounds, or if the client's natural nails are beyond workable conditions.</li>
       </ul>
@@ -467,7 +553,7 @@
   </div>
 
   <div id="book-section" class="section">
-    <h2>📅 Reserve Your Slot</h2>
+    <h2>📅 Book Your Slot</h2>
     <div class="booking-form">
       <form id="bookingForm">
         <div class="form-group">
@@ -485,25 +571,15 @@
         <div class="form-group">
           <label>Choose service</label>
           <select id="serviceSelect">
-            <option value="Plain Acrylic · R200">Plain Acrylic · R200</option>
-            <option value="Plain Ombre · R220">Plain Ombre · R220</option>
-            <option value="Plain French · R280">Plain French · R280</option>
-            <option value="Overlay · R180">Overlay · R180</option>
-            <option value="Refill · R150">Refill · R150</option>
-            <option value="Plain Gel Set · R220">Plain Gel Set · R220</option>
-            <option value="Gel Overlay · R180">Gel Overlay · R180</option>
-            <option value="Plain Toes · R100">Plain Toes · R100</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Add-ons (optional)</label>
-          <select id="addonsSelect">
-            <option value="None">None</option>
-            <option value="Aura Airbrush (+R10/nail)">Aura Airbrush (+R10/nail)</option>
-            <option value="Gems/Pearls (+R15/nail)">Gems/Pearls (+R15/nail)</option>
-            <option value="Charms (+R20/nail)">Charms (+R20/nail)</option>
-            <option value="3D Flower (+R30/nail)">3D Flower (+R30/nail)</option>
-            <option value="Chrome (+R50)">Chrome (+R50)</option>
+            <option value="" disabled selected>-- Select a service --</option>
+            <option value="Plain Acrylic" data-price="200">Plain Acrylic · R200</option>
+            <option value="Plain Ombre" data-price="220">Plain Ombre · R220</option>
+            <option value="Plain French" data-price="280">Plain French · R280</option>
+            <option value="Overlay" data-price="180">Overlay · R180</option>
+            <option value="Refill" data-price="150">Refill · R150</option>
+            <option value="Plain Gel Set" data-price="220">Plain Gel Set · R220</option>
+            <option value="Gel Overlay" data-price="180">Gel Overlay · R180</option>
+            <option value="Plain Toes" data-price="100">Plain Toes · R100</option>
           </select>
         </div>
         <div class="form-group">
@@ -521,15 +597,26 @@
             <option value="4:00 PM">4:00 PM</option>
           </select>
         </div>
-        <div class="form-group">
-          <label>💳 Payment method</label>
-          <select id="paymentMethod">
-            <option value="Pay with Card">Pay with Card</option>
-            <option value="EFT Transfer">EFT Transfer</option>
-          </select>
+
+        <div id="depositBox" class="deposit-box">
+          <p style="margin-bottom: 8px;">🌸 50% Deposit Required to Secure Your Slot</p>
+          <div class="deposit-amount" id="depositAmount">R0</div>
+          <p class="price-breakdown" id="priceBreakdown"></p>
+          <p style="font-size: 0.7rem; margin-top: 8px;">Remaining balance paid IN STUDIO after service</p>
         </div>
-        <button type="submit" class="btn-secure"><i class="fas fa-calendar-check"></i> Secure Your Slot (50% deposit)</button>
-        <p style="font-size: 0.75rem; margin-top: 16px; text-align: center;">🌸 Bookings open from Monday 18th May 2026. 50% non-refundable deposit required. Mon-Sat (Closed Sun). Working hours: 10am-6pm | Booking slots: 11am-4pm (no rushing through sets).</p>
+
+        <div class="bank-details" style="margin: 20px 0; background: #FFDBEE; color: #4a2a1f;">
+          <p><strong>🏦 EFT Payment Details (50% Deposit)</strong></p>
+          <p>Bank: Capitec Bank</p>
+          <p>Account Name: House of Nails 23</p>
+          <p>Account Number: <strong>2440381884</strong></p>
+          <p>Branch Code: 470010</p>
+          <p>Reference: <span class="highlight" style="color:#C29D93;">YOUR NAME</span></p>
+          <p style="font-size: 0.75rem; margin-top: 8px;">🌸 After EFT, please WhatsApp proof to +27 63 596 7477</p>
+        </div>
+
+        <button type="submit" class="btn-secure" id="bookBtn"><i class="fas fa-calendar-check"></i> Request Booking (50% Deposit via EFT)</button>
+        <p style="font-size: 0.75rem; margin-top: 16px; text-align: center;">🌸 Bookings open from Monday 18th May 2026. 50% non-refundable deposit required. Mon-Sat (Closed Sun). Send proof of payment via WhatsApp to confirm your slot. Final payment made in studio.</p>
       </form>
     </div>
   </div>
@@ -539,33 +626,29 @@
     <div class="contact-info">
       <p><i class="fas fa-map-marker-alt"></i> 28 Mowati Street, Phiri, Soweto, 1818</p>
       <p><i class="fas fa-phone-alt"></i> 📞 Studio line: <strong>081 073 6338</strong></p>
-      <p><i class="fab fa-whatsapp"></i> 📱 WhatsApp (Bookings): <strong>+27 63 596 7477</strong></p>
+      <p><i class="fab fa-whatsapp"></i> 📱 WhatsApp (Bookings & Inspo): <strong>+27 63 596 7477</strong></p>
       <p><i class="fas fa-envelope"></i> houseofnailz23@gmail.com</p>
-      <p><i class="fab fa-instagram"></i> @houseofnailz23</p>
       
       <div class="bank-details">
         <p><strong>🏦 EFT Payment Details (50% Deposit)</strong></p>
-        <p>Bank: Capitec Bank</p>
-        <p>Account Name: House of Nails 23</p>
-        <p>Account Number: <strong>2440381884</strong></p>
-        <p>Branch Code: 470010</p>
-        <p>Reference: <span class="highlight">YOUR NAME</span></p>
-        <p style="font-size: 0.75rem; margin-top: 8px;">🌸 After EFT, please WhatsApp proof to +27 63 596 7477</p>
+        <p>Bank: Capitec Bank | Account: House of Nails 23</p>
+        <p>Account Number: <strong>2440381884</strong> | Branch: 470010</p>
+        <p>Reference: <strong>YOUR NAME</strong></p>
       </div>
       
       <div class="social-icons">
-        <a href="https://wa.me/27635967477" target="_blank" aria-label="WhatsApp Bookings"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://instagram.com/houseofnailz23" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/27635967477" target="_blank" aria-label="WhatsApp - Send Inspo or Questions"><i class="fab fa-whatsapp"></i><span style="font-size: 0.7rem; display: block;">Send Inspo</span></a>
+        <a href="https://instagram.com/houseofnailz23" target="_blank" aria-label="Instagram - See Our Work"><i class="fab fa-instagram"></i><span style="font-size: 0.7rem; display: block;">See Our Work</span></a>
       </div>
       <hr style="margin: 18px 0; background: rgba(255, 219, 238, 0.3);">
       <p><i class="fas fa-clock"></i> Mon–Sat: 10am – 6pm | Booking slots: 11am - 4pm | Closed Sundays</p>
-      <p class="badge" style="background:#FFDBEE20;">💳 Card or EFT accepted | 50% deposit policy</p>
+      <p class="badge" style="background:#FFDBEE20;">💳 EFT deposits only | Final payment in studio | Send inspo via WhatsApp or Instagram</p>
     </div>
   </div>
 </main>
 
 <footer>
-  <div class="container">🌸 House of Nails 23 — Closed Sundays. Quality over quantity, no rushing. Bookings open from 18th May 2026. 🌸</div>
+  <div class="container">🌸 House of Nails 23 — This website is for BOOKING PURPOSES only. Final payments made in studio. Follow us on Instagram to see our work! 🌸</div>
 </footer>
 
 <div id="adminModal" class="modal">
@@ -603,62 +686,60 @@
   </div>
 </div>
 
+<div id="toastMsg" class="toast-notify"></div>
+
 <script>
-  // BOOKING SYSTEM WITH DOUBLE-BOOKING PREVENTION & WHATSAPP ALERTS
-  
-  // Booking slots (11am to 4pm)
-  const bookingSlots = ["11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"];
-  
-  // Storage keys
   const BOOKINGS_KEY = "hn23_bookings";
   const CLOSED_DAYS_KEY = "hn23_closed_days";
   const SPECIALS_KEY = "houseofnails_specials";
   
-  // Load data
   let bookings = JSON.parse(localStorage.getItem(BOOKINGS_KEY)) || [];
   let closedDays = JSON.parse(localStorage.getItem(CLOSED_DAYS_KEY)) || [];
   let specialsArray = JSON.parse(localStorage.getItem(SPECIALS_KEY)) || [];
   
-  // Admin WhatsApp number
   const ADMIN_WHATSAPP = "27635967477";
-  
-  function saveBookings() {
-    localStorage.setItem(BOOKINGS_KEY, JSON.stringify(bookings));
+  let isProcessing = false;
+
+  function saveBookings() { localStorage.setItem(BOOKINGS_KEY, JSON.stringify(bookings)); }
+  function saveClosedDays() { localStorage.setItem(CLOSED_DAYS_KEY, JSON.stringify(closedDays)); }
+  function saveSpecials() { localStorage.setItem(SPECIALS_KEY, JSON.stringify(specialsArray)); renderSpecialsOnPage(); }
+
+  function isSlotBooked(date, time) { return bookings.some(b => b.date === date && b.time === time); }
+  function isDateClosed(date) { return closedDays.includes(date); }
+
+  function getMinDate() { return new Date(2026, 4, 18); }
+
+  function getDepositAmount() {
+    const select = document.getElementById('serviceSelect');
+    const selectedOption = select.options[select.selectedIndex];
+    if (!selectedOption || !selectedOption.getAttribute('data-price')) return 0;
+    const price = parseInt(selectedOption.getAttribute('data-price')) || 0;
+    return Math.ceil(price * 0.5);
   }
-  
-  function saveClosedDays() {
-    localStorage.setItem(CLOSED_DAYS_KEY, JSON.stringify(closedDays));
+
+  function updateDepositDisplay() {
+    const deposit = getDepositAmount();
+    const serviceSelect = document.getElementById('serviceSelect');
+    const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+    const depositBox = document.getElementById('depositBox');
+    const depositAmountSpan = document.getElementById('depositAmount');
+    const priceBreakdownSpan = document.getElementById('priceBreakdown');
+    
+    if (selectedOption && selectedOption.getAttribute('data-price') && deposit > 0) {
+      const servicePrice = parseInt(selectedOption.getAttribute('data-price'));
+      priceBreakdownSpan.innerHTML = `Service total: R${servicePrice} | 50% deposit: R${deposit} | Remaining: R${servicePrice - deposit} paid in studio`;
+      depositAmountSpan.innerHTML = `R${deposit}`;
+      depositBox.classList.add('show');
+    } else {
+      depositBox.classList.remove('show');
+    }
   }
-  
-  function saveSpecials() {
-    localStorage.setItem(SPECIALS_KEY, JSON.stringify(specialsArray));
-    renderSpecialsOnPage();
-  }
-  
-  // Check if a date+time slot is already booked
-  function isSlotBooked(date, time) {
-    return bookings.some(b => b.date === date && b.time === time);
-  }
-  
-  // Check if a date is marked as closed
-  function isDateClosed(date) {
-    return closedDays.includes(date);
-  }
-  
-  // Get minimum date (May 18th 2026)
-  function getMinDate() {
-    return new Date(2026, 4, 18); // May 18th 2026 (month is 0-indexed)
-  }
-  
+
   function initDatePicker() {
     const dateInput = document.getElementById('appointmentDate');
     if (!dateInput) return;
-    
     const minDate = getMinDate();
-    const year = minDate.getFullYear();
-    const month = String(minDate.getMonth() + 1).padStart(2, '0');
-    const day = String(minDate.getDate()).padStart(2, '0');
-    const minDateStr = `${year}-${month}-${day}`;
+    const minDateStr = minDate.toISOString().split('T')[0];
     dateInput.setAttribute('min', minDateStr);
     
     dateInput.addEventListener('change', function(e) {
@@ -673,81 +754,109 @@
         alert('🌸 The studio is closed on this date. Please choose another day.');
         this.value = '';
       }
-      if (this.value) {
-        updateAvailableSlots(this.value);
-      }
+      if (this.value) updateAvailableSlots(this.value);
     });
   }
-  
+
   function updateAvailableSlots(date) {
     const timeSelect = document.getElementById('timeSelect');
     for (let i = 0; i < timeSelect.options.length; i++) {
       const option = timeSelect.options[i];
-      const slotTime = option.value;
-      if (isSlotBooked(date, slotTime)) {
-        option.disabled = true;
-        option.style.color = '#999';
-        option.style.backgroundColor = '#f0f0f0';
-      } else {
-        option.disabled = false;
-        option.style.color = '';
-        option.style.backgroundColor = '';
-      }
-    }
-    
-    // Select first available slot if current is disabled
-    if (timeSelect.options[0] && timeSelect.options[0].disabled) {
-      for (let i = 0; i < timeSelect.options.length; i++) {
-        if (!timeSelect.options[i].disabled) {
-          timeSelect.value = timeSelect.options[i].value;
-          break;
-        }
-      }
+      option.disabled = isSlotBooked(date, option.value);
+      option.style.color = option.disabled ? '#999' : '';
     }
   }
-  
-  // WhatsApp notifications - BOTH client AND admin receive
-  function sendWhatsAppConfirmation(clientPhone, clientName, service, addon, date, time, depositAmount, paymentMethod) {
+
+  function showToast(msg) {
+    const toast = document.getElementById('toastMsg');
+    toast.innerHTML = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  }
+
+  function sendWhatsAppAlerts(clientPhone, clientName, email, service, date, time, depositAmount) {
     const formattedDate = new Date(date).toLocaleDateString('en-ZA');
-    const clientMsg = `🏠 HOUSE OF NAILS 23 🏠\n\nHello ${clientName}, your appointment is CONFIRMED!\n\n✨ Service: ${service}\n✨ Add-on: ${addon}\n📅 Date: ${formattedDate}\n⏰ Time: ${time}\n💸 50% Deposit: R${depositAmount} (${paymentMethod})\n📍 28 Mowati Street, Phiri, Soweto\n\nRemaining balance payable in-studio.\n\nWe look forward to pampering you! 🌸`;
     
-    const adminMsg = `🔔 NEW BOOKING ALERT 🔔\n\n👤 Client: ${clientName}\n📞 WhatsApp: ${clientPhone}\n📧 Email: ${document.getElementById('emailAddr').value}\n💅 Service: ${service}\n✨ Add-on: ${addon}\n📅 Date: ${formattedDate}\n⏰ Time: ${time}\n💰 Deposit: R${depositAmount} via ${paymentMethod}\n\n✅ Ready to prepare materials.`;
+    const clientMsg = `🏠 HOUSE OF NAILS 23 🏠\n\nHello ${clientName}, your booking REQUEST has been received!\n\n✨ Service: ${service}\n📅 Date: ${formattedDate}\n⏰ Time: ${time}\n💰 50% Deposit Required: R${depositAmount}\n🏦 EFT Details: Capitec 2440381884 (Ref: YOUR NAME)\n📍 28 Mowati Street, Phiri, Soweto\n\n⚠️ Your slot is NOT confirmed until we receive proof of payment.\n📱 Send EFT proof to +27 63 596 7477 to secure your booking.\n\n💅 Final payment made in studio.\n📸 See our work on Instagram: @houseofnailz23\n\nWe look forward to pampering you! 🌸`;
     
-    // Open client WhatsApp
-    if (clientPhone && clientPhone.trim() !== "") {
+    const adminMsg = `🔔 NEW BOOKING REQUEST 🔔\n\n👤 Client: ${clientName}\n📞 WhatsApp: ${clientPhone}\n📧 Email: ${email}\n💅 Service: ${service}\n📅 Date: ${formattedDate}\n⏰ Time: ${time}\n💰 Deposit Required: R${depositAmount}\n\n⏳ Awaiting proof of payment.\n📌 Do NOT mark as confirmed until payment proof received.`;
+    
+    if (clientPhone && clientPhone.trim()) {
       let cleanPhone = clientPhone.replace(/\D/g, '');
       if (!cleanPhone.startsWith('27')) cleanPhone = '27' + cleanPhone;
-      const clientWaLink = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(clientMsg)}`;
-      setTimeout(() => {
-        window.open(clientWaLink, '_blank');
-      }, 300);
+      setTimeout(() => window.open(`https://wa.me/${cleanPhone}?text=${encodeURIComponent(clientMsg)}`, '_blank'), 300);
     }
     
-    // Open admin WhatsApp
-    setTimeout(() => {
-      const adminWaLink = `https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(adminMsg)}`;
-      window.open(adminWaLink, '_blank');
-    }, 800);
+    setTimeout(() => window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(adminMsg)}`, '_blank'), 800);
+  }
+
+  document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (isProcessing) { showToast("Please wait, processing..."); return; }
     
-    return true;
-  }
-  
-  function getDepositAmount(serviceValue) {
-    const prices = {
-      'Plain Acrylic · R200': 200,
-      'Plain Ombre · R220': 220,
-      'Plain French · R280': 280,
-      'Overlay · R180': 180,
-      'Refill · R150': 150,
-      'Plain Gel Set · R220': 220,
-      'Gel Overlay · R180': 180,
-      'Plain Toes · R100': 100
-    };
-    const price = prices[serviceValue] || 200;
-    return Math.ceil(price * 0.5);
-  }
-  
-  // Render specials (empty initially with message)
+    const clientName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('emailAddr').value.trim();
+    const clientPhone = document.getElementById('phoneNum').value.trim();
+    const serviceSelect = document.getElementById('serviceSelect');
+    const service = serviceSelect.options[serviceSelect.selectedIndex]?.text || '';
+    const date = document.getElementById('appointmentDate').value;
+    const time = document.getElementById('timeSelect').value;
+    const depositAmount = getDepositAmount();
+    
+    if (!clientName || !email || !clientPhone) {
+      alert("🌸 Please fill in your full name, email and WhatsApp number.");
+      return;
+    }
+    if (!serviceSelect.value) {
+      alert("🌸 Please select a service.");
+      return;
+    }
+    if (!date) { alert("🌸 Please select a preferred date."); return; }
+    
+    const minDate = getMinDate();
+    if (new Date(date) < minDate) { alert("🌸 Bookings only from Monday 18th May 2026."); return; }
+    if (isDateClosed(date)) { alert("🌸 Studio closed on this date."); return; }
+    if (isSlotBooked(date, time)) { alert("🌸 This time slot is already booked. Please select another time."); updateAvailableSlots(date); return; }
+    
+    isProcessing = true;
+    const bookBtn = document.getElementById('bookBtn');
+    const originalText = bookBtn.innerHTML;
+    bookBtn.innerHTML = '<span class="loading-spinner"></span> Processing...';
+    bookBtn.disabled = true;
+    
+    try {
+      const newBooking = {
+        id: Date.now(),
+        clientName, email, clientPhone, service,
+        paymentMethod: 'EFT (Pending)',
+        date, time,
+        depositAmount: depositAmount,
+        status: 'pending_payment',
+        createdAt: new Date().toISOString()
+      };
+      
+      bookings.push(newBooking);
+      saveBookings();
+      
+      sendWhatsAppAlerts(clientPhone, clientName, email, service, date, time, depositAmount);
+      
+      showToast(`📋 Booking request sent! Deposit R${depositAmount} via EFT. Check WhatsApp for details.`);
+      
+      document.getElementById('bookingForm').reset();
+      const serviceSel = document.getElementById('serviceSelect');
+      serviceSel.selectedIndex = 0;
+      document.getElementById('depositBox').classList.remove('show');
+      initDatePicker();
+      
+    } catch (err) {
+      showToast(`❌ Error: ${err.message}`);
+    } finally {
+      isProcessing = false;
+      bookBtn.innerHTML = originalText;
+      bookBtn.disabled = false;
+    }
+  });
+
   function renderSpecialsOnPage() {
     const container = document.getElementById("specialsDynamicContainer");
     if (!container) return;
@@ -756,99 +865,24 @@
         <i class="fas fa-heart" style="font-size: 2rem; opacity: 0.6; color: #C29D93;"></i>
         <p style="margin-top: 12px; font-weight: 500;">No active specials at the moment</p>
         <p style="font-size: 0.95rem; margin-top: 8px;">🌸 Keep your eye out on our website and WhatsApp channel for future offers! 🌸</p>
-        <p style="font-size: 0.85rem; margin-top: 12px;">📱 Follow us on Instagram @houseofnailz23</p>
+        <p style="font-size: 0.85rem; margin-top: 12px;">📱 Follow us on Instagram @houseofnailz23 to see our work</p>
       </div>`;
       return;
     }
     let html = `<div class="specials-container">`;
     specialsArray.forEach(special => {
-      html += `
-        <div class="special-card">
-          <div class="special-title">${escapeHtml(special.title)}</div>
-          <div class="special-desc">${escapeHtml(special.desc)}</div>
-          <div class="special-price">${escapeHtml(special.priceTag || 'Limited time')}</div>
-        </div>
-      `;
+      html += `<div class="special-card" style="background:#fff; border-left:6px solid #C29D93; padding:20px; border-radius:20px; margin-bottom:15px;">
+        <div class="special-title" style="font-size:1.2rem; font-weight:700; color:#C29D93;">${escapeHtml(special.title)}</div>
+        <div class="special-desc" style="margin:8px 0;">${escapeHtml(special.desc)}</div>
+        <div class="special-price" style="background:#FFDBEE; display:inline-block; padding:4px 12px; border-radius:40px;">${escapeHtml(special.priceTag || 'Limited time')}</div>
+      </div>`;
     });
     html += `</div>`;
     container.innerHTML = html;
   }
-  
-  function renderAdminSpecialsList() {
-    const adminListDiv = document.getElementById("adminSpecialsList");
-    if (!adminListDiv) return;
-    if (specialsArray.length === 0) {
-      adminListDiv.innerHTML = `<p style="color:#C29D93;">✨ No specials active. Add some offers below.</p>`;
-      return;
-    }
-    let itemsHtml = `<div style="max-height: 200px; overflow-y: auto;">`;
-    specialsArray.forEach((special, index) => {
-      itemsHtml += `
-        <div class="admin-special-item">
-          <div class="admin-special-info">
-            <strong>${escapeHtml(special.title)}</strong>
-            <span style="font-size:0.8rem;">${escapeHtml(special.desc)} — ${escapeHtml(special.priceTag)}</span>
-          </div>
-          <button class="delete-special" data-index="${index}"><i class="fas fa-trash-alt"></i> Remove</button>
-        </div>
-      `;
-    });
-    itemsHtml += `</div>`;
-    adminListDiv.innerHTML = itemsHtml;
-    document.querySelectorAll(".delete-special").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const idx = parseInt(btn.getAttribute("data-index"));
-        if (!isNaN(idx)) {
-          specialsArray.splice(idx, 1);
-          saveSpecials();
-          renderAdminSpecialsList();
-        }
-      });
-    });
-  }
-  
-  function renderClosedDaysList() {
-    const container = document.getElementById("closedDaysList");
-    if (!container) return;
-    if (closedDays.length === 0) {
-      container.innerHTML = `<p>No closed days set.</p>`;
-      return;
-    }
-    let html = `<div style="max-height: 150px; overflow-y: auto;">`;
-    closedDays.forEach((day, index) => {
-      const formatted = new Date(day).toLocaleDateString('en-ZA');
-      html += `
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px; background: #FFDBEE; margin: 4px 0; border-radius: 12px;">
-          <span>📅 ${formatted}</span>
-          <button class="remove-closed-day" data-index="${index}" style="background: #C29D93; border: none; padding: 4px 12px; border-radius: 20px; cursor: pointer; color: white;">Remove</button>
-        </div>
-      `;
-    });
-    html += `</div>`;
-    container.innerHTML = html;
-    document.querySelectorAll(".remove-closed-day").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const idx = parseInt(btn.getAttribute("data-index"));
-        if (!isNaN(idx)) {
-          closedDays.splice(idx, 1);
-          saveClosedDays();
-          renderClosedDaysList();
-        }
-      });
-    });
-  }
-  
-  function escapeHtml(str) {
-    if (!str) return "";
-    return str.replace(/[&<>]/g, function(m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      return m;
-    });
-  }
-  
-  // Navigation
+
+  function escapeHtml(str) { if (!str) return ""; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
+
   const sections = {
     services: document.getElementById("services-section"),
     specials: document.getElementById("specials-section"),
@@ -857,173 +891,59 @@
   };
   
   function activateSection(sectionId) {
-    Object.keys(sections).forEach(key => {
-      sections[key].classList.remove("active-section");
-    });
+    Object.keys(sections).forEach(key => { if(sections[key]) sections[key].classList.remove("active-section"); });
     if (sections[sectionId]) sections[sectionId].classList.add("active-section");
-    document.querySelectorAll(".nav-link").forEach(btn => {
-      btn.classList.remove("active-nav");
-      if (btn.getAttribute("data-section") === sectionId) {
-        btn.classList.add("active-nav");
-      }
-    });
+    document.querySelectorAll(".nav-link").forEach(btn => { btn.classList.remove("active-nav"); if (btn.getAttribute("data-section") === sectionId) btn.classList.add("active-nav"); });
   }
   
-  document.querySelectorAll(".nav-link").forEach(btn => {
-    const sectionName = btn.getAttribute("data-section");
-    if (sectionName && sections[sectionName]) {
-      btn.addEventListener("click", () => {
-        activateSection(sectionName);
-      });
-    }
-  });
-  
-  // Admin Modal
+  document.querySelectorAll(".nav-link").forEach(btn => { const sn = btn.getAttribute("data-section"); if (sn && sections[sn]) btn.addEventListener("click", () => activateSection(sn)); });
+
   const adminModal = document.getElementById("adminModal");
-  const adminNavBtn = document.getElementById("adminNavBtn");
-  const closeModalBtn = document.getElementById("closeModalBtn");
-  const saveNewBtn = document.getElementById("saveNewSpecialBtn");
-  const addClosedDayBtn = document.getElementById("addClosedDayBtn");
-  const closedDateInput = document.getElementById("closedDateInput");
-  
-  adminNavBtn.addEventListener("click", () => {
+  document.getElementById("adminNavBtn").addEventListener("click", () => {
     const pwd = prompt("🔐 Admin access required. Enter code:");
-    if (pwd === "studio23" || pwd === "admin123") {
-      renderAdminSpecialsList();
-      renderClosedDaysList();
-      adminModal.style.display = "flex";
-    } else if (pwd !== null) {
-      alert("Invalid passcode.");
-    }
+    if (pwd === "studio23" || pwd === "admin123") { adminModal.style.display = "flex"; renderClosedDaysList(); renderAdminSpecialsList(); }
+    else if (pwd !== null) alert("Invalid passcode.");
   });
-  
-  closeModalBtn.addEventListener("click", () => {
-    adminModal.style.display = "none";
+  document.getElementById("closeModalBtn").addEventListener("click", () => adminModal.style.display = "none");
+  window.addEventListener("click", (e) => { if (e.target === adminModal) adminModal.style.display = "none"; });
+
+  function renderClosedDaysList() {
+    const container = document.getElementById("closedDaysList");
+    if (!container) return;
+    if (closedDays.length === 0) { container.innerHTML = "<p>No closed days set.</p>"; return; }
+    let html = '';
+    closedDays.forEach((day, idx) => { html += `<div style="display:flex; justify-content:space-between; padding:8px; background:#FFDBEE; margin:4px 0; border-radius:12px;"><span>📅 ${new Date(day).toLocaleDateString('en-ZA')}</span><button class="remove-closed-day" data-index="${idx}" style="background:#C29D93; border:none; padding:4px 12px; border-radius:20px; cursor:pointer; color:white;">Remove</button></div>`; });
+    container.innerHTML = html;
+    document.querySelectorAll(".remove-closed-day").forEach(btn => { btn.addEventListener("click", (e) => { const idx = parseInt(btn.getAttribute("data-index")); closedDays.splice(idx, 1); saveClosedDays(); renderClosedDaysList(); }); });
+  }
+
+  function renderAdminSpecialsList() {
+    const container = document.getElementById("adminSpecialsList");
+    if (!container) return;
+    if (specialsArray.length === 0) { container.innerHTML = "<p>No specials active.</p>"; return; }
+    let html = '';
+    specialsArray.forEach((s, idx) => { html += `<div class="admin-special-item"><div><strong>${escapeHtml(s.title)}</strong><br><small>${escapeHtml(s.desc)} — ${escapeHtml(s.priceTag)}</small></div><button class="delete-special" data-index="${idx}">Remove</button></div>`; });
+    container.innerHTML = html;
+    document.querySelectorAll(".delete-special").forEach(btn => { btn.addEventListener("click", (e) => { const idx = parseInt(btn.getAttribute("data-index")); specialsArray.splice(idx, 1); saveSpecials(); renderAdminSpecialsList(); }); });
+  }
+
+  document.getElementById("addClosedDayBtn").addEventListener("click", () => {
+    const date = document.getElementById("closedDateInput").value;
+    if (!date) { alert("Select a date"); return; }
+    if (!closedDays.includes(date)) { closedDays.push(date); saveClosedDays(); renderClosedDaysList(); document.getElementById("closedDateInput").value = ""; alert(`✅ ${new Date(date).toLocaleDateString('en-ZA')} marked as closed.`); }
+    else alert("Already closed.");
   });
-  window.addEventListener("click", (e) => {
-    if (e.target === adminModal) adminModal.style.display = "none";
-  });
-  
-  saveNewBtn.addEventListener("click", () => {
+
+  document.getElementById("saveNewSpecialBtn").addEventListener("click", () => {
     const title = document.getElementById("newSpecialTitle").value;
     const desc = document.getElementById("newSpecialDesc").value;
     const price = document.getElementById("newSpecialPrice").value;
-    if (title.trim()) {
-      specialsArray.push({
-        title: title.trim(),
-        desc: desc.trim() || "Limited offer",
-        priceTag: price.trim() || "Ask in-store"
-      });
-      saveSpecials();
-      document.getElementById("newSpecialTitle").value = "";
-      document.getElementById("newSpecialDesc").value = "";
-      document.getElementById("newSpecialPrice").value = "";
-      renderAdminSpecialsList();
-    } else {
-      alert("Please enter an offer title");
-    }
+    if (title.trim()) { specialsArray.push({ title: title.trim(), desc: desc.trim() || "Limited offer", priceTag: price.trim() || "Ask in-store" }); saveSpecials(); document.getElementById("newSpecialTitle").value = ""; document.getElementById("newSpecialDesc").value = ""; document.getElementById("newSpecialPrice").value = ""; renderAdminSpecialsList(); }
+    else alert("Enter a title");
   });
-  
-  addClosedDayBtn.addEventListener("click", () => {
-    const date = closedDateInput.value;
-    if (!date) {
-      alert("Please select a date");
-      return;
-    }
-    const minDate = getMinDate();
-    const selectedDate = new Date(date);
-    if (selectedDate < minDate) {
-      alert("Cannot close dates before May 18th 2026.");
-      return;
-    }
-    if (!closedDays.includes(date)) {
-      closedDays.push(date);
-      saveClosedDays();
-      renderClosedDaysList();
-      closedDateInput.value = "";
-      alert(`✅ ${new Date(date).toLocaleDateString('en-ZA')} marked as closed.`);
-    } else {
-      alert("This date is already marked as closed.");
-    }
-  });
-  
-  // Booking Form Submit
-  const bookingForm = document.getElementById("bookingForm");
-  if (bookingForm) {
-    bookingForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      
-      const clientName = document.getElementById("fullName").value.trim();
-      const email = document.getElementById("emailAddr").value.trim();
-      const clientPhone = document.getElementById("phoneNum").value.trim();
-      const service = document.getElementById("serviceSelect").value;
-      const addon = document.getElementById("addonsSelect").value;
-      const paymentMethod = document.getElementById("paymentMethod").value;
-      const date = document.getElementById("appointmentDate").value;
-      const time = document.getElementById("timeSelect").value;
-      
-      if (!clientName || !email || !clientPhone) {
-        alert("🌸 Please fill in your full name, email and WhatsApp number.");
-        return;
-      }
-      if (!date) {
-        alert("🌸 Please select a preferred date.");
-        return;
-      }
-      
-      const minDate = getMinDate();
-      const selectedDateObj = new Date(date);
-      if (selectedDateObj < minDate) {
-        alert("🌸 Bookings are only available from Monday 18th May 2026 onwards.");
-        return;
-      }
-      if (isDateClosed(date)) {
-        alert("🌸 The studio is closed on this date. Please choose another day.");
-        return;
-      }
-      if (isSlotBooked(date, time)) {
-        alert("🌸 This time slot is already booked. Please select another time.");
-        updateAvailableSlots(date);
-        return;
-      }
-      
-      const depositAmount = getDepositAmount(service);
-      
-      // Create booking
-      const newBooking = {
-        id: Date.now(),
-        clientName,
-        email,
-        clientPhone,
-        service,
-        addon,
-        paymentMethod,
-        date,
-        time,
-        depositAmount,
-        createdAt: new Date().toISOString()
-      };
-      
-      bookings.push(newBooking);
-      saveBookings();
-      
-      // Send WhatsApp notifications to BOTH client and admin
-      sendWhatsAppConfirmation(clientPhone, clientName, service, addon, date, time, depositAmount, paymentMethod);
-      
-      alert(`✨ Confirmation, ${clientName}!\n\n📅 Date: ${new Date(date).toLocaleDateString('en-ZA')}\n⏰ Time: ${time}\n💅 Service: ${service}\n✨ Add-on: ${addon}\n💰 50% Deposit: R${depositAmount}\n💳 Payment: ${paymentMethod}\n\n📌 WhatsApp confirmation sent to you and the studio.\n\n🏦 EFT Details: Capitec 2440381884 | Ref: YOUR NAME`);
-      
-      bookingForm.reset();
-      initDatePicker();
-      
-      // Reset time select to first available
-      const timeSelect = document.getElementById('timeSelect');
-      if (timeSelect.options[0]) {
-        timeSelect.value = timeSelect.options[0].value;
-      }
-    });
-  }
-  
-  // Initial load
+
+  document.getElementById('serviceSelect').addEventListener('change', updateDepositDisplay);
+
   renderSpecialsOnPage();
   activateSection("services");
   initDatePicker();
