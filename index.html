@@ -210,19 +210,17 @@
       font-size: 0.9rem;
     }
 
-    /* Booking form */
-    .booking-form {
+    /* ===== UPLOAD FORM - Matching Color Scheme ===== */
+    .upload-form-container {
       background: white;
-      border-radius: 28px;
-      padding: 40px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 32px;
       border: 1px solid #EDE4DF;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
     }
 
     .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
       margin-bottom: 24px;
     }
 
@@ -239,7 +237,11 @@
       letter-spacing: 0.3px;
     }
 
-    input, select {
+    label .required {
+      color: #C29D93;
+    }
+
+    input, textarea, select {
       width: 100%;
       padding: 12px 16px;
       border-radius: 16px;
@@ -250,10 +252,176 @@
       transition: 0.2s;
     }
 
-    input:focus, select:focus {
+    input:focus, textarea:focus, select:focus {
       outline: none;
       border-color: #C29D93;
       box-shadow: 0 0 0 3px rgba(194,157,147,0.15);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .upload-box {
+      border: 2px dashed #E0D6D0;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: #FEFCFA;
+    }
+
+    .upload-box:hover {
+      border-color: #C29D93;
+      background: #FDF8F5;
+    }
+
+    .upload-box.dragover {
+      border-color: #C29D93;
+      background: #FDF8F5;
+    }
+
+    .upload-icon {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .upload-text {
+      color: #888;
+      font-size: 14px;
+    }
+
+    .upload-text strong {
+      color: #C29D93;
+    }
+
+    #fileInput {
+      display: none;
+    }
+
+    .file-info {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #27ae60;
+      display: none;
+    }
+
+    .file-info.show {
+      display: block;
+    }
+
+    .image-preview {
+      margin-top: 15px;
+      display: none;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #F5F0ED;
+    }
+
+    .image-preview.show {
+      display: block;
+    }
+
+    .image-preview img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+    }
+
+    .remove-image {
+      text-align: center;
+      padding: 8px;
+      background: #FEF0ED;
+      color: #C29D93;
+      font-size: 12px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .remove-image:hover {
+      background: #FDE0DB;
+    }
+
+    .btn-primary {
+      background: #C29D93;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.2s;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary:hover {
+      background: #A88379;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:disabled {
+      background: #CCC;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .status-message {
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 16px;
+      text-align: center;
+      display: none;
+      font-size: 13px;
+    }
+
+    .status-message.success {
+      background: #E8F5E9;
+      color: #2E7D32;
+      border: 1px solid #C8E6C9;
+      display: block;
+    }
+
+    .status-message.error {
+      background: #FEF0ED;
+      color: #C29D93;
+      border: 1px solid #FDE0DB;
+      display: block;
+    }
+
+    .status-message.loading {
+      background: #EDE4DF;
+      color: #4A3B32;
+      display: block;
+    }
+
+    .inspo-note {
+      background: #FEFAF8;
+      border-radius: 20px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      border-left: 4px solid #C29D93;
+      font-size: 0.9rem;
+    }
+
+    /* Booking form */
+    .booking-form {
+      background: white;
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+      border: 1px solid #EDE4DF;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
     }
 
     .addon-selection {
@@ -304,45 +472,6 @@
       font-size: 0.85rem;
     }
 
-    .btn-primary {
-      background: #C29D93;
-      color: white;
-      border: none;
-      padding: 14px 28px;
-      border-radius: 40px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      width: 100%;
-      transition: 0.2s;
-      font-family: 'Inter', sans-serif;
-      letter-spacing: 0.3px;
-    }
-
-    .btn-primary:hover {
-      background: #A88379;
-      transform: translateY(-1px);
-    }
-
-    .btn-primary:disabled {
-      background: #CCC;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .btn-small {
-      background: #C29D93;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 0.7rem;
-      font-weight: 500;
-      margin-left: 8px;
-    }
-
-    /* Contact section */
     .contact-card {
       background: #C29D93;
       color: white;
@@ -365,11 +494,6 @@
       border-bottom: 1px dotted rgba(255,255,255,0.5);
     }
 
-    .contact-detail a:hover {
-      color: #FFDBEE;
-      border-bottom-color: #FFDBEE;
-    }
-
     .social-links {
       display: flex;
       gap: 32px;
@@ -387,12 +511,6 @@
       flex-direction: column;
       align-items: center;
       gap: 6px;
-      transition: 0.2s;
-    }
-
-    .social-links a:hover {
-      color: #FFDBEE;
-      transform: scale(1.02);
     }
 
     .ride-links {
@@ -414,12 +532,6 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      transition: 0.2s;
-    }
-
-    .ride-links a:hover {
-      background: rgba(0,0,0,0.3);
-      transform: translateY(-1px);
     }
 
     footer {
@@ -428,29 +540,6 @@
       border-top: 1px solid #EDE4DF;
       color: #A88379;
       font-size: 0.75rem;
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-
-    .modal-content {
-      background: white;
-      max-width: 720px;
-      width: 90%;
-      border-radius: 28px;
-      padding: 32px;
-      max-height: 85vh;
-      overflow-y: auto;
-      border: 1px solid #EDE4DF;
     }
 
     .toast-notify {
@@ -468,74 +557,15 @@
       pointer-events: none;
       z-index: 1100;
       white-space: nowrap;
-      font-family: 'Inter', sans-serif;
     }
 
     .toast-notify.show { opacity: 1; }
 
-    /* Specials */
-    .special-card {
-      background: white;
-      border-left: 5px solid #C29D93;
-      padding: 20px 24px;
-      border-radius: 20px;
-      margin-bottom: 16px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
-    }
-
-    .special-title {
-      font-weight: 700;
-      font-size: 1rem;
-      color: #C29D93;
-    }
-
-    /* Admin */
-    .booking-item {
-      border-bottom: 1px solid #E0D6D0;
-      padding: 12px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .status-badge {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 30px;
-      font-size: 0.7rem;
-      font-weight: 600;
-    }
-
-    .status-pending { background: #FFE0B2; color: #E65100; }
-    .status-confirmed { background: #C8E6C9; color: #2E7D32; }
-
-    .admin-slot-block {
-      background: #F8F2EF;
-      border-radius: 20px;
-      padding: 8px 16px;
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .inspo-note {
-      background: #FEFAF8;
-      border-radius: 20px;
-      padding: 20px 24px;
-      margin-bottom: 32px;
-      border-left: 4px solid #C29D93;
-      font-size: 0.9rem;
-    }
-
     @media (max-width: 700px) {
       .container { padding: 0 20px; }
       .form-row { grid-template-columns: 1fr; gap: 0; }
-      .booking-form { padding: 24px; }
+      .booking-form, .upload-form-container { padding: 24px; }
       .toast-notify { white-space: normal; width: 90%; text-align: center; }
-      .card, .contact-card { padding: 20px; }
     }
   </style>
 </head>
@@ -549,10 +579,10 @@
     </div>
     <nav>
       <button class="nav-link" data-section="services">Services</button>
+      <button class="nav-link" data-section="upload">Upload Inspo</button>
       <button class="nav-link" data-section="specials">Specials</button>
       <button class="nav-link" data-section="book">Book</button>
       <button class="nav-link" data-section="contact">Contact</button>
-      <button class="nav-link" id="adminNavBtn">Admin</button>
     </nav>
   </div>
 </header>
@@ -604,7 +634,7 @@
           <tr><td><i class="fas fa-chrome"></i> Chrome Finish</td><td>Mirror chrome (full set)</td><td>R50</td></tr>
           <tr><td><i class="fas fa-tint"></i> Soak Off</td><td>Professional removal</td><td>R80</td></tr>
         </tbody>
-      </table>
+       </table>
     </div>
 
     <div class="card">
@@ -622,8 +652,59 @@
     </div>
   </div>
 
+  <!-- UPLOAD INSPO SECTION - NEW -->
+  <div id="upload-section" class="section">
+    <h2>📸 Upload Your Inspiration Photo</h2>
+    
+    <div class="upload-form-container">
+      <p style="margin-bottom: 20px; color: #666;">Not sure exactly what you want? Upload a photo and get a quote directly on WhatsApp!</p>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name <span class="required">*</span></label>
+          <input type="text" id="uploadName" placeholder="e.g., Thando M.">
+        </div>
+        <div class="form-group">
+          <label>WhatsApp Number <span class="required">*</span></label>
+          <input type="tel" id="uploadPhone" placeholder="e.g., 063 596 7477">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Notes / Special Requests</label>
+        <textarea id="uploadNotes" rows="3" placeholder="e.g., I want this design but with chrome finish and gems..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Inspiration Photo <span class="required">*</span></label>
+        <div class="upload-box" id="uploadBox">
+          <div class="upload-icon">🖼️</div>
+          <div class="upload-text">Click or drag &amp; drop your inspo photo</div>
+          <div class="upload-text"><strong>PNG, JPG, JPEG</strong> up to 10MB</div>
+        </div>
+        <input type="file" id="fileInput" accept="image/jpeg,image/jpg,image/png">
+        <div class="file-info" id="fileInfo"></div>
+        <div class="image-preview" id="imagePreview">
+          <img id="previewImg" src="" alt="Preview">
+          <div class="remove-image" id="removeImage">✕ Remove photo</div>
+        </div>
+      </div>
+
+      <button class="btn-primary" id="sendInspoBtn">📤 Send to Nail Tech</button>
+      <div class="status-message" id="uploadStatus"></div>
+    </div>
+
+    <div class="inspo-note">
+      <i class="fas fa-info-circle" style="color:#C29D93; margin-right: 10px;"></i>
+      <strong>Can't upload?</strong> You can also send your inspiration photo directly via WhatsApp to <strong>+27 63 596 7477</strong>
+    </div>
+  </div>
+
   <!-- Specials Section -->
-  <div id="specials-section" class="section"><h2>Current Offers</h2><div id="specialsDynamicContainer"></div></div>
+  <div id="specials-section" class="section">
+    <h2>Current Offers</h2>
+    <div id="specialsDynamicContainer"></div>
+  </div>
 
   <!-- Booking Section -->
   <div id="book-section" class="section">
@@ -665,7 +746,7 @@
           <div id="addonPriceInfo" style="font-size:0.7rem; margin-top:8px; color:#C29D93;"></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label>Preferred date (from 18 May 2026)</label><input type="date" id="appointmentDate" required></div>
+          <div class="form-group"><label>Preferred date</label><input type="date" id="appointmentDate" required></div>
           <div class="form-group"><label>Time (11am – 4pm)</label><select id="timeSelect" required><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select></div>
         </div>
         <div id="depositBox" class="deposit-box">
@@ -682,7 +763,7 @@
           <p style="font-size:0.75rem;"><i class="fab fa-whatsapp"></i> After EFT, send proof to <strong>+27 63 596 7477</strong> (no calls)</p>
         </div>
         <button type="submit" class="btn-primary" id="bookBtn"><i class="fas fa-calendar-check"></i> Submit Booking Request</button>
-        <p style="font-size:0.7rem; text-align:center; margin-top:20px;">⚠️ Your booking is only confirmed after we receive your EFT payment, proof via WhatsApp, and admin confirmation. You will receive a WhatsApp confirmation once approved.</p>
+        <p style="font-size:0.7rem; text-align:center; margin-top:20px;">⚠️ Your booking is only confirmed after we receive your EFT payment, proof via WhatsApp, and admin confirmation.</p>
       </form>
     </div>
   </div>
@@ -716,56 +797,148 @@
   <div class="container">© 2026 House of Nails 23 — 50% non‑refundable deposit secures your slot. Final payment in studio. <a href="https://instagram.com/houseofnailz23" target="_blank" style="color:#A88379;">View our work on Instagram</a>.</div>
 </footer>
 
-<!-- Admin Modal -->
-<div id="adminModal" class="modal"><div class="modal-content"><h3>Admin Panel</h3>
-  <h4>Block Individual Time Slots</h4>
-  <div class="form-row"><div class="form-group"><label>Date</label><input type="date" id="blockDate"></div><div class="form-group"><label>Time</label><select id="blockTime"><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select></div></div>
-  <button id="addBlockedSlotBtn" class="btn-primary" style="background:#C29D93; margin-bottom:16px;">+ Block this slot</button>
-  <div id="blockedSlotsList" style="margin-bottom:24px;"></div>
-  <hr>
-  <h4>Manage Bookings (Confirm / Cancel)</h4>
-  <div id="adminBookingsList"></div>
-  <hr>
-  <h4>Closed Days (Full Day)</h4>
-  <div><input type="date" id="closedDateInput"><button id="addClosedDayBtn" class="btn-primary" style="margin-top:8px;">Mark Closed Day</button></div>
-  <div id="closedDaysList" style="margin:12px 0;"></div>
-  <hr>
-  <h4>Special Offers</h4>
-  <div id="adminSpecialsList"></div>
-  <div class="form-row"><div class="form-group"><input type="text" id="newSpecialTitle" placeholder="Offer title"></div><div class="form-group"><input type="text" id="newSpecialDesc" placeholder="Description"></div></div>
-  <div class="form-group"><input type="text" id="newSpecialPrice" placeholder="Price / tagline"></div>
-  <button id="saveNewSpecialBtn" class="btn-primary" style="background:#C29D93;">Add Special</button>
-  <button id="closeModalBtn" class="btn-primary" style="margin-top:20px;">Close</button>
-</div></div>
-
 <div id="toastMsg" class="toast-notify"></div>
 
 <script>
-  // ======================= STORAGE =======================
-  const BOOKINGS_KEY = "hn23_bookings";
-  const CLOSED_DAYS_KEY = "hn23_closed_days";
-  const SPECIALS_KEY = "houseofnails_specials";
-  const BLOCKED_SLOTS_KEY = "hn23_blocked_slots";
+  // ======================= UPLOAD FUNCTIONALITY =======================
+  const uploadBox = document.getElementById('uploadBox');
+  const fileInput = document.getElementById('fileInput');
+  const fileInfo = document.getElementById('fileInfo');
+  const imagePreview = document.getElementById('imagePreview');
+  const previewImg = document.getElementById('previewImg');
+  const removeImageBtn = document.getElementById('removeImage');
+  const sendInspoBtn = document.getElementById('sendInspoBtn');
+  const uploadStatus = document.getElementById('uploadStatus');
 
-  let bookings = JSON.parse(localStorage.getItem(BOOKINGS_KEY)) || [];
-  let closedDays = JSON.parse(localStorage.getItem(CLOSED_DAYS_KEY)) || [];
-  let specialsArray = JSON.parse(localStorage.getItem(SPECIALS_KEY)) || [];
-  let blockedSlots = JSON.parse(localStorage.getItem(BLOCKED_SLOTS_KEY)) || [];
+  let selectedFile = null;
 
-  const ADMIN_WHATSAPP = "27635967477";
-  let isProcessing = false;
-
-  function saveAll() {
-    localStorage.setItem(BOOKINGS_KEY, JSON.stringify(bookings));
-    localStorage.setItem(CLOSED_DAYS_KEY, JSON.stringify(closedDays));
-    localStorage.setItem(SPECIALS_KEY, JSON.stringify(specialsArray));
-    localStorage.setItem(BLOCKED_SLOTS_KEY, JSON.stringify(blockedSlots));
-    renderSpecials();
+  function showUploadStatus(message, type) {
+    if (!uploadStatus) return;
+    uploadStatus.className = 'status-message';
+    uploadStatus.textContent = message;
+    if (type === 'success') uploadStatus.classList.add('success');
+    else if (type === 'error') uploadStatus.classList.add('error');
+    else if (type === 'loading') uploadStatus.classList.add('loading');
+    else uploadStatus.className = 'status-message';
   }
 
-  function isSlotBlocked(date, time) { return blockedSlots.some(slot => slot.date === date && slot.time === time); }
-  function isDateClosed(date) { return closedDays.includes(date); }
-  function getMinDate() { return new Date(2026, 4, 18); }
+  function handleUploadFile(file) {
+    if (!file.type.match('image.*')) {
+      showUploadStatus('Please upload a JPG or PNG image.', 'error');
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      showUploadStatus('Image must be less than 10MB.', 'error');
+      return;
+    }
+    selectedFile = file;
+    fileInfo.textContent = `✓ ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+    fileInfo.classList.add('show');
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      previewImg.src = e.target.result;
+      imagePreview.classList.add('show');
+    };
+    reader.readAsDataURL(file);
+    showUploadStatus('', 'clear');
+  }
+
+  if (uploadBox) {
+    uploadBox.onclick = () => fileInput.click();
+    uploadBox.ondragover = (e) => { e.preventDefault(); uploadBox.classList.add('dragover'); };
+    uploadBox.ondragleave = () => { uploadBox.classList.remove('dragover'); };
+    uploadBox.ondrop = (e) => {
+      e.preventDefault();
+      uploadBox.classList.remove('dragover');
+      if (e.dataTransfer.files.length) handleUploadFile(e.dataTransfer.files[0]);
+    };
+  }
+  if (fileInput) fileInput.onchange = (e) => { if (e.target.files.length) handleUploadFile(e.target.files[0]); };
+  if (removeImageBtn) {
+    removeImageBtn.onclick = () => {
+      selectedFile = null;
+      fileInput.value = '';
+      fileInfo.classList.remove('show');
+      imagePreview.classList.remove('show');
+      previewImg.src = '';
+      showUploadStatus('', 'clear');
+    };
+  }
+
+  if (sendInspoBtn) {
+    sendInspoBtn.onclick = async () => {
+      const name = document.getElementById('uploadName')?.value.trim();
+      const phone = document.getElementById('uploadPhone')?.value.trim();
+      const notes = document.getElementById('uploadNotes')?.value.trim();
+
+      if (!name) { showUploadStatus('Please enter your name.', 'error'); return; }
+      if (!phone) { showUploadStatus('Please enter your WhatsApp number.', 'error'); return; }
+      if (!selectedFile) { showUploadStatus('Please upload an inspiration photo.', 'error'); return; }
+
+      showUploadStatus('Sending...', 'loading');
+      sendInspoBtn.disabled = true;
+
+      try {
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('phone', phone);
+        formData.append('notes', notes || '');
+        formData.append('image', selectedFile);
+        formData.append('_captcha', 'false');
+        formData.append('_subject', `New Inspo from ${name} (${phone})`);
+        formData.append('_replyto', 'houseofnailz23@gmail.com');
+
+        const response = await fetch('https://formsubmit.co/ajax/houseofnailz23@gmail.com', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          showUploadStatus('✓ Sent! You will get a quote on WhatsApp within 24 hours.', 'success');
+          document.getElementById('uploadName').value = '';
+          document.getElementById('uploadPhone').value = '';
+          document.getElementById('uploadNotes').value = '';
+          selectedFile = null;
+          fileInput.value = '';
+          fileInfo.classList.remove('show');
+          imagePreview.classList.remove('show');
+          previewImg.src = '';
+          showToast('Inspo photo sent successfully!');
+        } else {
+          throw new Error('Failed');
+        }
+      } catch (error) {
+        showUploadStatus('❌ Failed to send. Please WhatsApp your photo to +27 63 596 7477', 'error');
+      } finally {
+        sendInspoBtn.disabled = false;
+      }
+    };
+  }
+
+  function showToast(msg) { const t = document.getElementById('toastMsg'); t.innerText = msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),4000); }
+
+  // ======================= SECTION NAVIGATION =======================
+  function activateSection(id) {
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active-section'));
+    document.getElementById(`${id}-section`).classList.add('active-section');
+    document.querySelectorAll('.nav-link').forEach(btn=>btn.classList.remove('active-nav'));
+    document.querySelector(`.nav-link[data-section="${id}"]`).classList.add('active-nav');
+  }
+  document.querySelectorAll('.nav-link[data-section]').forEach(btn=>btn.addEventListener('click',()=>activateSection(btn.getAttribute('data-section'))));
+
+  // ======================= SIMPLIFIED BOOKING (without admin) =======================
+  let bookings = JSON.parse(localStorage.getItem("hn23_bookings")) || [];
+  let specialsArray = JSON.parse(localStorage.getItem("houseofnails_specials")) || [];
+
+  function saveBookings() { localStorage.setItem("hn23_bookings", JSON.stringify(bookings)); }
+  function renderSpecials() {
+    const cont = document.getElementById("specialsDynamicContainer");
+    if (!cont) return;
+    if (specialsArray.length === 0) cont.innerHTML = '<div class="card"><p>No active specials. Check back soon!</p></div>';
+    else cont.innerHTML = specialsArray.map(s => `<div class="special-card"><div class="special-title">${escapeHtml(s.title)}</div><div>${escapeHtml(s.desc)}</div><div class="special-price">${escapeHtml(s.priceTag)}</div></div>`).join('');
+  }
+
+  function escapeHtml(s) { if(!s) return ''; return s.replace(/[&<>]/g, function(m){if(m==='&')return '&amp;';if(m==='<')return '&lt;';if(m==='>')return '&gt;';return m;}); }
 
   function getServicePrice() { const s = document.getElementById('serviceSelect'); const opt = s.options[s.selectedIndex]; return opt && opt.getAttribute('data-price') ? parseInt(opt.getAttribute('data-price')) : 0; }
   function getAddonDetails() {
@@ -792,39 +965,13 @@
     } else box.classList.remove('show');
   }
   function updateAddonInfo() { const a = getAddonDetails(); document.getElementById('addonPriceInfo').innerHTML = a.total ? `+ ${a.name}: R${a.total}` : ''; updateDeposit(); }
-  function updateAvailableSlots(date) {
-    const sel = document.getElementById('timeSelect');
-    for(let opt of sel.options) opt.disabled = isSlotBooked(date, opt.value) || isSlotBlocked(date, opt.value);
-  }
-  function isSlotBooked(date, time) { return bookings.some(b => b.date === date && b.time === time && b.status !== 'cancelled'); }
-  function showToast(msg) { const t = document.getElementById('toastMsg'); t.innerText = msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),4000); }
 
-  function sendWhatsApp(phoneNumber, message) {
-    let clean = phoneNumber.toString().replace(/\D/g, '');
-    if (!clean.startsWith('27')) clean = '27' + clean;
-    window.open(`https://wa.me/${clean}?text=${encodeURIComponent(message)}`, '_blank');
-  }
+  document.getElementById('serviceSelect').addEventListener('change', updateDeposit);
+  document.getElementById('addonSelect').addEventListener('change', updateAddonInfo);
+  document.getElementById('addonQuantity').addEventListener('input', updateAddonInfo);
 
-  function sendBookingAlerts(clientPhone, clientName, email, service, addon, date, time, total, deposit, bookingId) {
-    const d = new Date(date).toLocaleDateString('en-ZA');
-    const addLine = addon.name !== 'None' ? `\nAdd-on: ${addon.name} - R${addon.total}` : '';
-    const clientMsg = `🏠 HOUSE OF NAILS 23\n\n⏳ BOOKING REQUEST RECEIVED - AWAITING CONFIRMATION\n\nHello ${clientName},\nService: ${service}${addLine}\nTotal: R${total}\nDate: ${d} ${time}\n50% deposit required: R${deposit}\n\n🏦 EFT: Capitec 2440381884 (Ref: YOUR NAME)\n📍 28 Mowati Street, Phiri, Soweto\n\n⚠️ Your booking is NOT confirmed yet.\n📱 Send EFT proof to +27 63 596 7477 (no calls).\n✅ You will receive a separate WhatsApp when admin confirms your booking.\n\n💬 Need a quote? Send inspiration photo via WhatsApp before booking.`;
-    const adminMsg = `🔔 NEW BOOKING REQUEST - PENDING PAYMENT 🔔\n\nClient: ${clientName}\n📞 ${clientPhone}\n📧 ${email}\n💅 ${service}${addLine}\n💰 Total: R${total} | Deposit: R${deposit}\n📅 ${d} ${time}\n🆔 ID: ${bookingId}\n\n⏳ Waiting for EFT proof. Once received, click "Confirm" in admin panel.`;
-    sendWhatsApp(clientPhone, clientMsg);
-    setTimeout(() => sendWhatsApp(ADMIN_WHATSAPP, adminMsg), 500);
-  }
-
-  function sendConfirmationMessage(booking) {
-    const d = new Date(booking.date).toLocaleDateString('en-ZA');
-    const msg = `✅ HOUSE OF NAILS 23 - BOOKING CONFIRMED ✅\n\nHello ${booking.clientName},\n\nYour appointment has been CONFIRMED!\nService: ${booking.service}\nDate: ${d} at ${booking.time}\nDeposit paid: R${booking.depositAmount}\n\n📍 Address: 28 Mowati Street, Phiri, Soweto\n⏰ Please arrive with BARE HANDS.\n⚠️ 15 mins late = +20% charge. No show = deposit forfeit.\n\nWe look forward to seeing you!`;
-    sendWhatsApp(booking.clientPhone, msg);
-    const adminMsg = `✅ Booking CONFIRMED for ${booking.clientName} on ${d} at ${booking.time}. Client notified via WhatsApp.`;
-    sendWhatsApp(ADMIN_WHATSAPP, adminMsg);
-  }
-
-  // Booking submit
   document.getElementById('bookingForm').addEventListener('submit', async(e) => {
-    e.preventDefault(); if(isProcessing) return;
+    e.preventDefault();
     const name = document.getElementById('fullName').value.trim();
     const email = document.getElementById('emailAddr').value.trim();
     const phone = document.getElementById('phoneNum').value.trim();
@@ -833,54 +980,30 @@
     const addon = getAddonDetails();
     const date = document.getElementById('appointmentDate').value;
     const time = document.getElementById('timeSelect').value;
-    const total = getTotal(); const deposit = getDeposit();
+    const total = getTotal();
+    const deposit = getDeposit();
     if(!name||!email||!phone) return alert("Please fill all fields.");
     if(!serviceSelect.value) return alert("Select a service.");
     if(!date) return alert("Select a date.");
-    if(new Date(date) < getMinDate()) return alert("Bookings from 18 May 2026.");
-    if(isDateClosed(date)) return alert("Studio closed on this date.");
-    if(isSlotBooked(date,time) || isSlotBlocked(date,time)) { alert("Slot not available."); updateAvailableSlots(date); return; }
-    isProcessing=true; const btn=document.getElementById('bookBtn'); const orig=btn.innerHTML; btn.innerHTML='Processing...'; btn.disabled=true;
-    try {
-      const newBooking = { id: Date.now(), clientName: name, email, clientPhone: phone, service, addon: addon.name !== 'None' ? `${addon.name} (R${addon.total})` : 'None', totalPrice: total, depositAmount: deposit, date, time, status: 'pending_payment', createdAt: new Date().toISOString() };
-      bookings.push(newBooking);
-      saveAll();
-      sendBookingAlerts(phone, name, email, service, addon, date, time, total, deposit, newBooking.id);
-      showToast(`Booking request sent! Deposit R${deposit} via EFT. WhatsApp messages opened in new tabs.`);
-      document.getElementById('bookingForm').reset();
-      document.getElementById('serviceSelect').selectedIndex=0;
-      document.getElementById('addonSelect').selectedIndex=0;
-      document.getElementById('addonQuantity').value=1;
-      document.getElementById('depositBox').classList.remove('show');
-      document.getElementById('addonPriceInfo').innerHTML='';
-      initDatePicker();
-    } catch(err){ showToast("Error"); } finally { isProcessing=false; btn.innerHTML=orig; btn.disabled=false; }
+    const newBooking = { id: Date.now(), clientName: name, email, clientPhone: phone, service, addon: addon.name !== 'None' ? `${addon.name} (R${addon.total})` : 'None', totalPrice: total, depositAmount: deposit, date, time, status: 'pending' };
+    bookings.push(newBooking);
+    saveBookings();
+    showToast(`Booking request sent! Deposit R${deposit} via EFT.`);
+    document.getElementById('bookingForm').reset();
+    document.getElementById('serviceSelect').selectedIndex=0;
+    document.getElementById('addonSelect').selectedIndex=0;
+    document.getElementById('addonQuantity').value=1;
+    document.getElementById('depositBox').classList.remove('show');
+    document.getElementById('addonPriceInfo').innerHTML='';
   });
 
-  // Admin functions (simplified but full)
-  function renderAdminBookings() { const div = document.getElementById('adminBookingsList'); if(!div) return; if(bookings.length===0) { div.innerHTML='<p>No bookings.</p>'; return; } div.innerHTML=bookings.map((b,idx)=>{const statusClass=b.status==='confirmed'?'status-confirmed':'status-pending'; const statusText=b.status==='confirmed'?'Confirmed':'Pending Payment'; return `<div class="booking-item"><div><strong>${escapeHtml(b.clientName)}</strong> — ${b.service} ${b.addon!=='None'?`+${b.addon}`:''}<br>${b.date} ${b.time} | Deposit R${b.depositAmount}<br><span class="status-badge ${statusClass}">${statusText}</span></div><div>${b.status!=='confirmed'?`<button class="btn-small confirm-booking" data-idx="${idx}">Confirm & WhatsApp</button>`:''}<button class="btn-small cancel-booking" data-idx="${idx}" style="background:#aaa;">Cancel</button></div></div>`;}).join(''); document.querySelectorAll('.confirm-booking').forEach(btn=>btn.addEventListener('click',()=>{const idx=parseInt(btn.getAttribute('data-idx')); if(bookings[idx] && bookings[idx].status!=='confirmed'){bookings[idx].status='confirmed'; saveAll(); sendConfirmationMessage(bookings[idx]); showToast(`Booking confirmed & WhatsApp sent.`); renderAdminBookings(); const cd=document.getElementById('appointmentDate')?.value; if(cd) updateAvailableSlots(cd);}})); document.querySelectorAll('.cancel-booking').forEach(btn=>btn.addEventListener('click',()=>{const idx=parseInt(btn.getAttribute('data-idx')); bookings.splice(idx,1); saveAll(); renderAdminBookings(); const cd=document.getElementById('appointmentDate')?.value; if(cd) updateAvailableSlots(cd); showToast("Booking cancelled.");})); }
-  function renderBlockedSlots() { const div = document.getElementById('blockedSlotsList'); if(!div) return; if(blockedSlots.length===0) { div.innerHTML='<p>No blocked slots.</p>'; return; } div.innerHTML=blockedSlots.map((slot,idx)=>`<div class="admin-slot-block">📅 ${slot.date} at ${slot.time} <button class="btn-small unblock-slot" data-idx="${idx}">Unblock</button></div>`).join(''); document.querySelectorAll('.unblock-slot').forEach(btn=>btn.addEventListener('click',()=>{const idx=parseInt(btn.getAttribute('data-idx')); blockedSlots.splice(idx,1); saveAll(); renderBlockedSlots(); const cd=document.getElementById('appointmentDate')?.value; if(cd) updateAvailableSlots(cd); showToast("Slot unblocked.");})); }
-  function renderClosedDaysList() { const div = document.getElementById('closedDaysList'); if(!div) return; div.innerHTML=closedDays.map((d,idx)=>`<div class="admin-slot-block">📅 ${d} <button class="btn-small remove-closed" data-idx="${idx}">Remove</button></div>`).join(''); document.querySelectorAll('.remove-closed').forEach(btn=>btn.addEventListener('click',()=>{const idx=parseInt(btn.getAttribute('data-idx')); closedDays.splice(idx,1); saveAll(); renderClosedDaysList();})); }
-  function renderAdminSpecials() { const div = document.getElementById('adminSpecialsList'); if(!div) return; div.innerHTML=specialsArray.map((s,idx)=>`<div class="admin-slot-block">🔥 ${escapeHtml(s.title)} — ${escapeHtml(s.priceTag)} <button class="btn-small delete-special" data-idx="${idx}">Remove</button></div>`).join(''); document.querySelectorAll('.delete-special').forEach(btn=>btn.addEventListener('click',()=>{const idx=parseInt(btn.getAttribute('data-idx')); specialsArray.splice(idx,1); saveAll(); renderAdminSpecials();})); }
-  function renderSpecials() { const cont = document.getElementById("specialsDynamicContainer"); if(!cont) return; if(specialsArray.length===0) cont.innerHTML='<div class="card"><p>No active specials. Check back soon!</p></div>'; else cont.innerHTML = specialsArray.map(s => `<div class="special-card"><div class="special-title">${escapeHtml(s.title)}</div><div>${escapeHtml(s.desc)}</div><div class="special-price">${escapeHtml(s.priceTag)}</div></div>`).join(''); }
-  function escapeHtml(s){ if(!s) return ''; return s.replace(/[&<>]/g,function(m){if(m==='&')return'&amp;';if(m==='<')return'&lt;';if(m==='>')return'&gt;';return m;}); }
-  function initDatePicker() { const inp = document.getElementById('appointmentDate'); inp.setAttribute('min', getMinDate().toISOString().split('T')[0]); inp.addEventListener('change', function() { if(this.value && isDateClosed(this.value)) { alert("Studio closed this day."); this.value=''; } if(this.value) updateAvailableSlots(this.value); }); }
+  // Set min date
+  const today = new Date();
+  today.setDate(today.getDate() + 1);
+  document.getElementById('appointmentDate').min = today.toISOString().split('T')[0];
 
-  // Admin modal
-  document.getElementById('adminNavBtn').addEventListener('click', () => { const pwd = prompt("Admin access code:"); if(pwd === "studio23" || pwd === "admin123") { document.getElementById('adminModal').style.display = 'flex'; renderAdminBookings(); renderBlockedSlots(); renderClosedDaysList(); renderAdminSpecials(); } else if(pwd !== null) alert("Invalid code."); });
-  document.getElementById('closeModalBtn').addEventListener('click', () => document.getElementById('adminModal').style.display = 'none');
-  window.addEventListener('click', (e) => { if(e.target === document.getElementById('adminModal')) document.getElementById('adminModal').style.display = 'none'; });
-  document.getElementById('addBlockedSlotBtn').addEventListener('click', () => { const date = document.getElementById('blockDate').value; const time = document.getElementById('blockTime').value; if(!date) { alert("Select a date"); return; } if(!blockedSlots.some(s => s.date === date && s.time === time)) { blockedSlots.push({ date, time }); saveAll(); renderBlockedSlots(); const cd = document.getElementById('appointmentDate')?.value; if(cd) updateAvailableSlots(cd); showToast(`Blocked ${date} at ${time}`); } else alert("Already blocked."); });
-  document.getElementById('addClosedDayBtn').addEventListener('click', () => { const date = document.getElementById('closedDateInput').value; if(!date) return alert("Select date"); if(!closedDays.includes(date)) { closedDays.push(date); saveAll(); renderClosedDaysList(); alert(`Added ${date} as closed day.`); } else alert("Already closed."); });
-  document.getElementById('saveNewSpecialBtn').addEventListener('click', () => { const title = document.getElementById('newSpecialTitle').value.trim(); const desc = document.getElementById('newSpecialDesc').value.trim(); const price = document.getElementById('newSpecialPrice').value.trim(); if(title) { specialsArray.push({ title, desc: desc || "Limited offer", priceTag: price || "Ask in studio" }); saveAll(); renderAdminSpecials(); document.getElementById('newSpecialTitle').value=''; document.getElementById('newSpecialDesc').value=''; document.getElementById('newSpecialPrice').value=''; } else alert("Enter title"); });
-
-  document.getElementById('serviceSelect').addEventListener('change', updateDeposit);
-  document.getElementById('addonSelect').addEventListener('change', updateAddonInfo);
-  document.getElementById('addonQuantity').addEventListener('input', updateAddonInfo);
-
-  function activateSection(id) { document.querySelectorAll('.section').forEach(s=>s.classList.remove('active-section')); document.getElementById(`${id}-section`).classList.add('active-section'); document.querySelectorAll('.nav-link').forEach(btn=>btn.classList.remove('active-nav')); document.querySelector(`.nav-link[data-section="${id}"]`).classList.add('active-nav'); }
-  document.querySelectorAll('.nav-link[data-section]').forEach(btn=>btn.addEventListener('click',()=>activateSection(btn.getAttribute('data-section'))));
-  renderSpecials(); activateSection('services'); initDatePicker();
+  renderSpecials();
+  activateSection('services');
 </script>
 </body>
 </html>
