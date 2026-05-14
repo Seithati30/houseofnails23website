@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>House of Nails 23 | Professional Nail Studio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -59,10 +59,10 @@
       margin-top: -10px;
     }
     .exact-logo .house-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 600;
-      letter-spacing: 3px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 38px;
+      font-weight: 500;
+      letter-spacing: 1px;
       color: white;
       margin-top: 5px;
     }
@@ -71,12 +71,16 @@
       letter-spacing: 4px;
       color: #FFDBEE;
       margin-top: 5px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
     }
     .exact-logo .bonolo-text {
       font-size: 13px;
       letter-spacing: 2px;
       color: #FFDBEE;
       font-weight: 400;
+      font-family: 'Inter', sans-serif;
     }
     .tagline {
       font-size: 0.8rem;
@@ -111,7 +115,6 @@
       border-bottom: 2px solid #FFDBEE;
     }
 
-    /* Sections */
     .section {
       display: none;
       padding: 64px 0 80px;
@@ -147,7 +150,6 @@
       gap: 8px;
     }
 
-    /* Cards */
     .card {
       background: white;
       border-radius: 24px;
@@ -155,11 +157,6 @@
       margin-bottom: 32px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.04);
       border: 1px solid #EDE4DF;
-      transition: box-shadow 0.2s;
-    }
-
-    .card:hover {
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
     }
 
     .grid-2col {
@@ -168,81 +165,55 @@
       gap: 32px;
     }
 
-    /* Price lists */
     .price-list {
       list-style: none;
     }
-
     .price-list li {
       display: flex;
       justify-content: space-between;
       padding: 12px 0;
       border-bottom: 1px solid #F0E8E4;
       font-weight: 500;
-      font-size: 0.95rem;
     }
-
-    .price-list li:last-child {
-      border-bottom: none;
-    }
-
     .price-list li span:last-child {
       font-weight: 700;
       color: #C29D93;
     }
 
-    /* Add-ons table */
     .addons-table {
       width: 100%;
       border-collapse: collapse;
     }
-
     .addons-table th {
       text-align: left;
       padding: 14px 8px;
       background: #C29D93;
       color: white;
-      font-weight: 600;
-      font-size: 0.8rem;
-      letter-spacing: 0.5px;
     }
-
-    .addons-table th:first-child { border-radius: 16px 0 0 0; }
-    .addons-table th:last-child { border-radius: 0 16px 0 0; text-align: right; }
-
     .addons-table td {
       padding: 12px 8px;
       border-bottom: 1px solid #F0E8E4;
-      font-size: 0.9rem;
     }
-
     .addons-table td:last-child {
       text-align: right;
       font-weight: 600;
       color: #C29D93;
     }
 
-    /* Policies */
     .policy-list {
       list-style: none;
     }
-
     .policy-list li {
       padding: 10px 0;
       border-bottom: 1px solid #F0E8E4;
       display: flex;
       gap: 12px;
-      font-size: 0.9rem;
     }
-
     .policy-list li i {
-      margin-top: 2px;
       color: #C29D93;
       width: 20px;
-      font-size: 0.9rem;
     }
 
-    /* Inspo Upload inside Booking */
     .inspo-upload-area {
       background: #FEFAF8;
       border-radius: 20px;
@@ -250,121 +221,60 @@
       margin-bottom: 28px;
       border: 1px solid #EDE4DF;
     }
-
-    .inspo-upload-area h4 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #C29D93;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
     .upload-box-small {
       border: 2px dashed #E0D6D0;
       border-radius: 16px;
       padding: 20px;
       text-align: center;
       cursor: pointer;
-      transition: all 0.3s;
       background: white;
     }
-
     .upload-box-small:hover {
       border-color: #C29D93;
-      background: #FDF8F5;
     }
-
-    .upload-box-small.dragover {
-      border-color: #C29D93;
-      background: #FDF8F5;
-    }
-
-    .upload-icon-small {
-      font-size: 32px;
-      margin-bottom: 6px;
-    }
-
-    .upload-text-small {
-      color: #888;
-      font-size: 12px;
-    }
-
-    .upload-text-small strong {
-      color: #C29D93;
-    }
-
     .inspo-preview {
       margin-top: 12px;
       display: none;
-      border-radius: 12px;
-      overflow: hidden;
     }
-
     .inspo-preview.show {
       display: block;
     }
-
     .inspo-preview img {
       width: 100%;
       max-height: 150px;
       object-fit: cover;
+      border-radius: 12px;
     }
-
     .remove-inspo {
       text-align: center;
       padding: 6px;
       background: #FEF0ED;
       color: #C29D93;
-      font-size: 11px;
       cursor: pointer;
+      font-size: 12px;
     }
 
-    .inspo-file-info {
-      margin-top: 8px;
-      font-size: 11px;
-      color: #27ae60;
-      display: none;
-    }
-
-    .inspo-file-info.show {
-      display: block;
-    }
-
-    /* Booking form */
     .booking-form {
       background: white;
       border-radius: 28px;
       padding: 40px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
       border: 1px solid #EDE4DF;
     }
-
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
       margin-bottom: 24px;
     }
-
     .form-group {
       margin-bottom: 24px;
     }
-
     label {
       font-weight: 600;
       display: block;
       margin-bottom: 8px;
       color: #4A3B32;
-      font-size: 0.8rem;
-      letter-spacing: 0.3px;
     }
-
-    label .required {
-      color: #C29D93;
-    }
-
     input, textarea, select {
       width: 100%;
       padding: 12px 16px;
@@ -372,38 +282,7 @@
       border: 1px solid #E0D6D0;
       background: #FEFCFA;
       font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      transition: 0.2s;
     }
-
-    input:focus, textarea:focus, select:focus {
-      outline: none;
-      border-color: #C29D93;
-      box-shadow: 0 0 0 3px rgba(194,157,147,0.15);
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .addon-selection {
-      background: #FEFAF8;
-      border-radius: 20px;
-      padding: 20px 24px;
-      margin-bottom: 28px;
-      border: 1px solid #EDE4DF;
-    }
-
-    .addon-row {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .addon-row select { flex: 2; }
-    .addon-row input { flex: 1; min-width: 80px; }
-
     .deposit-box {
       background: #FDF2ED;
       border-radius: 24px;
@@ -412,29 +291,18 @@
       margin: 28px 0;
       display: none;
     }
-
     .deposit-box.show { display: block; }
-
     .deposit-amount {
       font-size: 2rem;
       font-weight: 700;
       color: #C29D93;
-      margin: 8px 0;
     }
-
     .bank-details {
       background: #F8F2EF;
       border-radius: 20px;
       padding: 20px 24px;
       margin: 24px 0;
-      border: 1px solid #EDE4DF;
     }
-
-    .bank-details p {
-      margin: 8px 0;
-      font-size: 0.85rem;
-    }
-
     .btn-primary {
       background: #C29D93;
       color: white;
@@ -442,23 +310,11 @@
       padding: 14px 28px;
       border-radius: 40px;
       font-weight: 600;
-      font-size: 0.9rem;
       cursor: pointer;
       width: 100%;
-      transition: 0.2s;
-      font-family: 'Inter', sans-serif;
-      letter-spacing: 0.3px;
     }
-
     .btn-primary:hover {
       background: #A88379;
-      transform: translateY(-1px);
-    }
-
-    .btn-primary:disabled {
-      background: #CCC;
-      cursor: not-allowed;
-      transform: none;
     }
 
     .contact-card {
@@ -467,60 +323,35 @@
       border-radius: 32px;
       padding: 40px;
     }
-
     .contact-detail {
       margin-bottom: 20px;
       display: flex;
       align-items: center;
       gap: 16px;
-      flex-wrap: wrap;
-      font-size: 0.95rem;
     }
-
-    .contact-detail a {
-      color: white;
-      text-decoration: none;
-      border-bottom: 1px dotted rgba(255,255,255,0.5);
-    }
-
     .social-links {
       display: flex;
       gap: 32px;
       margin: 32px 0;
       justify-content: center;
-      flex-wrap: wrap;
     }
-
     .social-links a {
       color: white;
       font-size: 1.6rem;
-      text-align: center;
       text-decoration: none;
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
     }
-
     .ride-links {
       display: flex;
       gap: 20px;
       justify-content: center;
       margin-top: 24px;
-      flex-wrap: wrap;
     }
-
     .ride-links a {
       background: rgba(0,0,0,0.15);
       padding: 10px 20px;
       border-radius: 60px;
       color: white;
       text-decoration: none;
-      font-weight: 500;
-      font-size: 0.85rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
     }
 
     footer {
@@ -545,35 +376,22 @@
       transition: opacity 0.25s;
       pointer-events: none;
       z-index: 1100;
-      white-space: nowrap;
     }
-
     .toast-notify.show { opacity: 1; }
 
-    .inspo-note {
-      background: #FEFAF8;
-      border-radius: 20px;
-      padding: 20px 24px;
-      margin-bottom: 32px;
-      border-left: 4px solid #C29D93;
-      font-size: 0.9rem;
-    }
-
-    /* Admin dashboard styles */
+    /* Admin styles */
     .admin-section {
       max-width: 1280px;
       margin: 40px auto;
       padding: 0 32px;
       display: none;
     }
-    .admin-section h2 {
-      border-left-color: #C29D93;
-    }
     .admin-card {
       background: white;
       border-radius: 24px;
       padding: 24px;
       border: 1px solid #EDE4DF;
+      margin-bottom: 32px;
       overflow-x: auto;
     }
     .admin-table {
@@ -587,15 +405,12 @@
     }
     .admin-table th {
       background: #FAF6F3;
-      font-weight: 600;
-      color: #2C2824;
     }
     .status-badge {
       display: inline-block;
       padding: 4px 12px;
       border-radius: 40px;
       font-size: 0.75rem;
-      font-weight: 500;
     }
     .status-confirmed {
       background: #E9F5EF;
@@ -605,30 +420,37 @@
       background: #FEF2E8;
       color: #B85C1A;
     }
-    .admin-login-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
+    .admin-login-btn, .admin-nav-link {
       background: #C29D93;
       color: white;
       border: none;
       border-radius: 50px;
-      padding: 10px 18px;
+      padding: 8px 18px;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 500;
+      font-size: 0.8rem;
+      transition: 0.2s;
+    }
+    .admin-login-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       z-index: 1000;
-      font-size: 0.8rem;
     }
-    .admin-logout-btn {
-      background: #888;
-      margin-left: 12px;
+    .admin-nav-link {
+      background: rgba(255,255,255,0.2);
+      margin-left: 10px;
+    }
+    .admin-nav-link:hover {
+      background: rgba(255,255,255,0.4);
     }
     .admin-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      margin-bottom: 20px;
     }
     .refresh-admin-btn {
       background: #C29D93;
@@ -637,17 +459,30 @@
       padding: 8px 16px;
       border-radius: 40px;
       cursor: pointer;
-      font-size: 0.8rem;
+    }
+    .special-item {
+      background: #FEFAF8;
+      padding: 16px;
+      border-radius: 16px;
+      margin-bottom: 12px;
+      border: 1px solid #EDE4DF;
+    }
+    .closed-day-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #EDE4DF;
+    }
+    .export-btn {
+      background: #27ae60;
+      margin-left: 10px;
     }
 
     @media (max-width: 700px) {
       .container { padding: 0 20px; }
       .form-row { grid-template-columns: 1fr; gap: 0; }
       .booking-form { padding: 24px; }
-      .toast-notify { white-space: normal; width: 90%; text-align: center; }
-      .exact-logo .big-h, .exact-logo .big-n { font-size: 50px; }
-      .exact-logo .house-text { font-size: 22px; }
-      .admin-section { padding: 0 20px; }
     }
   </style>
 </head>
@@ -659,7 +494,7 @@
       <div class="exact-logo">
         <div class="big-h">H</div>
         <div class="big-n">N</div>
-        <div class="house-text">HouseQfNails23</div>
+        <div class="house-text">House of Nails</div>
         <div class="by-text">BY</div>
         <div class="bonolo-text">BONOLO</div>
       </div>
@@ -670,6 +505,7 @@
       <button class="nav-link" data-section="specials">Specials</button>
       <button class="nav-link" data-section="book">Book</button>
       <button class="nav-link" data-section="contact">Contact</button>
+      <button id="adminNavBtn" class="nav-link admin-nav-link" style="display:none;">Admin Panel</button>
     </nav>
   </div>
 </header>
@@ -679,12 +515,6 @@
   <div id="services-section" class="section active-section">
     <div class="container">
       <h2>Services & Pricing</h2>
-      <div class="inspo-note">
-        <i class="fas fa-lightbulb" style="color:#C29D93; margin-right: 10px;"></i>
-        <strong>Unsure what you'd like?</strong><br>
-        Upload your inspiration photo when booking below – the nail tech will give you a quote for the exact design.<br>
-        <a href="https://wa.me/27635967477" target="_blank" style="color:#C29D93; font-weight: 600;">→ Or send via WhatsApp</a>
-      </div>
       <div class="grid-2col">
         <div class="card">
           <h3><i class="fas fa-hand-sparkles"></i> Acrylic</h3>
@@ -702,7 +532,6 @@
             <li><span>Plain Gel Set</span><span>R220</span></li>
             <li><span>Gel Overlay</span><span>R180</span></li>
             <li><span>Plain Toes</span><span>R100</span></li>
-            <li><span>Buff & Shine</span><span>R100</span></li>
             <li><span>French Toes</span><span>R170</span></li>
           </ul>
         </div>
@@ -710,38 +539,37 @@
       <div class="card">
         <h3><i class="fas fa-palette"></i> Premium Add-Ons</h3>
         <table class="addons-table">
-          <thead><tr><th>Add-On</th><th>Description</th><th>Price</th></tr></thead>
+          <thead><tr><th>Add-On</th><th>Price</th></tr></thead>
           <tbody>
-            <tr><td><i class="fas fa-spray-can"></i> Aura Airbrush</td><td>Airbrushed gradient per nail</td><td>R10/nail</td></tr>
-            <tr><td><i class="fas fa-gem"></i> Gems / Pearls</td><td>Crystal gems or pearls</td><td>R15/nail</td></tr>
-            <tr><td><i class="fas fa-star"></i> Charms</td><td>3D decorative charms</td><td>R20/nail</td></tr>
-            <tr><td><i class="fas fa-feather-alt"></i> 3D Flower</td><td>Hand-sculpted floral</td><td>R30/nail</td></tr>
-            <tr><td><i class="fas fa-chrome"></i> Chrome Finish</td><td>Mirror chrome (full set)</td><td>R50</td></tr>
-            <tr><td><i class="fas fa-tint"></i> Soak Off</td><td>Professional removal</td><td>R80</td></tr>
+            <tr><td>Aura Airbrush</td><td>R10/nail</td></tr>
+            <tr><td>Gems / Pearls</td><td>R15/nail</td></tr>
+            <tr><td>Charms</td><td>R20/nail</td></tr>
+            <tr><td>3D Flower</td><td>R30/nail</td></tr>
+            <tr><td>Chrome Finish</td><td>R50 (full set)</td></tr>
+            <tr><td>Soak Off</td><td>R80</td></tr>
           </tbody>
         </table>
       </div>
       <div class="card">
         <h3><i class="fas fa-clipboard-list"></i> Studio Policies</h3>
         <ul class="policy-list">
-          <li><i class="fas fa-hand-paper"></i> <strong>Arrive with BARE HANDS</strong> – no existing product</li>
-          <li><i class="fas fa-percent"></i> <strong>50% non‑refundable deposit</strong> required prior to service</li>
-          <li><i class="fas fa-coins"></i> <strong>First deposit, first serve | No deposit = No appointment</strong></li>
-          <li><i class="fas fa-clock"></i> <strong>R50 extra</strong> for after‑hours / before opening squeeze‑in</li>
-          <li><i class="fas fa-hourglass-half"></i> <strong>15 minutes late = +20% charge</strong></li>
-          <li><i class="fas fa-ban"></i> <strong>No show after 30 minutes = deposit forfeited / cancelled</strong></li>
-          <li><i class="fas fa-calendar-times"></i> <strong>Closed Sundays</strong></li>
-          <li><i class="fas fa-shield-alt"></i> <strong>Right to refuse service:</strong> We reserve the right to refuse service if there are signs of infection, open wounds, or if the client's natural nails are beyond workable conditions.</li>
+          <li><i class="fas fa-hand-paper"></i> Arrive with BARE HANDS – no existing product</li>
+          <li><i class="fas fa-percent"></i> 50% non‑refundable deposit required</li>
+          <li><i class="fas fa-coins"></i> First deposit, first serve | No deposit = No appointment</li>
+          <li><i class="fas fa-clock"></i> R50 extra for after‑hours squeeze‑in</li>
+          <li><i class="fas fa-hourglass-half"></i> 15 minutes late = +20% charge</li>
+          <li><i class="fas fa-ban"></i> No show after 30 minutes = deposit forfeited</li>
+          <li><i class="fas fa-calendar-times"></i> Closed Sundays</li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- Specials Section -->
+  <!-- Specials Section (dynamic) -->
   <div id="specials-section" class="section">
     <div class="container">
       <h2>Current Offers</h2>
-      <div id="specialsDynamicContainer"><div class="card"><p>No active specials. Check back soon!</p></div></div>
+      <div id="specialsDynamicContainer" class="card">Loading specials...</div>
     </div>
   </div>
 
@@ -755,18 +583,15 @@
             <div class="form-group"><label>Full name <span class="required">*</span></label><input type="text" id="fullName" required></div>
             <div class="form-group"><label>WhatsApp number <span class="required">*</span></label><input type="tel" id="phoneNum" required placeholder="063 596 7477"></div>
           </div>
-          <div class="form-group"><label>Email (optional)</label><input type="email" id="emailAddr" placeholder="for email confirmation"></div>
+          <div class="form-group"><label>Email (optional)</label><input type="email" id="emailAddr"></div>
 
-          <!-- INSPO PHOTO UPLOAD -->
           <div class="inspo-upload-area">
             <h4><i class="fas fa-camera"></i> Inspiration Photo (optional)</h4>
             <div class="upload-box-small" id="inspoUploadBox">
               <div class="upload-icon-small">🖼️</div>
-              <div class="upload-text-small">Click or drag &amp; drop your inspo photo</div>
-              <div class="upload-text-small"><strong>PNG, JPG, JPEG</strong> up to 10MB</div>
+              <div class="upload-text-small">Click or drag & drop your inspo photo</div>
             </div>
             <input type="file" id="inspoFileInput" accept="image/jpeg,image/jpg,image/png" style="display:none;">
-            <div class="inspo-file-info" id="inspoFileInfo"></div>
             <div class="inspo-preview" id="inspoPreview">
               <img id="inspoPreviewImg" src="" alt="Preview">
               <div class="remove-inspo" id="removeInspoBtn">✕ Remove photo</div>
@@ -788,10 +613,10 @@
             </select>
           </div>
 
-          <div class="addon-selection">
+          <div class="addon-selection" style="background:#FEFAF8; border-radius:20px; padding:20px; margin-bottom:28px;">
             <label><i class="fas fa-palette"></i> Add‑ons (optional)</label>
-            <div class="addon-row">
-              <select id="addonSelect">
+            <div class="addon-row" style="display:flex; gap:16px;">
+              <select id="addonSelect" style="flex:2;">
                 <option value="0|None">None</option>
                 <option value="10|Aura Airbrush">Aura Airbrush - R10/nail</option>
                 <option value="15|Gems/Pearls">Gems/Pearls - R15/nail</option>
@@ -799,35 +624,29 @@
                 <option value="30|3D Flower">3D Flower - R30/nail</option>
                 <option value="50|Chrome">Chrome - R50 (full set)</option>
               </select>
-              <input type="number" id="addonQuantity" min="1" max="10" value="1" placeholder="# nails">
+              <input type="number" id="addonQuantity" min="1" max="10" value="1" placeholder="# nails" style="flex:1;">
             </div>
             <div id="addonPriceInfo" style="font-size:0.7rem; margin-top:8px; color:#C29D93;"></div>
           </div>
 
           <div class="form-row">
             <div class="form-group"><label>Preferred date <span class="required">*</span></label><input type="date" id="appointmentDate" required></div>
-            <div class="form-group"><label>Time (11am – 4pm) <span class="required">*</span></label><select id="timeSelect" required><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select></div>
+            <div class="form-group"><label>Time (11am – 4pm)</label><select id="timeSelect"><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select></div>
           </div>
-
-          <div class="form-group"><label>Special requests / Notes</label><textarea id="specialRequests" rows="2" placeholder="Any specific details about your design..."></textarea></div>
+          <div class="form-group"><label>Special requests</label><textarea id="specialRequests" rows="2"></textarea></div>
 
           <div id="depositBox" class="deposit-box">
             <p><strong>50% non‑refundable deposit required</strong></p>
             <div class="deposit-amount" id="depositAmount">R0</div>
             <div id="priceBreakdown" style="font-size:0.7rem;"></div>
-            <p style="font-size:0.7rem; margin-top:6px;">Balance paid in studio after service</p>
           </div>
-
           <div class="bank-details">
-            <p><strong><i class="fas fa-university"></i> EFT Deposit Details</strong></p>
+            <p><strong>EFT Deposit Details</strong></p>
             <p>Capitec Bank • Account: <strong>2440381884</strong></p>
             <p>Reference: <strong>YOUR NAME</strong></p>
-            <p style="font-size:0.75rem;">📞 For EFT enquiries only: <strong>081 073 6338</strong> (no bookings)</p>
-            <p style="font-size:0.75rem;"><i class="fab fa-whatsapp"></i> After EFT, send proof to <strong>+27 63 596 7477</strong> (no calls)</p>
+            <p>After EFT, send proof to <strong>+27 63 596 7477</strong></p>
           </div>
-
-          <button type="submit" class="btn-primary" id="bookBtn"><i class="fas fa-calendar-check"></i> Submit Booking Request</button>
-          <p style="font-size:0.7rem; text-align:center; margin-top:20px;">⚠️ Your booking is only confirmed after we receive your EFT payment, proof via WhatsApp, and admin confirmation.</p>
+          <button type="submit" class="btn-primary"><i class="fas fa-calendar-check"></i> Submit Booking Request</button>
         </form>
       </div>
     </div>
@@ -839,55 +658,79 @@
       <h2>Visit Us</h2>
       <div class="contact-card">
         <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> 28 Mowati Street, Phiri, Soweto, 1818</div>
-        <div class="contact-detail"><i class="fas fa-phone-alt"></i> Studio line: 081 073 6338 <span style="font-size:0.7rem;">(EFT enquiries only – no bookings)</span></div>
-        <div class="contact-detail"><i class="fab fa-whatsapp"></i> <strong>WhatsApp Business (inspo & quotes):</strong> <a href="https://wa.me/27635967477" target="_blank">+27 63 596 7477</a> — no calls</div>
-        <div class="contact-detail"><i class="fas fa-envelope"></i> <a href="mailto:houseofnailz23@gmail.com">houseofnailz23@gmail.com</a></div>
+        <div class="contact-detail"><i class="fab fa-whatsapp"></i> <a href="https://wa.me/27635967477" target="_blank" style="color:white;">+27 63 596 7477</a></div>
+        <div class="contact-detail"><i class="fas fa-envelope"></i> <a href="mailto:houseofnailz23@gmail.com" style="color:white;">houseofnailz23@gmail.com</a></div>
         <div class="social-links">
-          <a href="https://wa.me/27635967477" target="_blank"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
-          <a href="https://instagram.com/houseofnailz23" target="_blank"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+          <a href="https://wa.me/27635967477"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://instagram.com/houseofnailz23"><i class="fab fa-instagram"></i></a>
         </div>
         <div class="ride-links">
-          <a href="https://m.uber.com/ul/?client_id=Uber&action=setPickup&pickup=my_location&dropoff=28%20Mowati%20Street%20Phiri%20Soweto" target="_blank"><i class="fas fa-car"></i> Uber: Houseofnails23</a>
-          <a href="https://bolt.eu/en/ride/?pickup=my_location&destination=28%20Mowati%20Street%2C%20Soweto" target="_blank"><i class="fas fa-taxi"></i> Bolt: Houseofnails23</a>
+          <a href="#"><i class="fas fa-car"></i> Uber</a>
+          <a href="#"><i class="fas fa-taxi"></i> Bolt</a>
         </div>
-        <div class="bank-details" style="background:rgba(255,255,255,0.15); margin-top:20px;">
-          <p><strong>EFT Deposit</strong> | Capitec 2440381884 | Ref: YOUR NAME</p>
-          <p style="font-size:0.75rem;">Send proof via WhatsApp to <a href="https://wa.me/27635967477" target="_blank" style="color:#FFDBEE;">+27 63 596 7477</a></p>
-        </div>
-        <p><i class="fas fa-clock"></i> Mon–Sat: 10am – 6pm (Booking slots 11am – 4pm) | Closed Sundays</p>
+        <p><i class="fas fa-clock"></i> Mon–Sat: 10am – 6pm | Closed Sundays</p>
       </div>
     </div>
   </div>
 </main>
 
-<!-- ADMIN DASHBOARD SECTION (hidden until PIN is entered) -->
+<!-- Admin Panel -->
 <div id="adminSection" class="admin-section">
   <div class="admin-header">
-    <h2>📋 Bookings Dashboard</h2>
+    <h2>📋 Admin Dashboard</h2>
     <div>
+      <button class="refresh-admin-btn export-btn" id="exportBookingsBtn"><i class="fas fa-download"></i> Export CSV</button>
       <button class="refresh-admin-btn" id="refreshAdminBtn"><i class="fas fa-sync-alt"></i> Refresh</button>
-      <button class="refresh-admin-btn admin-logout-btn" id="adminLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      <button class="refresh-admin-btn" id="adminLogoutBtn" style="background:#888;">Logout</button>
     </div>
   </div>
+
+  <!-- Specials Manager -->
   <div class="admin-card">
-    <div id="adminBookingsContent">Loading bookings...</div>
+    <h3>🎉 Manage Specials</h3>
+    <div id="specialsList"></div>
+    <button id="showAddSpecialBtn" class="refresh-admin-btn" style="margin-top:12px;">+ Add Special</button>
+    <div id="addSpecialForm" style="display:none; margin-top:16px;">
+      <input type="text" id="newSpecialTitle" placeholder="Title" style="width:100%; margin-bottom:8px;">
+      <textarea id="newSpecialDesc" placeholder="Description" rows="2" style="width:100%; margin-bottom:8px;"></textarea>
+      <input type="date" id="newSpecialExpiry" style="width:100%; margin-bottom:8px;">
+      <button id="saveSpecialBtn" class="refresh-admin-btn">Save</button>
+      <button id="cancelSpecialBtn" class="refresh-admin-btn" style="background:#888;">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Closed Days Manager -->
+  <div class="admin-card">
+    <h3>📅 Manage Closed Days</h3>
+    <div id="closedDaysList"></div>
+    <div style="display:flex; gap:8px; margin-top:16px;">
+      <input type="date" id="newClosedDate" style="flex:1;">
+      <button id="addClosedDayBtn" class="refresh-admin-btn">Add Closed Day</button>
+    </div>
+  </div>
+
+  <!-- Bookings Manager -->
+  <div class="admin-card">
+    <h3>📋 Bookings</h3>
+    <div id="bookingsList">Loading...</div>
   </div>
 </div>
 
-<!-- Admin login floating button -->
+<!-- Floating admin login button -->
 <button id="adminLoginBtn" class="admin-login-btn"><i class="fas fa-lock"></i> Admin Login</button>
 
-<footer>
-  <div class="container">© 2026 House of Nails 23 — 50% non‑refundable deposit secures your slot. Final payment in studio. <a href="https://instagram.com/houseofnailz23" target="_blank" style="color:#A88379;">View our work on Instagram</a>.</div>
-</footer>
-
 <div id="toastMsg" class="toast-notify"></div>
+<footer><div class="container">© 2026 House of Nails 23 — 50% deposit secures your slot.</div></footer>
 
 <script>
-  // ======================= ADMIN AUTH =======================
+  // ======================= CONFIGURATION =======================
   const ADMIN_PIN = "admin123";
-  let adminAuthenticated = false;
+  const TECH_WHATSAPP = "27635967477"; // without +
+  const BASE_URL = window.location.href.split('?')[0];
+  let selectedInspoFile = null;
+  let isAdmin = false;
 
+  // Helper functions
   function showToast(msg) {
     const t = document.getElementById('toastMsg');
     t.innerText = msg;
@@ -895,147 +738,240 @@
     setTimeout(() => t.classList.remove('show'), 4000);
   }
 
-  function saveAdminAuth(status) {
-    sessionStorage.setItem('adminAuth', status ? 'true' : 'false');
-    adminAuthenticated = status;
-  }
-
-  function checkAdminAuth() {
-    const stored = sessionStorage.getItem('adminAuth');
-    if (stored === 'true') {
-      adminAuthenticated = true;
-      showAdminPanel();
-    } else {
-      adminAuthenticated = false;
-      hideAdminPanel();
-    }
-  }
-
-  function showAdminPanel() {
-    document.getElementById('adminSection').style.display = 'block';
-    document.getElementById('adminLoginBtn').style.display = 'none';
-    loadAdminBookings();
-  }
-
-  function hideAdminPanel() {
-    document.getElementById('adminSection').style.display = 'none';
-    document.getElementById('adminLoginBtn').style.display = 'flex';
-  }
-
-  function adminLogin() {
-    const pin = prompt("Enter admin PIN:");
-    if (pin === ADMIN_PIN) {
-      saveAdminAuth(true);
-      showAdminPanel();
-      showToast("Admin access granted.");
-    } else if (pin !== null) {
-      showToast("Incorrect PIN.");
-    }
-  }
-
-  function adminLogout() {
-    saveAdminAuth(false);
-    hideAdminPanel();
-    showToast("Logged out of admin.");
-  }
-
-  // ======================= FETCH BOOKINGS FROM APPS SCRIPT =======================
-  const BOOKINGS_API_URL = 'https://script.google.com/macros/s/AKfycbxW6bylajwYwrzJFB-7_y_EU_7-hbGRehlcrgkBaDgM9PfBZxk2td_lHE9wA38hICYh/exec?format=json';
-
-  async function loadAdminBookings() {
-    const container = document.getElementById('adminBookingsContent');
-    if (!container) return;
-    container.innerHTML = '<p><i class="fas fa-spinner fa-pulse"></i> Loading bookings...</p>';
+  async function fetchData(type) {
     try {
-      const response = await fetch(BOOKINGS_API_URL);
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const bookings = await response.json();
-      if (!bookings || bookings.length === 0) {
-        container.innerHTML = '<p>✨ No bookings found.</p>';
-        return;
-      }
-      const table = `
-        <table class="admin-table">
-          <thead>
-            <tr><th>ID</th><th>Customer</th><th>Date</th><th>Status</th><th>Actions</th></tr>
-          </thead>
-          <tbody>
-            ${bookings.map(b => `
-              <tr>
-                <td>${escapeHtml(b.id)}</td>
-                <td>${escapeHtml(b.customer)}</td>
-                <td>${escapeHtml(b.date)}</td>
-                <td><span class="status-badge ${b.status === 'confirmed' ? 'status-confirmed' : 'status-pending'}">${escapeHtml(b.status || 'pending')}</span></td>
-                <td><button class="refresh-admin-btn" style="background:#C29D93; padding:4px 12px;" onclick="updateBookingStatus('${b.id}', 'confirmed')">Confirm</button> <button class="refresh-admin-btn" style="background:#888;" onclick="updateBookingStatus('${b.id}', 'pending')">Pending</button></td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
-      `;
-      container.innerHTML = table;
+      const res = await fetch(`${BASE_URL}?format=json&type=${type}`);
+      const data = await res.json();
+      return data;
     } catch (err) {
-      container.innerHTML = `<p style="color:#C0392B;">⚠️ Error loading bookings: ${escapeHtml(err.message)}. Make sure your Apps Script is deployed and allows CORS (or use a CORS proxy).</p>`;
+      console.error(err);
+      return null;
     }
   }
 
-  // Helper to update status (you'll need to implement a POST endpoint in Apps Script)
-  // For now, just a placeholder that shows a message.
-  window.updateBookingStatus = function(id, newStatus) {
-    showToast(`Status update for booking ${id} to ${newStatus} – requires backend POST endpoint.`);
-    // You can extend your Apps Script to handle POST requests to update a Google Sheet.
-  };
+  async function postAction(action, payload) {
+    try {
+      const res = await fetch(BASE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action, pin: ADMIN_PIN, ...payload })
+      });
+      return await res.json();
+    } catch (err) {
+      showToast("Network error");
+      return null;
+    }
+  }
 
-  function escapeHtml(str) {
-    if (!str) return '';
-    return String(str).replace(/[&<>]/g, function(m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      return m;
+  // Send WhatsApp notification to nail tech
+  function sendTechWhatsApp(bookingData, hasInspo) {
+    const message = `🏠 *HOUSE OF NAILS 23 - NEW BOOKING* 🏠\n\n👤 *Client:* ${bookingData.name}\n📞 *WhatsApp:* ${bookingData.phone}\n${bookingData.email ? `📧 *Email:* ${bookingData.email}\n` : ''}💅 *Service:* ${bookingData.service}\n${bookingData.addons ? `✨ *Add-on:* ${bookingData.addons}\n` : ''}💰 *Total:* ${bookingData.total}\n💸 *Deposit:* ${bookingData.deposit}\n📅 *Date:* ${bookingData.date} at ${bookingData.time}\n📝 *Notes:* ${bookingData.notes || 'None'}${hasInspo ? '\n📸 *Inspo photo attached* (check email)' : ''}\n\n⚠️ Client needs to pay 50% deposit to Capitec 2440381884 and send proof to you.`;
+    const whatsappUrl = `https://wa.me/${TECH_WHATSAPP}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  // Load specials on public page
+  async function loadPublicSpecials() {
+    const container = document.getElementById('specialsDynamicContainer');
+    if (!container) return;
+    const data = await fetchData('specials');
+    const specials = data?.specials || [];
+    if (specials.length === 0) {
+      container.innerHTML = '<div class="card"><p>No active specials. Check back soon!</p></div>';
+      return;
+    }
+    let html = '<div class="card">';
+    specials.forEach(s => {
+      html += `<div style="margin-bottom:16px;"><strong>✨ ${escapeHtml(s.title)}</strong><br>${escapeHtml(s.description)}`;
+      if (s.expiryDate) html += `<br><small>Valid until ${s.expiryDate}</small>`;
+      html += `</div><hr>`;
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
+  // Admin functions
+  async function loadAdminSpecials() {
+    const container = document.getElementById('specialsList');
+    if (!container) return;
+    const data = await fetchData('specials');
+    const specials = data?.specials || [];
+    if (specials.length === 0) { container.innerHTML = '<p>No specials.</p>'; return; }
+    let html = '';
+    specials.forEach(s => {
+      html += `
+        <div class="special-item" data-id="${s.id}">
+          <strong>${escapeHtml(s.title)}</strong> ${s.expiryDate ? `(until ${s.expiryDate})` : ''}
+          <p>${escapeHtml(s.description)}</p>
+          <button class="edit-special-btn" data-id="${s.id}" style="background:#C29D93; border:none; padding:4px 12px; border-radius:20px; margin-right:8px;">Edit</button>
+          <button class="delete-special-btn" data-id="${s.id}" style="background:#888; border:none; padding:4px 12px; border-radius:20px;">Delete</button>
+        </div>
+      `;
+    });
+    container.innerHTML = html;
+  }
+
+  async function loadClosedDays() {
+    const container = document.getElementById('closedDaysList');
+    if (!container) return;
+    const data = await fetchData('closedDays');
+    const days = data?.closedDays || [];
+    if (days.length === 0) { container.innerHTML = '<p>No closed days.</p>'; return; }
+    let html = '';
+    days.forEach(d => {
+      html += `<div class="closed-day-item"><span>📅 ${d}</span><button class="remove-closed-day" data-date="${d}" style="background:#888; border:none; padding:4px 12px; border-radius:20px;">Remove</button></div>`;
+    });
+    container.innerHTML = html;
+  }
+
+  async function loadBookings() {
+    const container = document.getElementById('bookingsList');
+    if (!container) return;
+    const data = await fetchData('bookings');
+    const bookings = data?.bookings || [];
+    if (bookings.length === 0) { container.innerHTML = '<p>No bookings.</p>'; return; }
+    let html = '<table class="admin-table"><thead><tr><th>ID</th><th>Customer</th><th>Phone</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead><tbody>';
+    bookings.forEach(b => {
+      html += `<tr>
+        <td>${escapeHtml(b.ID)}</td>
+        <td>${escapeHtml(b.Customer)}</td>
+        <td>${escapeHtml(b.Phone || '')}</td>
+        <td>${escapeHtml(b.Date)}</td>
+        <td><span class="status-badge ${b.Status === 'confirmed' ? 'status-confirmed' : 'status-pending'}">${escapeHtml(b.Status || 'pending')}</span></td>
+        <td>
+          <button class="confirm-booking" data-id="${b.ID}" style="background:#C29D93; border:none; padding:4px 12px; border-radius:20px;">Confirm</button>
+          <button class="pending-booking" data-id="${b.ID}" style="background:#888; border:none; padding:4px 12px; border-radius:20px;">Pending</button>
+        </td>
+      </tr>`;
+    });
+    html += '</tbody></table>';
+    container.innerHTML = html;
+  }
+
+  function exportToCSV(bookings) {
+    if (!bookings || bookings.length === 0) { showToast("No bookings to export"); return; }
+    const headers = ["ID", "Customer", "Phone", "Email", "Service", "Addons", "Total", "Deposit", "Date", "Time", "Notes", "Status", "Timestamp"];
+    const rows = bookings.map(b => [
+      b.ID, b.Customer, b.Phone || '', b.Email || '', b.Service || '', b.Addons || '', b.Total || '', b.Deposit || '',
+      b.Date || '', b.Time || '', b.Notes || '', b.Status || 'pending', b.Timestamp || ''
+    ]);
+    const csvContent = [headers, ...rows].map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(',')).join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.href = url;
+    link.setAttribute('download', 'bookings.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
+  // Admin event listeners
+  function setupAdminEvents() {
+    document.getElementById('showAddSpecialBtn')?.addEventListener('click', () => {
+      document.getElementById('addSpecialForm').style.display = 'block';
+    });
+    document.getElementById('cancelSpecialBtn')?.addEventListener('click', () => {
+      document.getElementById('addSpecialForm').style.display = 'none';
+      document.getElementById('newSpecialTitle').value = '';
+      document.getElementById('newSpecialDesc').value = '';
+      document.getElementById('newSpecialExpiry').value = '';
+    });
+    document.getElementById('saveSpecialBtn')?.addEventListener('click', async () => {
+      const title = document.getElementById('newSpecialTitle').value.trim();
+      const description = document.getElementById('newSpecialDesc').value.trim();
+      const expiryDate = document.getElementById('newSpecialExpiry').value;
+      if (!title) { showToast("Title required"); return; }
+      const result = await postAction('addSpecial', { title, description, expiryDate });
+      if (result?.success) { showToast("Special added"); document.getElementById('addSpecialForm').style.display = 'none'; loadAdminSpecials(); loadPublicSpecials(); }
+    });
+
+    document.getElementById('specialsList')?.addEventListener('click', async (e) => {
+      if (e.target.classList.contains('delete-special-btn')) {
+        const id = parseInt(e.target.dataset.id);
+        const result = await postAction('deleteSpecial', { id });
+        if (result?.success) { showToast("Deleted"); loadAdminSpecials(); loadPublicSpecials(); }
+      } else if (e.target.classList.contains('edit-special-btn')) {
+        showToast("Edit feature - implement via prompt or modal");
+      }
+    });
+
+    document.getElementById('addClosedDayBtn')?.addEventListener('click', async () => {
+      const date = document.getElementById('newClosedDate').value;
+      if (!date) { showToast("Select a date"); return; }
+      const result = await postAction('addClosedDay', { date });
+      if (result?.success) { showToast("Closed day added"); loadClosedDays(); document.getElementById('newClosedDate').value = ''; }
+    });
+
+    document.getElementById('closedDaysList')?.addEventListener('click', async (e) => {
+      if (e.target.classList.contains('remove-closed-day')) {
+        const date = e.target.dataset.date;
+        const result = await postAction('removeClosedDay', { date });
+        if (result?.success) { showToast("Removed"); loadClosedDays(); }
+      }
+    });
+
+    document.getElementById('bookingsList')?.addEventListener('click', async (e) => {
+      let id = null, status = null;
+      if (e.target.classList.contains('confirm-booking')) {
+        id = e.target.dataset.id;
+        status = 'confirmed';
+      } else if (e.target.classList.contains('pending-booking')) {
+        id = e.target.dataset.id;
+        status = 'pending';
+      }
+      if (id && status) {
+        const result = await postAction('updateBookingStatus', { id: parseInt(id), status });
+        if (result?.success) { showToast("Status updated"); loadBookings(); }
+      }
+    });
+
+    document.getElementById('exportBookingsBtn')?.addEventListener('click', async () => {
+      const data = await fetchData('bookings');
+      const bookings = data?.bookings || [];
+      exportToCSV(bookings);
     });
   }
 
-  // ======================= EXISTING BOOKING FORM LOGIC =======================
-  let selectedInspoFile = null;
-  const inspoUploadBox = document.getElementById('inspoUploadBox');
-  const inspoFileInput = document.getElementById('inspoFileInput');
-  const inspoFileInfo = document.getElementById('inspoFileInfo');
-  const inspoPreview = document.getElementById('inspoPreview');
-  const inspoPreviewImg = document.getElementById('inspoPreviewImg');
-  const removeInspoBtn = document.getElementById('removeInspoBtn');
-
-  function handleInspoFile(file) {
-    if (!file.type.match('image.*')) { showToast('Please upload a JPG or PNG image.'); return; }
-    if (file.size > 10 * 1024 * 1024) { showToast('Image must be less than 10MB.'); return; }
-    selectedInspoFile = file;
-    inspoFileInfo.textContent = `✓ ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
-    inspoFileInfo.classList.add('show');
-    const reader = new FileReader();
-    reader.onload = (e) => { inspoPreviewImg.src = e.target.result; inspoPreview.classList.add('show'); };
-    reader.readAsDataURL(file);
+  // Admin login/logout
+  function showAdminPanel() {
+    document.getElementById('adminSection').style.display = 'block';
+    document.getElementById('adminLoginBtn').style.display = 'none';
+    document.getElementById('adminNavBtn').style.display = 'inline-block';
+    isAdmin = true;
+    loadAdminSpecials();
+    loadClosedDays();
+    loadBookings();
+    setupAdminEvents();
   }
-
-  if (inspoUploadBox) {
-    inspoUploadBox.onclick = () => inspoFileInput.click();
-    inspoUploadBox.ondragover = (e) => { e.preventDefault(); inspoUploadBox.classList.add('dragover'); };
-    inspoUploadBox.ondragleave = () => { inspoUploadBox.classList.remove('dragover'); };
-    inspoUploadBox.ondrop = (e) => { e.preventDefault(); inspoUploadBox.classList.remove('dragover'); if (e.dataTransfer.files.length) handleInspoFile(e.dataTransfer.files[0]); };
+  function hideAdminPanel() {
+    document.getElementById('adminSection').style.display = 'none';
+    document.getElementById('adminLoginBtn').style.display = 'flex';
+    document.getElementById('adminNavBtn').style.display = 'none';
+    isAdmin = false;
+    sessionStorage.removeItem('adminAuth');
   }
-  if (inspoFileInput) inspoFileInput.onchange = (e) => { if (e.target.files.length) handleInspoFile(e.target.files[0]); };
-  if (removeInspoBtn) {
-    removeInspoBtn.onclick = () => {
-      selectedInspoFile = null;
-      inspoFileInput.value = '';
-      inspoFileInfo.classList.remove('show');
-      inspoPreview.classList.remove('show');
-      inspoPreviewImg.src = '';
-    };
-  }
+  document.getElementById('adminLoginBtn')?.addEventListener('click', () => {
+    const pin = prompt("Enter admin PIN:");
+    if (pin === ADMIN_PIN) { showAdminPanel(); showToast("Logged in"); sessionStorage.setItem('adminAuth', 'true'); }
+    else if (pin !== null) showToast("Wrong PIN");
+  });
+  document.getElementById('adminLogoutBtn')?.addEventListener('click', () => {
+    hideAdminPanel();
+    showToast("Logged out");
+  });
+  document.getElementById('adminNavBtn')?.addEventListener('click', () => {
+    if (isAdmin) {
+      document.getElementById('adminSection').scrollIntoView({ behavior: 'smooth' });
+    }
+  });
 
-  function getServicePrice() { 
-    const s = document.getElementById('serviceSelect'); 
-    const opt = s.options[s.selectedIndex]; 
-    return opt && opt.getAttribute('data-price') ? parseInt(opt.getAttribute('data-price')) : 0; 
+  // Booking form logic (deposit calculation, inspo upload)
+  function getServicePrice() {
+    const s = document.getElementById('serviceSelect');
+    const opt = s.options[s.selectedIndex];
+    return opt && opt.dataset.price ? parseInt(opt.dataset.price) : 0;
   }
   function getAddonDetails() {
     const val = document.getElementById('addonSelect').value;
@@ -1060,108 +996,88 @@
       box.classList.add('show');
     } else box.classList.remove('show');
   }
-  function updateAddonInfo() { const a = getAddonDetails(); document.getElementById('addonPriceInfo').innerHTML = a.total ? `+ ${a.name}: R${a.total}` : ''; updateDeposit(); }
+  document.getElementById('serviceSelect')?.addEventListener('change', updateDeposit);
+  document.getElementById('addonSelect')?.addEventListener('change', updateDeposit);
+  document.getElementById('addonQuantity')?.addEventListener('input', updateDeposit);
 
-  document.getElementById('serviceSelect').addEventListener('change', updateDeposit);
-  document.getElementById('addonSelect').addEventListener('change', updateAddonInfo);
-  document.getElementById('addonQuantity').addEventListener('input', updateAddonInfo);
+  // Inspo upload
+  const inspoBox = document.getElementById('inspoUploadBox');
+  const inspoFile = document.getElementById('inspoFileInput');
+  const inspoPreview = document.getElementById('inspoPreview');
+  const inspoImg = document.getElementById('inspoPreviewImg');
+  const removeInspo = document.getElementById('removeInspoBtn');
+  if (inspoBox) {
+    inspoBox.onclick = () => inspoFile.click();
+    inspoFile.onchange = (e) => {
+      if (e.target.files.length) {
+        const file = e.target.files[0];
+        if (file.size > 10*1024*1024) { showToast("Max 10MB"); return; }
+        selectedInspoFile = file;
+        const reader = new FileReader();
+        reader.onload = (ev) => { inspoImg.src = ev.target.result; inspoPreview.classList.add('show'); };
+        reader.readAsDataURL(file);
+      }
+    };
+    removeInspo.onclick = () => {
+      selectedInspoFile = null;
+      inspoFile.value = '';
+      inspoPreview.classList.remove('show');
+      inspoImg.src = '';
+    };
+  }
 
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  document.getElementById('appointmentDate').min = tomorrow.toISOString().split('T')[0];
-
-  const bookingForm = document.getElementById('bookingForm');
-  const bookBtn = document.getElementById('bookBtn');
-
-  bookingForm.addEventListener('submit', async (e) => {
+  // Submit booking
+  document.getElementById('bookingForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = document.getElementById('fullName').value.trim();
     const phone = document.getElementById('phoneNum').value.trim();
     const email = document.getElementById('emailAddr').value.trim();
-    const serviceSelect = document.getElementById('serviceSelect');
-    const service = serviceSelect.options[serviceSelect.selectedIndex]?.text || '';
+    const service = document.getElementById('serviceSelect').options[document.getElementById('serviceSelect').selectedIndex]?.text || '';
     const addon = getAddonDetails();
     const date = document.getElementById('appointmentDate').value;
     const time = document.getElementById('timeSelect').value;
     const notes = document.getElementById('specialRequests').value.trim();
     const total = getTotal();
     const deposit = getDeposit();
+    if (!name || !phone || !service || !date) { showToast("Please fill required fields"); return; }
 
-    if (!name) { showToast('Please enter your name'); return; }
-    if (!phone) { showToast('Please enter your WhatsApp number'); return; }
-    if (!serviceSelect.value) { showToast('Please select a service'); return; }
-    if (!date) { showToast('Please select a date'); return; }
-
-    bookBtn.disabled = true;
-    bookBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
-
-    const addonText = addon.name !== 'None' ? `\n✨ Add-on: ${addon.name} (+R${addon.total})` : '';
-    const inspoText = selectedInspoFile ? `\n📸 Has inspo photo attached (check email)` : '';
-    const notesText = notes ? `\n📝 Notes: ${notes}` : '';
-    
-    const techWhatsAppMessage = `🏠 *HOUSE OF NAILS 23 - NEW BOOKING* 🏠\n\n👤 *Client:* ${name}\n📞 *WhatsApp:* ${phone}\n${email ? `📧 *Email:* ${email}` : ''}\n💅 *Service:* ${service}${addonText}\n💰 *Total:* R${total}\n💸 *50% Deposit:* R${deposit}\n📅 *Date:* ${date} at ${time}\n${notesText}${inspoText}\n\n⚠️ Client needs to pay 50% deposit (Capitec 2440381884) and send proof to your WhatsApp.\n🔗 Website: https://seithati30.github.io/houseofnails23website/`;
-    const techWhatsAppUrl = `https://wa.me/27635967477?text=${encodeURIComponent(techWhatsAppMessage)}`;
-
-    if (selectedInspoFile) {
-      try {
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('phone', phone);
-        formData.append('email', email);
-        formData.append('service', service);
-        formData.append('addon', addon.name);
-        formData.append('date', date);
-        formData.append('time', time);
-        formData.append('notes', notes);
-        formData.append('deposit', deposit);
-        formData.append('total', total);
-        formData.append('image', selectedInspoFile);
-        formData.append('_captcha', 'false');
-        formData.append('_subject', `NEW BOOKING: ${name} wants ${service}`);
-        formData.append('_replyto', 'houseofnailz23@gmail.com');
-        await fetch('https://formsubmit.co/ajax/houseofnailz23@gmail.com', { method: 'POST', body: formData });
-      } catch(err) { console.log('Email error:', err); }
-    }
-    window.open(techWhatsAppUrl, '_blank');
-    showToast(`✓ Request sent! Complete booking by paying 50% deposit via EFT.`);
-    setTimeout(() => {
-      document.getElementById('fullName').value = '';
-      document.getElementById('phoneNum').value = '';
-      document.getElementById('emailAddr').value = '';
-      document.getElementById('serviceSelect').selectedIndex = 0;
-      document.getElementById('addonSelect').selectedIndex = 0;
-      document.getElementById('addonQuantity').value = 1;
-      document.getElementById('specialRequests').value = '';
-      document.getElementById('appointmentDate').value = '';
-      document.getElementById('timeSelect').selectedIndex = 0;
+    const bookingData = { name, phone, email, service, addons: addon.name !== 'None' ? addon.name : '', total: `R${total}`, deposit: `R${deposit}`, date, time, notes, inspoUrl: '' };
+    const result = await postAction('addBooking', { booking: bookingData });
+    if (result?.success) {
+      showToast("Booking request sent! Pay deposit to confirm.");
+      // Send WhatsApp to nail tech
+      sendTechWhatsApp(bookingData, !!selectedInspoFile);
+      // Reset form
+      document.getElementById('bookingForm').reset();
       selectedInspoFile = null;
-      inspoFileInput.value = '';
-      inspoFileInfo.classList.remove('show');
       inspoPreview.classList.remove('show');
-      inspoPreviewImg.src = '';
-      document.getElementById('depositBox').classList.remove('show');
       updateDeposit();
-    }, 100);
-    bookBtn.disabled = false;
-    bookBtn.innerHTML = '<i class="fas fa-calendar-check"></i> Submit Booking Request';
+    } else {
+      showToast("Error submitting booking");
+    }
   });
 
-  // ======================= SECTION NAVIGATION =======================
+  // Navigation
   function activateSection(id) {
-    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active-section'));
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active-section'));
     document.getElementById(`${id}-section`).classList.add('active-section');
-    document.querySelectorAll('.nav-link').forEach(btn=>btn.classList.remove('active-nav'));
+    document.querySelectorAll('.nav-link').forEach(btn => btn.classList.remove('active-nav'));
     document.querySelector(`.nav-link[data-section="${id}"]`).classList.add('active-nav');
+    if (id === 'specials') loadPublicSpecials();
   }
-  document.querySelectorAll('.nav-link[data-section]').forEach(btn=>btn.addEventListener('click',()=>activateSection(btn.getAttribute('data-section'))));
-  
-  // Admin event listeners
-  document.getElementById('adminLoginBtn').addEventListener('click', adminLogin);
-  document.getElementById('adminLogoutBtn').addEventListener('click', adminLogout);
-  document.getElementById('refreshAdminBtn').addEventListener('click', loadAdminBookings);
-  
-  // Check auth on load
-  checkAdminAuth();
+  document.querySelectorAll('.nav-link').forEach(btn => btn.addEventListener('click', () => activateSection(btn.dataset.section)));
+
+  // Set min date for booking and disable closed days (client-side check)
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const dateInput = document.getElementById('appointmentDate');
+  if (dateInput) dateInput.min = tomorrow.toISOString().split('T')[0];
+
+  // Load public specials on page load
+  loadPublicSpecials();
+
+  // Check for existing admin session
+  if (sessionStorage.getItem('adminAuth') === 'true') showAdminPanel();
 </script>
 </body>
 </html>
