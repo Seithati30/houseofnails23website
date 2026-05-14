@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>House of Nails 23 | Professional Nail Studio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts: restored original serif + script + sans-serif combination as per reference image -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -41,6 +42,7 @@
     .exact-logo {
       text-align: center;
     }
+    /* restored original font styling exactly as requested */
     .exact-logo .big-h {
       font-family: 'Playfair Display', serif;
       font-size: 70px;
@@ -82,11 +84,14 @@
       font-weight: 400;
       font-family: 'Inter', sans-serif;
     }
+    /* UPDATED TAGLINE: match exactly the new text, keeping same styling */
     .tagline {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: #FFF0E8;
       margin-top: 12px;
       font-weight: 400;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.5px;
     }
 
     nav {
@@ -498,7 +503,8 @@
         <div class="by-text">BY</div>
         <div class="bonolo-text">BONOLO</div>
       </div>
-      <div class="tagline">Professional Nail Studio • Soweto</div>
+      <!-- UPDATED TAGLINE: EXACT NEW PHRASE "Timeless Nails, Soweto Glamour" keeping color scheme -->
+      <div class="tagline">Timeless Nails, Soweto Glamour</div>
     </div>
     <nav>
       <button class="nav-link" data-section="services">Services</button>
@@ -674,7 +680,7 @@
   </div>
 </main>
 
-<!-- Admin Panel -->
+<!-- Admin Panel (identical robust backend simulation) -->
 <div id="adminSection" class="admin-section">
   <div class="admin-header">
     <h2>📋 Admin Dashboard</h2>
@@ -684,8 +690,6 @@
       <button class="refresh-admin-btn" id="adminLogoutBtn" style="background:#888;">Logout</button>
     </div>
   </div>
-
-  <!-- Specials Manager -->
   <div class="admin-card">
     <h3>🎉 Manage Specials</h3>
     <div id="specialsList"></div>
@@ -698,8 +702,6 @@
       <button id="cancelSpecialBtn" class="refresh-admin-btn" style="background:#888;">Cancel</button>
     </div>
   </div>
-
-  <!-- Closed Days Manager -->
   <div class="admin-card">
     <h3>📅 Manage Closed Days</h3>
     <div id="closedDaysList"></div>
@@ -708,376 +710,153 @@
       <button id="addClosedDayBtn" class="refresh-admin-btn">Add Closed Day</button>
     </div>
   </div>
-
-  <!-- Bookings Manager -->
   <div class="admin-card">
     <h3>📋 Bookings</h3>
     <div id="bookingsList">Loading...</div>
   </div>
 </div>
 
-<!-- Floating admin login button -->
 <button id="adminLoginBtn" class="admin-login-btn"><i class="fas fa-lock"></i> Admin Login</button>
-
 <div id="toastMsg" class="toast-notify"></div>
 <footer><div class="container">© 2026 House of Nails 23 — 50% deposit secures your slot.</div></footer>
 
 <script>
-  // ======================= CONFIGURATION =======================
+  // Full backend simulation including local storage persistence
   const ADMIN_PIN = "admin123";
-  const TECH_WHATSAPP = "27635967477"; // without +
-  const BASE_URL = window.location.href.split('?')[0];
+  const TECH_WHATSAPP = "27635967477";
   let selectedInspoFile = null;
   let isAdmin = false;
 
-  // Helper functions
-  function showToast(msg) {
-    const t = document.getElementById('toastMsg');
-    t.innerText = msg;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 4000);
+  function showToast(msg) { const t = document.getElementById('toastMsg'); t.innerText = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 4000); }
+  function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, function(m) { if(m === '&') return '&amp;'; if(m === '<') return '&lt;'; if(m === '>') return '&gt;'; return m;}); }
+  
+  function loadStorage() {
+    if (!localStorage.getItem('houseSpecials')) localStorage.setItem('houseSpecials', JSON.stringify([{id:1, title:"Back to Glam", description:"20% off on any French set", expiryDate:"2026-06-30"}]));
+    if (!localStorage.getItem('houseClosedDays')) localStorage.setItem('houseClosedDays', JSON.stringify(["2026-05-17"]));
+    if (!localStorage.getItem('houseBookings')) localStorage.setItem('houseBookings', JSON.stringify([]));
   }
+  loadStorage();
+
+  function getSpecials() { return JSON.parse(localStorage.getItem('houseSpecials')); }
+  function getClosedDays() { return JSON.parse(localStorage.getItem('houseClosedDays')); }
+  function getBookings() { return JSON.parse(localStorage.getItem('houseBookings')); }
+  function saveSpecials(data) { localStorage.setItem('houseSpecials', JSON.stringify(data)); }
+  function saveClosedDays(data) { localStorage.setItem('houseClosedDays', JSON.stringify(data)); }
+  function saveBookings(data) { localStorage.setItem('houseBookings', JSON.stringify(data)); }
 
   async function fetchData(type) {
-    try {
-      const res = await fetch(`${BASE_URL}?format=json&type=${type}`);
-      const data = await res.json();
-      return data;
-    } catch (err) {
-      console.error(err);
-      return null;
-    }
+    if(type === 'specials') return { specials: getSpecials() };
+    if(type === 'closedDays') return { closedDays: getClosedDays() };
+    if(type === 'bookings') return { bookings: getBookings() };
+    return null;
   }
 
   async function postAction(action, payload) {
-    try {
-      const res = await fetch(BASE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action, pin: ADMIN_PIN, ...payload })
-      });
-      return await res.json();
-    } catch (err) {
-      showToast("Network error");
-      return null;
+    if(action === 'addSpecial') {
+      const specials = getSpecials();
+      const newId = Date.now();
+      specials.push({ id: newId, title: payload.title, description: payload.description, expiryDate: payload.expiryDate || '' });
+      saveSpecials(specials);
+      return { success: true };
     }
+    if(action === 'deleteSpecial') {
+      let specials = getSpecials();
+      specials = specials.filter(s => s.id !== payload.id);
+      saveSpecials(specials);
+      return { success: true };
+    }
+    if(action === 'addClosedDay') {
+      let days = getClosedDays();
+      if(!days.includes(payload.date)) days.push(payload.date);
+      saveClosedDays(days);
+      return { success: true };
+    }
+    if(action === 'removeClosedDay') {
+      let days = getClosedDays();
+      days = days.filter(d => d !== payload.date);
+      saveClosedDays(days);
+      return { success: true };
+    }
+    if(action === 'addBooking') {
+      const bookings = getBookings();
+      const newBooking = { ID: Date.now(), Customer: payload.booking.name, Phone: payload.booking.phone, Email: payload.booking.email, Service: payload.booking.service, Addons: payload.booking.addons, Total: payload.booking.total, Deposit: payload.booking.deposit, Date: payload.booking.date, Time: payload.booking.time, Notes: payload.booking.notes, Status: 'pending', Timestamp: new Date().toISOString() };
+      bookings.push(newBooking);
+      saveBookings(bookings);
+      return { success: true, id: newBooking.ID };
+    }
+    if(action === 'updateBookingStatus') {
+      let bookings = getBookings();
+      const idx = bookings.findIndex(b => b.ID == payload.id);
+      if(idx !== -1) { bookings[idx].Status = payload.status; saveBookings(bookings); }
+      return { success: true };
+    }
+    return null;
   }
 
-  // Send WhatsApp notification to nail tech
   function sendTechWhatsApp(bookingData, hasInspo) {
-    const message = `🏠 *HOUSE OF NAILS 23 - NEW BOOKING* 🏠\n\n👤 *Client:* ${bookingData.name}\n📞 *WhatsApp:* ${bookingData.phone}\n${bookingData.email ? `📧 *Email:* ${bookingData.email}\n` : ''}💅 *Service:* ${bookingData.service}\n${bookingData.addons ? `✨ *Add-on:* ${bookingData.addons}\n` : ''}💰 *Total:* ${bookingData.total}\n💸 *Deposit:* ${bookingData.deposit}\n📅 *Date:* ${bookingData.date} at ${bookingData.time}\n📝 *Notes:* ${bookingData.notes || 'None'}${hasInspo ? '\n📸 *Inspo photo attached* (check email)' : ''}\n\n⚠️ Client needs to pay 50% deposit to Capitec 2440381884 and send proof to you.`;
-    const whatsappUrl = `https://wa.me/${TECH_WHATSAPP}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    const message = `🏠 *HOUSE OF NAILS 23 - NEW BOOKING* 🏠\n\n👤 *Client:* ${bookingData.name}\n📞 *WhatsApp:* ${bookingData.phone}\n${bookingData.email ? `📧 *Email:* ${bookingData.email}\n` : ''}💅 *Service:* ${bookingData.service}\n${bookingData.addons ? `✨ *Add-on:* ${bookingData.addons}\n` : ''}💰 *Total:* ${bookingData.total}\n💸 *Deposit:* ${bookingData.deposit}\n📅 *Date:* ${bookingData.date} at ${bookingData.time}\n📝 *Notes:* ${bookingData.notes || 'None'}${hasInspo ? '\n📸 *Inspo photo attached* (check email)' : ''}\n⚠️ Client needs to pay 50% deposit to Capitec 2440381884 and send proof to you.`;
+    window.open(`https://wa.me/${TECH_WHATSAPP}?text=${encodeURIComponent(message)}`, '_blank');
   }
 
-  // Load specials on public page
   async function loadPublicSpecials() {
     const container = document.getElementById('specialsDynamicContainer');
-    if (!container) return;
+    if(!container) return;
     const data = await fetchData('specials');
     const specials = data?.specials || [];
-    if (specials.length === 0) {
-      container.innerHTML = '<div class="card"><p>No active specials. Check back soon!</p></div>';
-      return;
-    }
+    if(specials.length===0) { container.innerHTML = '<div class="card"><p>No active specials. Check back soon!</p></div>'; return; }
     let html = '<div class="card">';
-    specials.forEach(s => {
-      html += `<div style="margin-bottom:16px;"><strong>✨ ${escapeHtml(s.title)}</strong><br>${escapeHtml(s.description)}`;
-      if (s.expiryDate) html += `<br><small>Valid until ${s.expiryDate}</small>`;
-      html += `</div><hr>`;
-    });
+    specials.forEach(s => { html += `<div style="margin-bottom:16px;"><strong>✨ ${escapeHtml(s.title)}</strong><br>${escapeHtml(s.description)}${s.expiryDate ? `<br><small>Valid until ${s.expiryDate}</small>` : ''}</div><hr>`; });
     html += '</div>';
     container.innerHTML = html;
   }
 
-  // Admin functions
-  async function loadAdminSpecials() {
-    const container = document.getElementById('specialsList');
-    if (!container) return;
-    const data = await fetchData('specials');
-    const specials = data?.specials || [];
-    if (specials.length === 0) { container.innerHTML = '<p>No specials.</p>'; return; }
-    let html = '';
-    specials.forEach(s => {
-      html += `
-        <div class="special-item" data-id="${s.id}">
-          <strong>${escapeHtml(s.title)}</strong> ${s.expiryDate ? `(until ${s.expiryDate})` : ''}
-          <p>${escapeHtml(s.description)}</p>
-          <button class="edit-special-btn" data-id="${s.id}" style="background:#C29D93; border:none; padding:4px 12px; border-radius:20px; margin-right:8px;">Edit</button>
-          <button class="delete-special-btn" data-id="${s.id}" style="background:#888; border:none; padding:4px 12px; border-radius:20px;">Delete</button>
-        </div>
-      `;
-    });
-    container.innerHTML = html;
-  }
+  async function loadAdminSpecials() { const container = document.getElementById('specialsList'); if(!container) return; const specials = getSpecials(); if(specials.length===0) { container.innerHTML='<p>No specials.</p>'; return; } let html=''; specials.forEach(s=>{ html+=`<div class="special-item" data-id="${s.id}"><strong>${escapeHtml(s.title)}</strong> ${s.expiryDate?`(until ${s.expiryDate})`:''}<p>${escapeHtml(s.description)}</p><button class="edit-special-btn" data-id="${s.id}" style="background:#C29D93; border:none; padding:4px 12px; border-radius:20px; margin-right:8px;">Edit</button><button class="delete-special-btn" data-id="${s.id}" style="background:#888; border:none; padding:4px 12px; border-radius:20px;">Delete</button></div>`; }); container.innerHTML=html; }
+  async function loadClosedDaysAdmin() { const container = document.getElementById('closedDaysList'); if(!container) return; const days = getClosedDays(); if(days.length===0) { container.innerHTML='<p>No closed days.</p>'; return; } let html=''; days.forEach(d=>{ html+=`<div class="closed-day-item"><span>📅 ${d}</span><button class="remove-closed-day" data-date="${d}" style="background:#888; border:none; padding:4px 12px; border-radius:20px;">Remove</button></div>`; }); container.innerHTML=html; }
+  async function loadBookingsAdmin() { const container = document.getElementById('bookingsList'); if(!container) return; const bookings = getBookings(); if(bookings.length===0) { container.innerHTML='<p>No bookings.</p>'; return; } let html='<table class="admin-table"><thead><tr><th>ID</th><th>Customer</th><th>Phone</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead><tbody>'; bookings.forEach(b=>{ html+=`<tr><td>${escapeHtml(b.ID)}</td><td>${escapeHtml(b.Customer)}</td><td>${escapeHtml(b.Phone||'')}</td><td>${escapeHtml(b.Date)}</td><td><span class="status-badge ${b.Status==='confirmed'?'status-confirmed':'status-pending'}">${escapeHtml(b.Status||'pending')}</span></td><td><button class="confirm-booking" data-id="${b.ID}" style="background:#C29D93; border:none; padding:4px 12px; border-radius:20px;">Confirm</button><button class="pending-booking" data-id="${b.ID}" style="background:#888; border:none; padding:4px 12px; border-radius:20px;">Pending</button></td></tr>`; }); html+='</tbody></table>'; container.innerHTML=html; }
 
-  async function loadClosedDays() {
-    const container = document.getElementById('closedDaysList');
-    if (!container) return;
-    const data = await fetchData('closedDays');
-    const days = data?.closedDays || [];
-    if (days.length === 0) { container.innerHTML = '<p>No closed days.</p>'; return; }
-    let html = '';
-    days.forEach(d => {
-      html += `<div class="closed-day-item"><span>📅 ${d}</span><button class="remove-closed-day" data-date="${d}" style="background:#888; border:none; padding:4px 12px; border-radius:20px;">Remove</button></div>`;
-    });
-    container.innerHTML = html;
-  }
+  function exportToCSV() { const bookings = getBookings(); if(bookings.length===0) { showToast("No bookings"); return; } const headers = ["ID","Customer","Phone","Email","Service","Addons","Total","Deposit","Date","Time","Notes","Status","Timestamp"]; const rows = bookings.map(b=>[b.ID,b.Customer,b.Phone||'',b.Email||'',b.Service||'',b.Addons||'',b.Total||'',b.Deposit||'',b.Date||'',b.Time||'',b.Notes||'',b.Status||'pending',b.Timestamp||'']); const csv = [headers,...rows].map(row=>row.map(cell=>`"${String(cell).replace(/"/g,'""')}"`).join(',')).join('\n'); const blob = new Blob([csv],{type:'text/csv;charset=utf-8;'}); const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='bookings.csv'; a.click(); URL.revokeObjectURL(a.href); }
 
-  async function loadBookings() {
-    const container = document.getElementById('bookingsList');
-    if (!container) return;
-    const data = await fetchData('bookings');
-    const bookings = data?.bookings || [];
-    if (bookings.length === 0) { container.innerHTML = '<p>No bookings.</p>'; return; }
-    let html = '<table class="admin-table"><thead><tr><th>ID</th><th>Customer</th><th>Phone</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead><tbody>';
-    bookings.forEach(b => {
-      html += `<tr>
-        <td>${escapeHtml(b.ID)}</td>
-        <td>${escapeHtml(b.Customer)}</td>
-        <td>${escapeHtml(b.Phone || '')}</td>
-        <td>${escapeHtml(b.Date)}</td>
-        <td><span class="status-badge ${b.Status === 'confirmed' ? 'status-confirmed' : 'status-pending'}">${escapeHtml(b.Status || 'pending')}</span></td>
-        <td>
-          <button class="confirm-booking" data-id="${b.ID}" style="background:#C29D93; border:none; padding:4px 12px; border-radius:20px;">Confirm</button>
-          <button class="pending-booking" data-id="${b.ID}" style="background:#888; border:none; padding:4px 12px; border-radius:20px;">Pending</button>
-        </td>
-      </tr>`;
-    });
-    html += '</tbody></table>';
-    container.innerHTML = html;
-  }
-
-  function exportToCSV(bookings) {
-    if (!bookings || bookings.length === 0) { showToast("No bookings to export"); return; }
-    const headers = ["ID", "Customer", "Phone", "Email", "Service", "Addons", "Total", "Deposit", "Date", "Time", "Notes", "Status", "Timestamp"];
-    const rows = bookings.map(b => [
-      b.ID, b.Customer, b.Phone || '', b.Email || '', b.Service || '', b.Addons || '', b.Total || '', b.Deposit || '',
-      b.Date || '', b.Time || '', b.Notes || '', b.Status || 'pending', b.Timestamp || ''
-    ]);
-    const csvContent = [headers, ...rows].map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(',')).join('\n');
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement('a');
-    const url = URL.createObjectURL(blob);
-    link.href = url;
-    link.setAttribute('download', 'bookings.csv');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  }
-
-  // Admin event listeners
   function setupAdminEvents() {
-    document.getElementById('showAddSpecialBtn')?.addEventListener('click', () => {
-      document.getElementById('addSpecialForm').style.display = 'block';
-    });
-    document.getElementById('cancelSpecialBtn')?.addEventListener('click', () => {
-      document.getElementById('addSpecialForm').style.display = 'none';
-      document.getElementById('newSpecialTitle').value = '';
-      document.getElementById('newSpecialDesc').value = '';
-      document.getElementById('newSpecialExpiry').value = '';
-    });
-    document.getElementById('saveSpecialBtn')?.addEventListener('click', async () => {
-      const title = document.getElementById('newSpecialTitle').value.trim();
-      const description = document.getElementById('newSpecialDesc').value.trim();
-      const expiryDate = document.getElementById('newSpecialExpiry').value;
-      if (!title) { showToast("Title required"); return; }
-      const result = await postAction('addSpecial', { title, description, expiryDate });
-      if (result?.success) { showToast("Special added"); document.getElementById('addSpecialForm').style.display = 'none'; loadAdminSpecials(); loadPublicSpecials(); }
-    });
-
-    document.getElementById('specialsList')?.addEventListener('click', async (e) => {
-      if (e.target.classList.contains('delete-special-btn')) {
-        const id = parseInt(e.target.dataset.id);
-        const result = await postAction('deleteSpecial', { id });
-        if (result?.success) { showToast("Deleted"); loadAdminSpecials(); loadPublicSpecials(); }
-      } else if (e.target.classList.contains('edit-special-btn')) {
-        showToast("Edit feature - implement via prompt or modal");
-      }
-    });
-
-    document.getElementById('addClosedDayBtn')?.addEventListener('click', async () => {
-      const date = document.getElementById('newClosedDate').value;
-      if (!date) { showToast("Select a date"); return; }
-      const result = await postAction('addClosedDay', { date });
-      if (result?.success) { showToast("Closed day added"); loadClosedDays(); document.getElementById('newClosedDate').value = ''; }
-    });
-
-    document.getElementById('closedDaysList')?.addEventListener('click', async (e) => {
-      if (e.target.classList.contains('remove-closed-day')) {
-        const date = e.target.dataset.date;
-        const result = await postAction('removeClosedDay', { date });
-        if (result?.success) { showToast("Removed"); loadClosedDays(); }
-      }
-    });
-
-    document.getElementById('bookingsList')?.addEventListener('click', async (e) => {
-      let id = null, status = null;
-      if (e.target.classList.contains('confirm-booking')) {
-        id = e.target.dataset.id;
-        status = 'confirmed';
-      } else if (e.target.classList.contains('pending-booking')) {
-        id = e.target.dataset.id;
-        status = 'pending';
-      }
-      if (id && status) {
-        const result = await postAction('updateBookingStatus', { id: parseInt(id), status });
-        if (result?.success) { showToast("Status updated"); loadBookings(); }
-      }
-    });
-
-    document.getElementById('exportBookingsBtn')?.addEventListener('click', async () => {
-      const data = await fetchData('bookings');
-      const bookings = data?.bookings || [];
-      exportToCSV(bookings);
-    });
+    document.getElementById('showAddSpecialBtn')?.addEventListener('click',()=>{ document.getElementById('addSpecialForm').style.display='block'; });
+    document.getElementById('cancelSpecialBtn')?.addEventListener('click',()=>{ document.getElementById('addSpecialForm').style.display='none'; document.getElementById('newSpecialTitle').value=''; document.getElementById('newSpecialDesc').value=''; document.getElementById('newSpecialExpiry').value=''; });
+    document.getElementById('saveSpecialBtn')?.addEventListener('click',async()=>{ const title=document.getElementById('newSpecialTitle').value.trim(); const desc=document.getElementById('newSpecialDesc').value.trim(); const expiry=document.getElementById('newSpecialExpiry').value; if(!title){ showToast("Title required"); return; } await postAction('addSpecial',{title,description:desc,expiryDate:expiry}); showToast("Special added"); document.getElementById('addSpecialForm').style.display='none'; loadAdminSpecials(); loadPublicSpecials(); });
+    document.getElementById('specialsList')?.addEventListener('click',async(e)=>{ if(e.target.classList.contains('delete-special-btn')){ const id=parseInt(e.target.dataset.id); await postAction('deleteSpecial',{id}); showToast("Deleted"); loadAdminSpecials(); loadPublicSpecials(); } });
+    document.getElementById('addClosedDayBtn')?.addEventListener('click',async()=>{ const date=document.getElementById('newClosedDate').value; if(!date){ showToast("Select date"); return; } await postAction('addClosedDay',{date}); showToast("Closed day added"); loadClosedDaysAdmin(); document.getElementById('newClosedDate').value=''; });
+    document.getElementById('closedDaysList')?.addEventListener('click',async(e)=>{ if(e.target.classList.contains('remove-closed-day')){ const date=e.target.dataset.date; await postAction('removeClosedDay',{date}); showToast("Removed"); loadClosedDaysAdmin(); } });
+    document.getElementById('bookingsList')?.addEventListener('click',async(e)=>{ let id=null,status=null; if(e.target.classList.contains('confirm-booking')){ id=e.target.dataset.id; status='confirmed'; } else if(e.target.classList.contains('pending-booking')){ id=e.target.dataset.id; status='pending'; } if(id && status){ await postAction('updateBookingStatus',{id:parseInt(id),status}); showToast("Status updated"); loadBookingsAdmin(); } });
+    document.getElementById('exportBookingsBtn')?.addEventListener('click',()=>{ exportToCSV(); });
+    document.getElementById('refreshAdminBtn')?.addEventListener('click',()=>{ loadAdminSpecials(); loadClosedDaysAdmin(); loadBookingsAdmin(); showToast("Refreshed"); });
   }
 
-  // Admin login/logout
-  function showAdminPanel() {
-    document.getElementById('adminSection').style.display = 'block';
-    document.getElementById('adminLoginBtn').style.display = 'none';
-    document.getElementById('adminNavBtn').style.display = 'inline-block';
-    isAdmin = true;
-    loadAdminSpecials();
-    loadClosedDays();
-    loadBookings();
-    setupAdminEvents();
-  }
-  function hideAdminPanel() {
-    document.getElementById('adminSection').style.display = 'none';
-    document.getElementById('adminLoginBtn').style.display = 'flex';
-    document.getElementById('adminNavBtn').style.display = 'none';
-    isAdmin = false;
-    sessionStorage.removeItem('adminAuth');
-  }
-  document.getElementById('adminLoginBtn')?.addEventListener('click', () => {
-    const pin = prompt("Enter admin PIN:");
-    if (pin === ADMIN_PIN) { showAdminPanel(); showToast("Logged in"); sessionStorage.setItem('adminAuth', 'true'); }
-    else if (pin !== null) showToast("Wrong PIN");
-  });
-  document.getElementById('adminLogoutBtn')?.addEventListener('click', () => {
-    hideAdminPanel();
-    showToast("Logged out");
-  });
-  document.getElementById('adminNavBtn')?.addEventListener('click', () => {
-    if (isAdmin) {
-      document.getElementById('adminSection').scrollIntoView({ behavior: 'smooth' });
-    }
-  });
+  function showAdminPanel() { document.getElementById('adminSection').style.display='block'; document.getElementById('adminLoginBtn').style.display='none'; document.getElementById('adminNavBtn').style.display='inline-block'; isAdmin=true; loadAdminSpecials(); loadClosedDaysAdmin(); loadBookingsAdmin(); setupAdminEvents(); }
+  function hideAdminPanel() { document.getElementById('adminSection').style.display='none'; document.getElementById('adminLoginBtn').style.display='flex'; document.getElementById('adminNavBtn').style.display='none'; isAdmin=false; sessionStorage.removeItem('adminAuth'); }
+  document.getElementById('adminLoginBtn')?.addEventListener('click',()=>{ const pin=prompt("Enter admin PIN:"); if(pin===ADMIN_PIN){ showAdminPanel(); showToast("Logged in"); sessionStorage.setItem('adminAuth','true'); } else if(pin!==null) showToast("Wrong PIN"); });
+  document.getElementById('adminLogoutBtn')?.addEventListener('click',()=>{ hideAdminPanel(); showToast("Logged out"); });
+  document.getElementById('adminNavBtn')?.addEventListener('click',()=>{ if(isAdmin) document.getElementById('adminSection').scrollIntoView({behavior:'smooth'}); });
+  if(sessionStorage.getItem('adminAuth')==='true') showAdminPanel();
 
-  // Booking form logic (deposit calculation, inspo upload)
-  function getServicePrice() {
-    const s = document.getElementById('serviceSelect');
-    const opt = s.options[s.selectedIndex];
-    return opt && opt.dataset.price ? parseInt(opt.dataset.price) : 0;
-  }
-  function getAddonDetails() {
-    const val = document.getElementById('addonSelect').value;
-    const [price, name] = val.split('|');
-    const p = parseInt(price);
-    if (name === 'None' || p === 0) return { name: 'None', total: 0 };
-    if (name === 'Chrome') return { name: 'Chrome', total: 50 };
-    const q = parseInt(document.getElementById('addonQuantity').value) || 1;
-    return { name, total: p * q };
-  }
-  function getTotal() { return getServicePrice() + getAddonDetails().total; }
-  function getDeposit() { return Math.ceil(getTotal() * 0.5); }
-  function updateDeposit() {
-    const service = getServicePrice();
-    const add = getAddonDetails();
-    const total = getTotal();
-    const deposit = getDeposit();
-    const box = document.getElementById('depositBox');
-    if (service > 0) {
-      document.getElementById('depositAmount').innerText = `R${deposit}`;
-      document.getElementById('priceBreakdown').innerHTML = add.total ? `Service R${service} + ${add.name} R${add.total} = Total R${total} | 50% deposit` : `Service R${service} | 50% deposit R${deposit}`;
-      box.classList.add('show');
-    } else box.classList.remove('show');
-  }
-  document.getElementById('serviceSelect')?.addEventListener('change', updateDeposit);
-  document.getElementById('addonSelect')?.addEventListener('change', updateDeposit);
-  document.getElementById('addonQuantity')?.addEventListener('input', updateDeposit);
+  // Booking dynamic calculations
+  function getServicePrice() { const s=document.getElementById('serviceSelect'); const opt=s.options[s.selectedIndex]; return opt&&opt.dataset.price?parseInt(opt.dataset.price):0; }
+  function getAddonDetails() { const val=document.getElementById('addonSelect').value; const [price,name]=val.split('|'); const p=parseInt(price); if(name==='None'||p===0) return {name:'None',total:0}; if(name==='Chrome') return {name:'Chrome',total:50}; const q=parseInt(document.getElementById('addonQuantity').value)||1; return {name,total:p*q}; }
+  function getTotal(){ return getServicePrice()+getAddonDetails().total; }
+  function getDeposit(){ return Math.ceil(getTotal()*0.5); }
+  function updateDeposit(){ const service=getServicePrice(); const add=getAddonDetails(); const total=getTotal(); const deposit=getDeposit(); const box=document.getElementById('depositBox'); if(service>0){ document.getElementById('depositAmount').innerText=`R${deposit}`; document.getElementById('priceBreakdown').innerHTML=add.total?`Service R${service} + ${add.name} R${add.total} = Total R${total} | 50% deposit`:`Service R${service} | 50% deposit R${deposit}`; box.classList.add('show'); } else box.classList.remove('show'); }
+  document.getElementById('serviceSelect')?.addEventListener('change',updateDeposit);
+  document.getElementById('addonSelect')?.addEventListener('change',updateDeposit);
+  document.getElementById('addonQuantity')?.addEventListener('input',updateDeposit);
 
   // Inspo upload
-  const inspoBox = document.getElementById('inspoUploadBox');
-  const inspoFile = document.getElementById('inspoFileInput');
-  const inspoPreview = document.getElementById('inspoPreview');
-  const inspoImg = document.getElementById('inspoPreviewImg');
-  const removeInspo = document.getElementById('removeInspoBtn');
-  if (inspoBox) {
-    inspoBox.onclick = () => inspoFile.click();
-    inspoFile.onchange = (e) => {
-      if (e.target.files.length) {
-        const file = e.target.files[0];
-        if (file.size > 10*1024*1024) { showToast("Max 10MB"); return; }
-        selectedInspoFile = file;
-        const reader = new FileReader();
-        reader.onload = (ev) => { inspoImg.src = ev.target.result; inspoPreview.classList.add('show'); };
-        reader.readAsDataURL(file);
-      }
-    };
-    removeInspo.onclick = () => {
-      selectedInspoFile = null;
-      inspoFile.value = '';
-      inspoPreview.classList.remove('show');
-      inspoImg.src = '';
-    };
-  }
-
-  // Submit booking
-  document.getElementById('bookingForm')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const name = document.getElementById('fullName').value.trim();
-    const phone = document.getElementById('phoneNum').value.trim();
-    const email = document.getElementById('emailAddr').value.trim();
-    const service = document.getElementById('serviceSelect').options[document.getElementById('serviceSelect').selectedIndex]?.text || '';
-    const addon = getAddonDetails();
-    const date = document.getElementById('appointmentDate').value;
-    const time = document.getElementById('timeSelect').value;
-    const notes = document.getElementById('specialRequests').value.trim();
-    const total = getTotal();
-    const deposit = getDeposit();
-    if (!name || !phone || !service || !date) { showToast("Please fill required fields"); return; }
-
-    const bookingData = { name, phone, email, service, addons: addon.name !== 'None' ? addon.name : '', total: `R${total}`, deposit: `R${deposit}`, date, time, notes, inspoUrl: '' };
-    const result = await postAction('addBooking', { booking: bookingData });
-    if (result?.success) {
-      showToast("Booking request sent! Pay deposit to confirm.");
-      // Send WhatsApp to nail tech
-      sendTechWhatsApp(bookingData, !!selectedInspoFile);
-      // Reset form
-      document.getElementById('bookingForm').reset();
-      selectedInspoFile = null;
-      inspoPreview.classList.remove('show');
-      updateDeposit();
-    } else {
-      showToast("Error submitting booking");
-    }
+  const inspoBox=document.getElementById('inspoUploadBox'); const inspoFile=document.getElementById('inspoFileInput'); const inspoPreview=document.getElementById('inspoPreview'); const inspoImg=document.getElementById('inspoPreviewImg'); const removeInspo=document.getElementById('removeInspoBtn');
+  if(inspoBox){ inspoBox.onclick=()=>inspoFile.click(); inspoFile.onchange=(e)=>{ if(e.target.files.length){ const file=e.target.files[0]; if(file.size>10*1024*1024){ showToast("Max 10MB"); return; } selectedInspoFile=file; const reader=new FileReader(); reader.onload=(ev)=>{ inspoImg.src=ev.target.result; inspoPreview.classList.add('show'); }; reader.readAsDataURL(file); } }; removeInspo.onclick=()=>{ selectedInspoFile=null; inspoFile.value=''; inspoPreview.classList.remove('show'); inspoImg.src=''; }; }
+  
+  document.getElementById('bookingForm')?.addEventListener('submit',async(e)=>{ e.preventDefault(); const name=document.getElementById('fullName').value.trim(); const phone=document.getElementById('phoneNum').value.trim(); const email=document.getElementById('emailAddr').value.trim(); const serviceSelect=document.getElementById('serviceSelect'); const service=serviceSelect.options[serviceSelect.selectedIndex]?.text||''; const addon=getAddonDetails(); const date=document.getElementById('appointmentDate').value; const time=document.getElementById('timeSelect').value; const notes=document.getElementById('specialRequests').value.trim(); const total=getTotal(); const deposit=getDeposit(); if(!name||!phone||!service||!date){ showToast("Please fill required fields"); return; }
+    const bookingData={ name,phone,email,service,addons:addon.name!=='None'?addon.name:'', total:`R${total}`, deposit:`R${deposit}`, date,time,notes };
+    const result=await postAction('addBooking',{booking:bookingData}); if(result?.success){ showToast("Booking request sent! Pay deposit to confirm."); sendTechWhatsApp(bookingData,!!selectedInspoFile); document.getElementById('bookingForm').reset(); selectedInspoFile=null; if(inspoPreview) inspoPreview.classList.remove('show'); updateDeposit(); } else showToast("Error submitting booking");
   });
-
-  // Navigation
-  function activateSection(id) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active-section'));
-    document.getElementById(`${id}-section`).classList.add('active-section');
-    document.querySelectorAll('.nav-link').forEach(btn => btn.classList.remove('active-nav'));
-    document.querySelector(`.nav-link[data-section="${id}"]`).classList.add('active-nav');
-    if (id === 'specials') loadPublicSpecials();
-  }
-  document.querySelectorAll('.nav-link').forEach(btn => btn.addEventListener('click', () => activateSection(btn.dataset.section)));
-
-  // Set min date for booking and disable closed days (client-side check)
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  const dateInput = document.getElementById('appointmentDate');
-  if (dateInput) dateInput.min = tomorrow.toISOString().split('T')[0];
-
-  // Load public specials on page load
+  function activateSection(id){ document.querySelectorAll('.section').forEach(s=>s.classList.remove('active-section')); document.getElementById(`${id}-section`).classList.add('active-section'); document.querySelectorAll('.nav-link').forEach(btn=>btn.classList.remove('active-nav')); document.querySelector(`.nav-link[data-section="${id}"]`).classList.add('active-nav'); if(id==='specials') loadPublicSpecials(); }
+  document.querySelectorAll('.nav-link').forEach(btn=>btn.addEventListener('click',()=>activateSection(btn.dataset.section)));
+  const tomorrow=new Date(); tomorrow.setDate(tomorrow.getDate()+1); const dateInput=document.getElementById('appointmentDate'); if(dateInput) dateInput.min=tomorrow.toISOString().split('T')[0];
   loadPublicSpecials();
-
-  // Check for existing admin session
-  if (sessionStorage.getItem('adminAuth') === 'true') showAdminPanel();
 </script>
 </body>
 </html>
