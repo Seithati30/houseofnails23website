@@ -38,7 +38,6 @@
       margin-bottom: 16px;
     }
 
-    /* EXACT LOGO from your image */
     .exact-logo {
       text-align: center;
     }
@@ -560,6 +559,87 @@
       font-size: 0.9rem;
     }
 
+    /* Admin dashboard styles */
+    .admin-section {
+      max-width: 1280px;
+      margin: 40px auto;
+      padding: 0 32px;
+      display: none;
+    }
+    .admin-section h2 {
+      border-left-color: #C29D93;
+    }
+    .admin-card {
+      background: white;
+      border-radius: 24px;
+      padding: 24px;
+      border: 1px solid #EDE4DF;
+      overflow-x: auto;
+    }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .admin-table th, .admin-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #EDE4DF;
+    }
+    .admin-table th {
+      background: #FAF6F3;
+      font-weight: 600;
+      color: #2C2824;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .status-confirmed {
+      background: #E9F5EF;
+      color: #2C7A4D;
+    }
+    .status-pending {
+      background: #FEF2E8;
+      color: #B85C1A;
+    }
+    .admin-login-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #C29D93;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 10px 18px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+      font-size: 0.8rem;
+    }
+    .admin-logout-btn {
+      background: #888;
+      margin-left: 12px;
+    }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .refresh-admin-btn {
+      background: #C29D93;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
     @media (max-width: 700px) {
       .container { padding: 0 20px; }
       .form-row { grid-template-columns: 1fr; gap: 0; }
@@ -567,6 +647,7 @@
       .toast-notify { white-space: normal; width: 90%; text-align: center; }
       .exact-logo .big-h, .exact-logo .big-n { font-size: 50px; }
       .exact-logo .house-text { font-size: 22px; }
+      .admin-section { padding: 0 20px; }
     }
   </style>
 </head>
@@ -593,187 +674,208 @@
   </div>
 </header>
 
-<main class="container">
+<main>
   <!-- Services Section -->
   <div id="services-section" class="section active-section">
-    <h2>Services & Pricing</h2>
-
-    <div class="inspo-note">
-      <i class="fas fa-lightbulb" style="color:#C29D93; margin-right: 10px;"></i>
-      <strong>Unsure what you'd like?</strong><br>
-      Upload your inspiration photo when booking below – the nail tech will give you a quote for the exact design.<br>
-      <a href="https://wa.me/27635967477" target="_blank" style="color:#C29D93; font-weight: 600;">→ Or send via WhatsApp</a>
-    </div>
-
-    <div class="grid-2col">
-      <div class="card">
-        <h3><i class="fas fa-hand-sparkles"></i> Acrylic</h3>
-        <ul class="price-list">
-          <li><span>Plain Acrylic</span><span>R200</span></li>
-          <li><span>Plain Ombre</span><span>R220</span></li>
-          <li><span>Plain French</span><span>R280</span></li>
-          <li><span>Acrylic Overlay</span><span>R180</span></li>
-          <li><span>Refill Set</span><span>R150</span></li>
-        </ul>
+    <div class="container">
+      <h2>Services & Pricing</h2>
+      <div class="inspo-note">
+        <i class="fas fa-lightbulb" style="color:#C29D93; margin-right: 10px;"></i>
+        <strong>Unsure what you'd like?</strong><br>
+        Upload your inspiration photo when booking below – the nail tech will give you a quote for the exact design.<br>
+        <a href="https://wa.me/27635967477" target="_blank" style="color:#C29D93; font-weight: 600;">→ Or send via WhatsApp</a>
+      </div>
+      <div class="grid-2col">
+        <div class="card">
+          <h3><i class="fas fa-hand-sparkles"></i> Acrylic</h3>
+          <ul class="price-list">
+            <li><span>Plain Acrylic</span><span>R200</span></li>
+            <li><span>Plain Ombre</span><span>R220</span></li>
+            <li><span>Plain French</span><span>R280</span></li>
+            <li><span>Acrylic Overlay</span><span>R180</span></li>
+            <li><span>Refill Set</span><span>R150</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-gem"></i> Gel & Toes</h3>
+          <ul class="price-list">
+            <li><span>Plain Gel Set</span><span>R220</span></li>
+            <li><span>Gel Overlay</span><span>R180</span></li>
+            <li><span>Plain Toes</span><span>R100</span></li>
+            <li><span>Buff & Shine</span><span>R100</span></li>
+            <li><span>French Toes</span><span>R170</span></li>
+          </ul>
+        </div>
       </div>
       <div class="card">
-        <h3><i class="fas fa-gem"></i> Gel & Toes</h3>
-        <ul class="price-list">
-          <li><span>Plain Gel Set</span><span>R220</span></li>
-          <li><span>Gel Overlay</span><span>R180</span></li>
-          <li><span>Plain Toes</span><span>R100</span></li>
-          <li><span>Buff & Shine</span><span>R100</span></li>
-          <li><span>French Toes</span><span>R170</span></li>
+        <h3><i class="fas fa-palette"></i> Premium Add-Ons</h3>
+        <table class="addons-table">
+          <thead><tr><th>Add-On</th><th>Description</th><th>Price</th></tr></thead>
+          <tbody>
+            <tr><td><i class="fas fa-spray-can"></i> Aura Airbrush</td><td>Airbrushed gradient per nail</td><td>R10/nail</td></tr>
+            <tr><td><i class="fas fa-gem"></i> Gems / Pearls</td><td>Crystal gems or pearls</td><td>R15/nail</td></tr>
+            <tr><td><i class="fas fa-star"></i> Charms</td><td>3D decorative charms</td><td>R20/nail</td></tr>
+            <tr><td><i class="fas fa-feather-alt"></i> 3D Flower</td><td>Hand-sculpted floral</td><td>R30/nail</td></tr>
+            <tr><td><i class="fas fa-chrome"></i> Chrome Finish</td><td>Mirror chrome (full set)</td><td>R50</td></tr>
+            <tr><td><i class="fas fa-tint"></i> Soak Off</td><td>Professional removal</td><td>R80</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-clipboard-list"></i> Studio Policies</h3>
+        <ul class="policy-list">
+          <li><i class="fas fa-hand-paper"></i> <strong>Arrive with BARE HANDS</strong> – no existing product</li>
+          <li><i class="fas fa-percent"></i> <strong>50% non‑refundable deposit</strong> required prior to service</li>
+          <li><i class="fas fa-coins"></i> <strong>First deposit, first serve | No deposit = No appointment</strong></li>
+          <li><i class="fas fa-clock"></i> <strong>R50 extra</strong> for after‑hours / before opening squeeze‑in</li>
+          <li><i class="fas fa-hourglass-half"></i> <strong>15 minutes late = +20% charge</strong></li>
+          <li><i class="fas fa-ban"></i> <strong>No show after 30 minutes = deposit forfeited / cancelled</strong></li>
+          <li><i class="fas fa-calendar-times"></i> <strong>Closed Sundays</strong></li>
+          <li><i class="fas fa-shield-alt"></i> <strong>Right to refuse service:</strong> We reserve the right to refuse service if there are signs of infection, open wounds, or if the client's natural nails are beyond workable conditions.</li>
         </ul>
       </div>
-    </div>
-
-    <div class="card">
-      <h3><i class="fas fa-palette"></i> Premium Add-Ons</h3>
-      <table class="addons-table">
-        <thead><tr><th>Add-On</th><th>Description</th><th>Price</th></tr></thead>
-        <tbody>
-          <tr><td><i class="fas fa-spray-can"></i> Aura Airbrush</td><td>Airbrushed gradient per nail</td><td>R10/nail</td></tr>
-          <tr><td><i class="fas fa-gem"></i> Gems / Pearls</td><td>Crystal gems or pearls</td><td>R15/nail</td></tr>
-          <tr><td><i class="fas fa-star"></i> Charms</td><td>3D decorative charms</td><td>R20/nail</td></tr>
-          <tr><td><i class="fas fa-feather-alt"></i> 3D Flower</td><td>Hand-sculpted floral</td><td>R30/nail</td></tr>
-          <tr><td><i class="fas fa-chrome"></i> Chrome Finish</td><td>Mirror chrome (full set)</td><td>R50</td></tr>
-          <tr><td><i class="fas fa-tint"></i> Soak Off</td><td>Professional removal</td><td>R80</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="card">
-      <h3><i class="fas fa-clipboard-list"></i> Studio Policies</h3>
-      <ul class="policy-list">
-        <li><i class="fas fa-hand-paper"></i> <strong>Arrive with BARE HANDS</strong> – no existing product</li>
-        <li><i class="fas fa-percent"></i> <strong>50% non‑refundable deposit</strong> required prior to service</li>
-        <li><i class="fas fa-coins"></i> <strong>First deposit, first serve | No deposit = No appointment</strong></li>
-        <li><i class="fas fa-clock"></i> <strong>R50 extra</strong> for after‑hours / before opening squeeze‑in</li>
-        <li><i class="fas fa-hourglass-half"></i> <strong>15 minutes late = +20% charge</strong></li>
-        <li><i class="fas fa-ban"></i> <strong>No show after 30 minutes = deposit forfeited / cancelled</strong></li>
-        <li><i class="fas fa-calendar-times"></i> <strong>Closed Sundays</strong></li>
-        <li><i class="fas fa-shield-alt"></i> <strong>Right to refuse service:</strong> We reserve the right to refuse service if there are signs of infection, open wounds, or if the client's natural nails are beyond workable conditions.</li>
-      </ul>
     </div>
   </div>
 
   <!-- Specials Section -->
   <div id="specials-section" class="section">
-    <h2>Current Offers</h2>
-    <div id="specialsDynamicContainer"><div class="card"><p>No active specials. Check back soon!</p></div></div>
+    <div class="container">
+      <h2>Current Offers</h2>
+      <div id="specialsDynamicContainer"><div class="card"><p>No active specials. Check back soon!</p></div></div>
+    </div>
   </div>
 
-  <!-- Booking Section WITH INSPO UPLOAD -->
+  <!-- Booking Section -->
   <div id="book-section" class="section">
-    <h2>Request an Appointment</h2>
-    <div class="booking-form">
-      <form id="bookingForm">
-        <div class="form-row">
-          <div class="form-group"><label>Full name <span class="required">*</span></label><input type="text" id="fullName" required></div>
-          <div class="form-group"><label>WhatsApp number <span class="required">*</span></label><input type="tel" id="phoneNum" required placeholder="063 596 7477"></div>
-        </div>
-        <div class="form-group"><label>Email (optional)</label><input type="email" id="emailAddr" placeholder="for email confirmation"></div>
-
-        <!-- INSPO PHOTO UPLOAD SECTION -->
-        <div class="inspo-upload-area">
-          <h4><i class="fas fa-camera"></i> Inspiration Photo (optional)</h4>
-          <div class="upload-box-small" id="inspoUploadBox">
-            <div class="upload-icon-small">🖼️</div>
-            <div class="upload-text-small">Click or drag &amp; drop your inspo photo</div>
-            <div class="upload-text-small"><strong>PNG, JPG, JPEG</strong> up to 10MB</div>
+    <div class="container">
+      <h2>Request an Appointment</h2>
+      <div class="booking-form">
+        <form id="bookingForm">
+          <div class="form-row">
+            <div class="form-group"><label>Full name <span class="required">*</span></label><input type="text" id="fullName" required></div>
+            <div class="form-group"><label>WhatsApp number <span class="required">*</span></label><input type="tel" id="phoneNum" required placeholder="063 596 7477"></div>
           </div>
-          <input type="file" id="inspoFileInput" accept="image/jpeg,image/jpg,image/png">
-          <div class="inspo-file-info" id="inspoFileInfo"></div>
-          <div class="inspo-preview" id="inspoPreview">
-            <img id="inspoPreviewImg" src="" alt="Preview">
-            <div class="remove-inspo" id="removeInspoBtn">✕ Remove photo</div>
+          <div class="form-group"><label>Email (optional)</label><input type="email" id="emailAddr" placeholder="for email confirmation"></div>
+
+          <!-- INSPO PHOTO UPLOAD -->
+          <div class="inspo-upload-area">
+            <h4><i class="fas fa-camera"></i> Inspiration Photo (optional)</h4>
+            <div class="upload-box-small" id="inspoUploadBox">
+              <div class="upload-icon-small">🖼️</div>
+              <div class="upload-text-small">Click or drag &amp; drop your inspo photo</div>
+              <div class="upload-text-small"><strong>PNG, JPG, JPEG</strong> up to 10MB</div>
+            </div>
+            <input type="file" id="inspoFileInput" accept="image/jpeg,image/jpg,image/png" style="display:none;">
+            <div class="inspo-file-info" id="inspoFileInfo"></div>
+            <div class="inspo-preview" id="inspoPreview">
+              <img id="inspoPreviewImg" src="" alt="Preview">
+              <div class="remove-inspo" id="removeInspoBtn">✕ Remove photo</div>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group"><label>Select service <span class="required">*</span></label>
-          <select id="serviceSelect" required>
-            <option value="" disabled selected>– Choose –</option>
-            <option value="Plain Acrylic" data-price="200">Plain Acrylic · R200</option>
-            <option value="Plain Ombre" data-price="220">Plain Ombre · R220</option>
-            <option value="Plain French" data-price="280">Plain French · R280</option>
-            <option value="Acrylic Overlay" data-price="180">Acrylic Overlay · R180</option>
-            <option value="Refill Set" data-price="150">Refill Set · R150</option>
-            <option value="Plain Gel Set" data-price="220">Plain Gel Set · R220</option>
-            <option value="Gel Overlay" data-price="180">Gel Overlay · R180</option>
-            <option value="Plain Toes" data-price="100">Plain Toes · R100</option>
-            <option value="French Toes" data-price="170">French Toes · R170</option>
-          </select>
-        </div>
-
-        <div class="addon-selection">
-          <label><i class="fas fa-palette"></i> Add‑ons (optional)</label>
-          <div class="addon-row">
-            <select id="addonSelect">
-              <option value="0|None">None</option>
-              <option value="10|Aura Airbrush">Aura Airbrush - R10/nail</option>
-              <option value="15|Gems/Pearls">Gems/Pearls - R15/nail</option>
-              <option value="20|Charms">Charms - R20/nail</option>
-              <option value="30|3D Flower">3D Flower - R30/nail</option>
-              <option value="50|Chrome">Chrome - R50 (full set)</option>
+          <div class="form-group"><label>Select service <span class="required">*</span></label>
+            <select id="serviceSelect" required>
+              <option value="" disabled selected>– Choose –</option>
+              <option value="Plain Acrylic" data-price="200">Plain Acrylic · R200</option>
+              <option value="Plain Ombre" data-price="220">Plain Ombre · R220</option>
+              <option value="Plain French" data-price="280">Plain French · R280</option>
+              <option value="Acrylic Overlay" data-price="180">Acrylic Overlay · R180</option>
+              <option value="Refill Set" data-price="150">Refill Set · R150</option>
+              <option value="Plain Gel Set" data-price="220">Plain Gel Set · R220</option>
+              <option value="Gel Overlay" data-price="180">Gel Overlay · R180</option>
+              <option value="Plain Toes" data-price="100">Plain Toes · R100</option>
+              <option value="French Toes" data-price="170">French Toes · R170</option>
             </select>
-            <input type="number" id="addonQuantity" min="1" max="10" value="1" placeholder="# nails">
           </div>
-          <div id="addonPriceInfo" style="font-size:0.7rem; margin-top:8px; color:#C29D93;"></div>
-        </div>
 
-        <div class="form-row">
-          <div class="form-group"><label>Preferred date <span class="required">*</span></label><input type="date" id="appointmentDate" required></div>
-          <div class="form-group"><label>Time (11am – 4pm) <span class="required">*</span></label><select id="timeSelect" required><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select></div>
-        </div>
+          <div class="addon-selection">
+            <label><i class="fas fa-palette"></i> Add‑ons (optional)</label>
+            <div class="addon-row">
+              <select id="addonSelect">
+                <option value="0|None">None</option>
+                <option value="10|Aura Airbrush">Aura Airbrush - R10/nail</option>
+                <option value="15|Gems/Pearls">Gems/Pearls - R15/nail</option>
+                <option value="20|Charms">Charms - R20/nail</option>
+                <option value="30|3D Flower">3D Flower - R30/nail</option>
+                <option value="50|Chrome">Chrome - R50 (full set)</option>
+              </select>
+              <input type="number" id="addonQuantity" min="1" max="10" value="1" placeholder="# nails">
+            </div>
+            <div id="addonPriceInfo" style="font-size:0.7rem; margin-top:8px; color:#C29D93;"></div>
+          </div>
 
-        <div class="form-group"><label>Special requests / Notes</label><textarea id="specialRequests" rows="2" placeholder="Any specific details about your design..."></textarea></div>
+          <div class="form-row">
+            <div class="form-group"><label>Preferred date <span class="required">*</span></label><input type="date" id="appointmentDate" required></div>
+            <div class="form-group"><label>Time (11am – 4pm) <span class="required">*</span></label><select id="timeSelect" required><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option></select></div>
+          </div>
 
-        <div id="depositBox" class="deposit-box">
-          <p><strong>50% non‑refundable deposit required</strong></p>
-          <div class="deposit-amount" id="depositAmount">R0</div>
-          <div id="priceBreakdown" style="font-size:0.7rem;"></div>
-          <p style="font-size:0.7rem; margin-top:6px;">Balance paid in studio after service</p>
-        </div>
+          <div class="form-group"><label>Special requests / Notes</label><textarea id="specialRequests" rows="2" placeholder="Any specific details about your design..."></textarea></div>
 
-        <div class="bank-details">
-          <p><strong><i class="fas fa-university"></i> EFT Deposit Details</strong></p>
-          <p>Capitec Bank • Account: <strong>2440381884</strong></p>
-          <p>Reference: <strong>YOUR NAME</strong></p>
-          <p style="font-size:0.75rem;">📞 For EFT enquiries only: <strong>081 073 6338</strong> (no bookings)</p>
-          <p style="font-size:0.75rem;"><i class="fab fa-whatsapp"></i> After EFT, send proof to <strong>+27 63 596 7477</strong> (no calls)</p>
-        </div>
+          <div id="depositBox" class="deposit-box">
+            <p><strong>50% non‑refundable deposit required</strong></p>
+            <div class="deposit-amount" id="depositAmount">R0</div>
+            <div id="priceBreakdown" style="font-size:0.7rem;"></div>
+            <p style="font-size:0.7rem; margin-top:6px;">Balance paid in studio after service</p>
+          </div>
 
-        <button type="submit" class="btn-primary" id="bookBtn"><i class="fas fa-calendar-check"></i> Submit Booking Request</button>
-        <p style="font-size:0.7rem; text-align:center; margin-top:20px;">⚠️ Your booking is only confirmed after we receive your EFT payment, proof via WhatsApp, and admin confirmation.</p>
-      </form>
+          <div class="bank-details">
+            <p><strong><i class="fas fa-university"></i> EFT Deposit Details</strong></p>
+            <p>Capitec Bank • Account: <strong>2440381884</strong></p>
+            <p>Reference: <strong>YOUR NAME</strong></p>
+            <p style="font-size:0.75rem;">📞 For EFT enquiries only: <strong>081 073 6338</strong> (no bookings)</p>
+            <p style="font-size:0.75rem;"><i class="fab fa-whatsapp"></i> After EFT, send proof to <strong>+27 63 596 7477</strong> (no calls)</p>
+          </div>
+
+          <button type="submit" class="btn-primary" id="bookBtn"><i class="fas fa-calendar-check"></i> Submit Booking Request</button>
+          <p style="font-size:0.7rem; text-align:center; margin-top:20px;">⚠️ Your booking is only confirmed after we receive your EFT payment, proof via WhatsApp, and admin confirmation.</p>
+        </form>
+      </div>
     </div>
   </div>
 
   <!-- Contact Section -->
   <div id="contact-section" class="section">
-    <h2>Visit Us</h2>
-    <div class="contact-card">
-      <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> 28 Mowati Street, Phiri, Soweto, 1818</div>
-      <div class="contact-detail"><i class="fas fa-phone-alt"></i> Studio line: 081 073 6338 <span style="font-size:0.7rem;">(EFT enquiries only – no bookings)</span></div>
-      <div class="contact-detail"><i class="fab fa-whatsapp"></i> <strong>WhatsApp Business (inspo & quotes):</strong> <a href="https://wa.me/27635967477" target="_blank">+27 63 596 7477</a> — no calls</div>
-      <div class="contact-detail"><i class="fas fa-envelope"></i> <a href="mailto:houseofnailz23@gmail.com">houseofnailz23@gmail.com</a></div>
-      <div class="social-links">
-        <a href="https://wa.me/27635967477" target="_blank"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
-        <a href="https://instagram.com/houseofnailz23" target="_blank"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+    <div class="container">
+      <h2>Visit Us</h2>
+      <div class="contact-card">
+        <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> 28 Mowati Street, Phiri, Soweto, 1818</div>
+        <div class="contact-detail"><i class="fas fa-phone-alt"></i> Studio line: 081 073 6338 <span style="font-size:0.7rem;">(EFT enquiries only – no bookings)</span></div>
+        <div class="contact-detail"><i class="fab fa-whatsapp"></i> <strong>WhatsApp Business (inspo & quotes):</strong> <a href="https://wa.me/27635967477" target="_blank">+27 63 596 7477</a> — no calls</div>
+        <div class="contact-detail"><i class="fas fa-envelope"></i> <a href="mailto:houseofnailz23@gmail.com">houseofnailz23@gmail.com</a></div>
+        <div class="social-links">
+          <a href="https://wa.me/27635967477" target="_blank"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+          <a href="https://instagram.com/houseofnailz23" target="_blank"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+        </div>
+        <div class="ride-links">
+          <a href="https://m.uber.com/ul/?client_id=Uber&action=setPickup&pickup=my_location&dropoff=28%20Mowati%20Street%20Phiri%20Soweto" target="_blank"><i class="fas fa-car"></i> Uber: Houseofnails23</a>
+          <a href="https://bolt.eu/en/ride/?pickup=my_location&destination=28%20Mowati%20Street%2C%20Soweto" target="_blank"><i class="fas fa-taxi"></i> Bolt: Houseofnails23</a>
+        </div>
+        <div class="bank-details" style="background:rgba(255,255,255,0.15); margin-top:20px;">
+          <p><strong>EFT Deposit</strong> | Capitec 2440381884 | Ref: YOUR NAME</p>
+          <p style="font-size:0.75rem;">Send proof via WhatsApp to <a href="https://wa.me/27635967477" target="_blank" style="color:#FFDBEE;">+27 63 596 7477</a></p>
+        </div>
+        <p><i class="fas fa-clock"></i> Mon–Sat: 10am – 6pm (Booking slots 11am – 4pm) | Closed Sundays</p>
       </div>
-      <div class="ride-links">
-        <a href="https://m.uber.com/ul/?client_id=Uber&action=setPickup&pickup=my_location&dropoff=28%20Mowati%20Street%20Phiri%20Soweto" target="_blank"><i class="fas fa-car"></i> Uber: Houseofnails23</a>
-        <a href="https://bolt.eu/en/ride/?pickup=my_location&destination=28%20Mowati%20Street%2C%20Soweto" target="_blank"><i class="fas fa-taxi"></i> Bolt: Houseofnails23</a>
-      </div>
-      <div class="bank-details" style="background:rgba(255,255,255,0.15); margin-top:20px;">
-        <p><strong>EFT Deposit</strong> | Capitec 2440381884 | Ref: YOUR NAME</p>
-        <p style="font-size:0.75rem;">Send proof via WhatsApp to <a href="https://wa.me/27635967477" target="_blank" style="color:#FFDBEE;">+27 63 596 7477</a></p>
-      </div>
-      <p><i class="fas fa-clock"></i> Mon–Sat: 10am – 6pm (Booking slots 11am – 4pm) | Closed Sundays</p>
     </div>
   </div>
 </main>
+
+<!-- ADMIN DASHBOARD SECTION (hidden until PIN is entered) -->
+<div id="adminSection" class="admin-section">
+  <div class="admin-header">
+    <h2>📋 Bookings Dashboard</h2>
+    <div>
+      <button class="refresh-admin-btn" id="refreshAdminBtn"><i class="fas fa-sync-alt"></i> Refresh</button>
+      <button class="refresh-admin-btn admin-logout-btn" id="adminLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </div>
+  <div class="admin-card">
+    <div id="adminBookingsContent">Loading bookings...</div>
+  </div>
+</div>
+
+<!-- Admin login floating button -->
+<button id="adminLoginBtn" class="admin-login-btn"><i class="fas fa-lock"></i> Admin Login</button>
 
 <footer>
   <div class="container">© 2026 House of Nails 23 — 50% non‑refundable deposit secures your slot. Final payment in studio. <a href="https://instagram.com/houseofnailz23" target="_blank" style="color:#A88379;">View our work on Instagram</a>.</div>
@@ -782,33 +884,134 @@
 <div id="toastMsg" class="toast-notify"></div>
 
 <script>
-  // ======================= INSPO UPLOAD FUNCTIONALITY =======================
+  // ======================= ADMIN AUTH =======================
+  const ADMIN_PIN = "admin123";
+  let adminAuthenticated = false;
+
+  function showToast(msg) {
+    const t = document.getElementById('toastMsg');
+    t.innerText = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 4000);
+  }
+
+  function saveAdminAuth(status) {
+    sessionStorage.setItem('adminAuth', status ? 'true' : 'false');
+    adminAuthenticated = status;
+  }
+
+  function checkAdminAuth() {
+    const stored = sessionStorage.getItem('adminAuth');
+    if (stored === 'true') {
+      adminAuthenticated = true;
+      showAdminPanel();
+    } else {
+      adminAuthenticated = false;
+      hideAdminPanel();
+    }
+  }
+
+  function showAdminPanel() {
+    document.getElementById('adminSection').style.display = 'block';
+    document.getElementById('adminLoginBtn').style.display = 'none';
+    loadAdminBookings();
+  }
+
+  function hideAdminPanel() {
+    document.getElementById('adminSection').style.display = 'none';
+    document.getElementById('adminLoginBtn').style.display = 'flex';
+  }
+
+  function adminLogin() {
+    const pin = prompt("Enter admin PIN:");
+    if (pin === ADMIN_PIN) {
+      saveAdminAuth(true);
+      showAdminPanel();
+      showToast("Admin access granted.");
+    } else if (pin !== null) {
+      showToast("Incorrect PIN.");
+    }
+  }
+
+  function adminLogout() {
+    saveAdminAuth(false);
+    hideAdminPanel();
+    showToast("Logged out of admin.");
+  }
+
+  // ======================= FETCH BOOKINGS FROM APPS SCRIPT =======================
+  const BOOKINGS_API_URL = 'https://script.google.com/macros/s/AKfycbxW6bylajwYwrzJFB-7_y_EU_7-hbGRehlcrgkBaDgM9PfBZxk2td_lHE9wA38hICYh/exec?format=json';
+
+  async function loadAdminBookings() {
+    const container = document.getElementById('adminBookingsContent');
+    if (!container) return;
+    container.innerHTML = '<p><i class="fas fa-spinner fa-pulse"></i> Loading bookings...</p>';
+    try {
+      const response = await fetch(BOOKINGS_API_URL);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const bookings = await response.json();
+      if (!bookings || bookings.length === 0) {
+        container.innerHTML = '<p>✨ No bookings found.</p>';
+        return;
+      }
+      const table = `
+        <table class="admin-table">
+          <thead>
+            <tr><th>ID</th><th>Customer</th><th>Date</th><th>Status</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            ${bookings.map(b => `
+              <tr>
+                <td>${escapeHtml(b.id)}</td>
+                <td>${escapeHtml(b.customer)}</td>
+                <td>${escapeHtml(b.date)}</td>
+                <td><span class="status-badge ${b.status === 'confirmed' ? 'status-confirmed' : 'status-pending'}">${escapeHtml(b.status || 'pending')}</span></td>
+                <td><button class="refresh-admin-btn" style="background:#C29D93; padding:4px 12px;" onclick="updateBookingStatus('${b.id}', 'confirmed')">Confirm</button> <button class="refresh-admin-btn" style="background:#888;" onclick="updateBookingStatus('${b.id}', 'pending')">Pending</button></td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+      container.innerHTML = table;
+    } catch (err) {
+      container.innerHTML = `<p style="color:#C0392B;">⚠️ Error loading bookings: ${escapeHtml(err.message)}. Make sure your Apps Script is deployed and allows CORS (or use a CORS proxy).</p>`;
+    }
+  }
+
+  // Helper to update status (you'll need to implement a POST endpoint in Apps Script)
+  // For now, just a placeholder that shows a message.
+  window.updateBookingStatus = function(id, newStatus) {
+    showToast(`Status update for booking ${id} to ${newStatus} – requires backend POST endpoint.`);
+    // You can extend your Apps Script to handle POST requests to update a Google Sheet.
+  };
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    });
+  }
+
+  // ======================= EXISTING BOOKING FORM LOGIC =======================
+  let selectedInspoFile = null;
   const inspoUploadBox = document.getElementById('inspoUploadBox');
   const inspoFileInput = document.getElementById('inspoFileInput');
   const inspoFileInfo = document.getElementById('inspoFileInfo');
   const inspoPreview = document.getElementById('inspoPreview');
   const inspoPreviewImg = document.getElementById('inspoPreviewImg');
   const removeInspoBtn = document.getElementById('removeInspoBtn');
-  
-  let selectedInspoFile = null;
 
   function handleInspoFile(file) {
-    if (!file.type.match('image.*')) {
-      showToast('Please upload a JPG or PNG image.');
-      return;
-    }
-    if (file.size > 10 * 1024 * 1024) {
-      showToast('Image must be less than 10MB.');
-      return;
-    }
+    if (!file.type.match('image.*')) { showToast('Please upload a JPG or PNG image.'); return; }
+    if (file.size > 10 * 1024 * 1024) { showToast('Image must be less than 10MB.'); return; }
     selectedInspoFile = file;
     inspoFileInfo.textContent = `✓ ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
     inspoFileInfo.classList.add('show');
     const reader = new FileReader();
-    reader.onload = (e) => {
-      inspoPreviewImg.src = e.target.result;
-      inspoPreview.classList.add('show');
-    };
+    reader.onload = (e) => { inspoPreviewImg.src = e.target.result; inspoPreview.classList.add('show'); };
     reader.readAsDataURL(file);
   }
 
@@ -816,11 +1019,7 @@
     inspoUploadBox.onclick = () => inspoFileInput.click();
     inspoUploadBox.ondragover = (e) => { e.preventDefault(); inspoUploadBox.classList.add('dragover'); };
     inspoUploadBox.ondragleave = () => { inspoUploadBox.classList.remove('dragover'); };
-    inspoUploadBox.ondrop = (e) => {
-      e.preventDefault();
-      inspoUploadBox.classList.remove('dragover');
-      if (e.dataTransfer.files.length) handleInspoFile(e.dataTransfer.files[0]);
-    };
+    inspoUploadBox.ondrop = (e) => { e.preventDefault(); inspoUploadBox.classList.remove('dragover'); if (e.dataTransfer.files.length) handleInspoFile(e.dataTransfer.files[0]); };
   }
   if (inspoFileInput) inspoFileInput.onchange = (e) => { if (e.target.files.length) handleInspoFile(e.target.files[0]); };
   if (removeInspoBtn) {
@@ -833,7 +1032,6 @@
     };
   }
 
-  // ======================= BOOKING CALCULATIONS =======================
   function getServicePrice() { 
     const s = document.getElementById('serviceSelect'); 
     const opt = s.options[s.selectedIndex]; 
@@ -868,25 +1066,15 @@
   document.getElementById('addonSelect').addEventListener('change', updateAddonInfo);
   document.getElementById('addonQuantity').addEventListener('input', updateAddonInfo);
 
-  // Set min date (tomorrow)
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   document.getElementById('appointmentDate').min = tomorrow.toISOString().split('T')[0];
 
-  // ======================= FORM SUBMIT =======================
   const bookingForm = document.getElementById('bookingForm');
   const bookBtn = document.getElementById('bookBtn');
 
-  function showToast(msg) { 
-    const t = document.getElementById('toastMsg'); 
-    t.innerText = msg; 
-    t.classList.add('show'); 
-    setTimeout(()=>t.classList.remove('show'), 4000);
-  }
-
   bookingForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
     const name = document.getElementById('fullName').value.trim();
     const phone = document.getElementById('phoneNum').value.trim();
     const email = document.getElementById('emailAddr').value.trim();
@@ -907,42 +1095,13 @@
     bookBtn.disabled = true;
     bookBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
 
-    // Prepare WhatsApp message for NAIL TECH (with note that booking needs completion)
     const addonText = addon.name !== 'None' ? `\n✨ Add-on: ${addon.name} (+R${addon.total})` : '';
     const inspoText = selectedInspoFile ? `\n📸 Has inspo photo attached (check email)` : '';
     const notesText = notes ? `\n📝 Notes: ${notes}` : '';
     
-    const techWhatsAppMessage = `🏠 *HOUSE OF NAILS 23 - NEW INSPO UPLOAD* 🏠
-
-━━━━━━━━━━━━━━━━━━━━━
-👤 *Client:* ${name}
-📞 *WhatsApp:* ${phone}
-${email ? `📧 *Email:* ${email}` : ''}
-━━━━━━━━━━━━━━━━━━━━━
-💅 *Service:* ${service}
-${addonText}
-💰 *Total:* R${total}
-💸 *50% Deposit:* R${deposit}
-📅 *Date:* ${date} at ${time}
-${notesText}
-${inspoText}
-━━━━━━━━━━━━━━━━━━━━━
-
-⚠️ *IMPORTANT:* The client has uploaded an inspiration photo.
-
-⏳ *Next Steps:*
-1️⃣ Client needs to COMPLETE BOOKING on the website
-2️⃣ They must pay 50% deposit via EFT (Capitec 2440381884)
-3️⃣ They will send proof to your WhatsApp
-
-✅ *After receiving proof, confirm their booking*
-
-🔗 Website: https://seithati30.github.io/houseofnails23website/`;
-
-    // Open WhatsApp for nail tech with pre-filled message
+    const techWhatsAppMessage = `🏠 *HOUSE OF NAILS 23 - NEW BOOKING* 🏠\n\n👤 *Client:* ${name}\n📞 *WhatsApp:* ${phone}\n${email ? `📧 *Email:* ${email}` : ''}\n💅 *Service:* ${service}${addonText}\n💰 *Total:* R${total}\n💸 *50% Deposit:* R${deposit}\n📅 *Date:* ${date} at ${time}\n${notesText}${inspoText}\n\n⚠️ Client needs to pay 50% deposit (Capitec 2440381884) and send proof to your WhatsApp.\n🔗 Website: https://seithati30.github.io/houseofnails23website/`;
     const techWhatsAppUrl = `https://wa.me/27635967477?text=${encodeURIComponent(techWhatsAppMessage)}`;
-    
-    // Send email with inspo photo (to nail tech)
+
     if (selectedInspoFile) {
       try {
         const formData = new FormData();
@@ -958,25 +1117,13 @@ ${inspoText}
         formData.append('total', total);
         formData.append('image', selectedInspoFile);
         formData.append('_captcha', 'false');
-        formData.append('_subject', `NEW BOOKING INSPO: ${name} wants ${service}`);
+        formData.append('_subject', `NEW BOOKING: ${name} wants ${service}`);
         formData.append('_replyto', 'houseofnailz23@gmail.com');
-        
-        await fetch('https://formsubmit.co/ajax/houseofnailz23@gmail.com', {
-          method: 'POST',
-          body: formData
-        });
-      } catch(err) {
-        console.log('Email error:', err);
-      }
+        await fetch('https://formsubmit.co/ajax/houseofnailz23@gmail.com', { method: 'POST', body: formData });
+      } catch(err) { console.log('Email error:', err); }
     }
-
-    // Open WhatsApp for nail tech
     window.open(techWhatsAppUrl, '_blank');
-    
-    // Show success message to client
-    showToast(`✓ Request sent! Complete your booking by paying the 50% deposit via EFT. WhatsApp will open for the nail tech.`);
-    
-    // Reset form
+    showToast(`✓ Request sent! Complete booking by paying 50% deposit via EFT.`);
     setTimeout(() => {
       document.getElementById('fullName').value = '';
       document.getElementById('phoneNum').value = '';
@@ -995,7 +1142,6 @@ ${inspoText}
       document.getElementById('depositBox').classList.remove('show');
       updateDeposit();
     }, 100);
-    
     bookBtn.disabled = false;
     bookBtn.innerHTML = '<i class="fas fa-calendar-check"></i> Submit Booking Request';
   });
@@ -1008,6 +1154,14 @@ ${inspoText}
     document.querySelector(`.nav-link[data-section="${id}"]`).classList.add('active-nav');
   }
   document.querySelectorAll('.nav-link[data-section]').forEach(btn=>btn.addEventListener('click',()=>activateSection(btn.getAttribute('data-section'))));
+  
+  // Admin event listeners
+  document.getElementById('adminLoginBtn').addEventListener('click', adminLogin);
+  document.getElementById('adminLogoutBtn').addEventListener('click', adminLogout);
+  document.getElementById('refreshAdminBtn').addEventListener('click', loadAdminBookings);
+  
+  // Check auth on load
+  checkAdminAuth();
 </script>
 </body>
-  </html>
+</html>
